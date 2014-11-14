@@ -2,10 +2,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class EditorViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var snippetButton: SnippetButton!
+class EditorViewController: UIViewController {
     
     var PlayerVC: AVPlayerViewController!
     var imageGenerator: AVAssetImageGenerator!
@@ -16,40 +13,17 @@ class EditorViewController: UIViewController, UICollectionViewDataSource, UIColl
     var liveQuery: CBLLiveQuery!
     var snippets: [Snippet] = []
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if (object as CBLLiveQuery) == liveQuery {
-            
-            self.snippets = liveQuery.rows.allObjects
-                .map({(row) -> Snippet in
-                    let doc = (row as CBLQueryRow).document
-                    return Snippet(forDocument: doc)
-                })
-            self.snippets.sort({ return $0.start_at < $1.start_at })
-
-            collectionView.reloadData()
-        }
-    }
-    
     deinit {
-        liveQuery.removeObserver(self, forKeyPath: "rows")
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        (collectionView.collectionViewLayout as UICollectionViewFlowLayout).minimumInteritemSpacing = 0
-        (collectionView.collectionViewLayout as UICollectionViewFlowLayout).itemSize = CGSizeMake(collectionView.bounds.height, collectionView.bounds.height)
-        
         XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video.identifier, completionHandler: { (video, error) -> Void in
             self.mp4url = (video as XCDYouTubeVideo).streamURLs[18] as NSURL
             self.startPlaying()
         })
-        
-        liveQuery = Snippet.querySnippetsForVideo(video.identifier).asLiveQuery()
-        liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
-        liveQuery.run(nil)
-        
-        snippetButton.isActive = false
         
     }
     
@@ -102,28 +76,6 @@ class EditorViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return snippets.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SnippetCell", forIndexPath: indexPath) as SnippetCell
-        
-        let attachment: CBLAttachment? = snippets[indexPath.item].attachmentNamed("image")
-        if let unwrapped = attachment {
-            cell.image.image = UIImage(data: unwrapped.content)
-            cell.image.contentMode = UIViewContentMode.ScaleAspectFill
-        }
-        
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let video = snippets[indexPath.item]
-        let cmtime = CMTimeMakeWithSeconds(Float64(video.start_at), 600)
-        self.PlayerVC.player.seekToTime(cmtime)
     }
 
     /*
