@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		02517CB344C92E124342036A /* libPods-Story1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DAB7030DC4CFEF3FC58794 /* libPods-Story1.a */; };
+		BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE060B231A177ADD0081BBA1 /* TabViewController.swift */; };
 		BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE232D8B1A1532A1009FB16F /* Notification.swift */; };
 		BE3CB50B1A14DBCD004512E2 /* bridging-header.h in Sources */ = {isa = PBXBuildFile; fileRef = BEE3968C1A14DAF500BB779E /* bridging-header.h */; };
 		BE3CB50C1A14DBE0004512E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE3968D1A14DAFE00BB779E /* Info.plist */; };
 		BE3CB51B1A14E391004512E2 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB6B8A1A0945BA0032821E /* CouchbaseLite.framework */; };
 		BE3CB51C1A14E393004512E2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE46B1A1A081D01000876A4 /* FacebookSDK.framework */; };
 		BEAAEE601A0C52DF00CE5D32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAAEE5F1A0C52DF00CE5D32 /* AVFoundation.framework */; };
+		BEE232AB1A16D06D00485F05 /* HamburgerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE232AA1A16D06D00485F05 /* HamburgerButton.swift */; };
 		BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396321A14DA0400BB779E /* AppDelegate.swift */; };
 		BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396391A14DA0400BB779E /* CouchbaseManager.swift */; };
 		BEE3964D1A14DA0400BB779E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963A1A14DA0400BB779E /* Document.swift */; };
@@ -53,9 +55,10 @@
 		4CC16F881F4A1B73CEA82E7B /* Pods-Story1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Story1/Pods-Story1.debug.xcconfig"; sourceTree = "<group>"; };
 		4DEE6605CF04845A636BA0DE /* Pods-Story1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story1.release.xcconfig"; path = "Pods/Target Support Files/Pods-Story1/Pods-Story1.release.xcconfig"; sourceTree = "<group>"; };
 		BE03604C1A0BFAF1003E2424 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		BE09F20E1A0EDA4700817C18 /* SnippetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnippetButton.swift; sourceTree = "<group>"; };
+		BE060B231A177ADD0081BBA1 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Editor/TabViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE232D8B1A1532A1009FB16F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Editor/Notification.swift; sourceTree = SOURCE_ROOT; };
 		BEAAEE5F1A0C52DF00CE5D32 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BEE232AA1A16D06D00485F05 /* HamburgerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerButton.swift; sourceTree = SOURCE_ROOT; };
 		BEE396321A14DA0400BB779E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Editor/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		BEE396391A14DA0400BB779E /* CouchbaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchbaseManager.swift; path = Editor/CouchbaseManager.swift; sourceTree = SOURCE_ROOT; };
 		BEE3963A1A14DA0400BB779E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Editor/Document.swift; sourceTree = SOURCE_ROOT; };
@@ -128,7 +131,8 @@
 		BE09F20D1A0EDA2100817C18 /* Designables */ = {
 			isa = PBXGroup;
 			children = (
-				BE09F20E1A0EDA4700817C18 /* SnippetButton.swift */,
+				BEE232AA1A16D06D00485F05 /* HamburgerButton.swift */,
+				BEE396421A14DA0400BB779E /* SnippetButton.swift */,
 			);
 			name = Designables;
 			sourceTree = "<group>";
@@ -164,9 +168,9 @@
 				BEE396861A14DAE400BB779E /* LaunchScreen.xib */,
 				BEE396881A14DAE400BB779E /* Main.storyboard */,
 				BEE3963B1A14DA0400BB779E /* EditorViewController.swift */,
+				BE060B231A177ADD0081BBA1 /* TabViewController.swift */,
 				BEE3963C1A14DA0400BB779E /* FacebookManager.swift */,
 				BEE3963F1A14DA0400BB779E /* LoginViewController.swift */,
-				BEE396421A14DA0400BB779E /* SnippetButton.swift */,
 				BEE396431A14DA0400BB779E /* SnippetCell.swift */,
 				BEE396461A14DA0400BB779E /* VideoTableCell.swift */,
 				BEE396471A14DA0400BB779E /* VideoViewController.swift */,
@@ -376,6 +380,7 @@
 				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
 				BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */,
 				BEE396541A14DA0400BB779E /* Snippet.swift in Sources */,
+				BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */,
 				BEE396531A14DA0400BB779E /* Profile.swift in Sources */,
 				BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */,
 				BEE396561A14DA0400BB779E /* SnippetCell.swift in Sources */,
@@ -383,6 +388,7 @@
 				BEE3965B1A14DA0400BB779E /* ViewController.swift in Sources */,
 				BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */,
 				BEE3964D1A14DA0400BB779E /* Document.swift in Sources */,
+				BEE232AB1A16D06D00485F05 /* HamburgerButton.swift in Sources */,
 				BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */,
 				BEE396581A14DA0400BB779E /* Video.swift in Sources */,
 				BE3CB50B1A14DBCD004512E2 /* bridging-header.h in Sources */,

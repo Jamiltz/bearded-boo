@@ -34,7 +34,7 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
         
         navBarForLoggedOutUser()
-        animateFormTopConstraint(-90)
+        formTopLayoutConstraint.constant = -90
     }
     
     override func viewDidAppear(animated: Bool) { // to update the nav bar every time it appears on screen

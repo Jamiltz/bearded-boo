@@ -2,7 +2,13 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class EditorViewController: UIViewController {
+class EditorViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet var SideBarWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var sidebarRightConstraint: NSLayoutConstraint!
+    @IBOutlet var hashtagTextfield: UITextField!
+    @IBOutlet var playerView: UIView!
+    @IBOutlet var thumbnailView: UIImageView!
     
     var PlayerVC: AVPlayerViewController!
     var imageGenerator: AVAssetImageGenerator!
@@ -12,6 +18,8 @@ class EditorViewController: UIViewController {
     
     var liveQuery: CBLLiveQuery!
     var snippets: [Snippet] = []
+    
+    var sidebarOpened: Bool = false
     
     deinit {
 
@@ -24,7 +32,19 @@ class EditorViewController: UIViewController {
             self.mp4url = (video as XCDYouTubeVideo).streamURLs[18] as NSURL
             self.startPlaying()
         })
-        
+
+        sidebarRightConstraint.constant = -132
+
+        hashtagTextfield.returnKeyType = UIReturnKeyType.Done
+    }
+    
+    func dismissKeyboard() {
+        hashtagTextfield.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        hashtagTextfield.resignFirstResponder()
+        return false
     }
     
     func startPlaying() {
@@ -35,8 +55,24 @@ class EditorViewController: UIViewController {
         }
     }
     
+    @IBAction func toggleSidebar(sender: AnyObject) {
+        if sidebarOpened {
+            animateSidebarWidthConstraint(-132)
+        } else {
+            animateSidebarWidthConstraint(-16)
+        }
+        sidebarOpened = !sidebarOpened
+    }
+    
+    func animateSidebarWidthConstraint(constant: Int) {
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.sidebarRightConstraint.constant = CGFloat(constant)
+            self.view.layoutIfNeeded()
+        })
+    }
+    
     @IBAction func toggleButton(sender: AnyObject) {
-        let button = sender as SnippetButton
+//        let button = sender as SnippetButton
 //        button.isActive = !button.isActive
         
         let cmtime = PlayerVC.player.currentTime()
@@ -48,6 +84,7 @@ class EditorViewController: UIViewController {
                 // save image on the snippet object as attachment
                 let uiImage = UIImage(CGImage: image)
                 let data = UIImageJPEGRepresentation(uiImage, 0.5)
+                self.thumbnailView.image = uiImage
                 
                 let snippet = Snippet(annotation: "", video_id: self.video.identifier, start_at: Double(time), end_at: 0.0, image: data)
                 if snippet.save(nil) {
@@ -73,10 +110,12 @@ class EditorViewController: UIViewController {
         self.PlayerVC.player.seekToTime(new_time)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func saveSnippet(sender: AnyObject) {
+        let button = sender as UIButton
+        button.setTitle("Saved!", forState: .Normal)
     }
+    
 
     /*
     // MARK: - Navigation

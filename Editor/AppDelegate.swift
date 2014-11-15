@@ -34,8 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let shouldSkipLogin = CouchbaseManager.shared.currentUserId
         
         if shouldSkipLogin != nil {
-            let sb = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            window?.rootViewController = sb.instantiateViewControllerWithIdentifier("NavVC") as UINavigationController
+//            let sb = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+//            window?.rootViewController = sb.instantiateViewControllerWithIdentifier("NavVC") as UINavigationController
         }
         
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, categories: nil)
