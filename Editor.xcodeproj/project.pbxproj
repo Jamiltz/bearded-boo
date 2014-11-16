@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02517CB344C92E124342036A /* libPods-Story1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DAB7030DC4CFEF3FC58794 /* libPods-Story1.a */; };
+		41107AE4ECB1A0F0B5063DD5 /* libPods-Editor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D40EF3CCC68B72D32B87F8 /* libPods-Editor.a */; };
 		BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE060B231A177ADD0081BBA1 /* TabViewController.swift */; };
 		BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE232D8B1A1532A1009FB16F /* Notification.swift */; };
 		BE3CB50B1A14DBCD004512E2 /* bridging-header.h in Sources */ = {isa = PBXBuildFile; fileRef = BEE3968C1A14DAF500BB779E /* bridging-header.h */; };
 		BE3CB50C1A14DBE0004512E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE3968D1A14DAFE00BB779E /* Info.plist */; };
 		BE3CB51B1A14E391004512E2 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB6B8A1A0945BA0032821E /* CouchbaseLite.framework */; };
 		BE3CB51C1A14E393004512E2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE46B1A1A081D01000876A4 /* FacebookSDK.framework */; };
+		BE78B9CA1A17954500EE76A6 /* Pods-Editor.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */; };
+		BE78B9CC1A1798F100EE76A6 /* HamburgerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */; };
 		BEAAEE601A0C52DF00CE5D32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAAEE5F1A0C52DF00CE5D32 /* AVFoundation.framework */; };
-		BEE232AB1A16D06D00485F05 /* HamburgerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE232AA1A16D06D00485F05 /* HamburgerButton.swift */; };
 		BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396321A14DA0400BB779E /* AppDelegate.swift */; };
 		BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396391A14DA0400BB779E /* CouchbaseManager.swift */; };
 		BEE3964D1A14DA0400BB779E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963A1A14DA0400BB779E /* Document.swift */; };
@@ -52,13 +53,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4CC16F881F4A1B73CEA82E7B /* Pods-Story1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Story1/Pods-Story1.debug.xcconfig"; sourceTree = "<group>"; };
-		4DEE6605CF04845A636BA0DE /* Pods-Story1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story1.release.xcconfig"; path = "Pods/Target Support Files/Pods-Story1/Pods-Story1.release.xcconfig"; sourceTree = "<group>"; };
+		607A2D96EA62BD48D9A31F08 /* Pods-Editor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Editor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Editor/Pods-Editor.release.xcconfig"; sourceTree = "<group>"; };
 		BE03604C1A0BFAF1003E2424 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE060B231A177ADD0081BBA1 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Editor/TabViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE232D8B1A1532A1009FB16F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Editor/Notification.swift; sourceTree = SOURCE_ROOT; };
+		BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Editor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Editor/Pods-Editor.debug.xcconfig"; sourceTree = "<group>"; };
+		BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HamburgerButton.swift; path = Editor/HamburgerButton.swift; sourceTree = SOURCE_ROOT; };
 		BEAAEE5F1A0C52DF00CE5D32 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		BEE232AA1A16D06D00485F05 /* HamburgerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerButton.swift; sourceTree = SOURCE_ROOT; };
 		BEE396321A14DA0400BB779E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Editor/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		BEE396391A14DA0400BB779E /* CouchbaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchbaseManager.swift; path = Editor/CouchbaseManager.swift; sourceTree = SOURCE_ROOT; };
 		BEE3963A1A14DA0400BB779E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Editor/Document.swift; sourceTree = SOURCE_ROOT; };
@@ -89,7 +90,7 @@
 		BEEB6B901A0945DF0032821E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BEEB6B921A0945E80032821E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BEEB6B941A0945ED0032821E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		E3DAB7030DC4CFEF3FC58794 /* libPods-Story1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Story1.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D40EF3CCC68B72D32B87F8 /* libPods-Editor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Editor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +106,7 @@
 				BEEB6B911A0945DF0032821E /* SystemConfiguration.framework in Frameworks */,
 				BEEB6B8F1A0945D80032821E /* Security.framework in Frameworks */,
 				BEEB6B8D1A0945D00032821E /* CFNetwork.framework in Frameworks */,
-				02517CB344C92E124342036A /* libPods-Story1.a in Frameworks */,
+				41107AE4ECB1A0F0B5063DD5 /* libPods-Editor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,8 +123,8 @@
 		4460652046CF68EAA61C4A1F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4CC16F881F4A1B73CEA82E7B /* Pods-Story1.debug.xcconfig */,
-				4DEE6605CF04845A636BA0DE /* Pods-Story1.release.xcconfig */,
+				BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */,
+				607A2D96EA62BD48D9A31F08 /* Pods-Editor.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -131,7 +132,7 @@
 		BE09F20D1A0EDA2100817C18 /* Designables */ = {
 			isa = PBXGroup;
 			children = (
-				BEE232AA1A16D06D00485F05 /* HamburgerButton.swift */,
+				BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */,
 				BEE396421A14DA0400BB779E /* SnippetButton.swift */,
 			);
 			name = Designables;
@@ -220,7 +221,7 @@
 				BEEB6B8C1A0945D00032821E /* CFNetwork.framework */,
 				BEEB6B8A1A0945BA0032821E /* CouchbaseLite.framework */,
 				BEE46B1A1A081D01000876A4 /* FacebookSDK.framework */,
-				E3DAB7030DC4CFEF3FC58794 /* libPods-Story1.a */,
+				F5D40EF3CCC68B72D32B87F8 /* libPods-Editor.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -244,11 +245,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEE46B0E1A08178B000876A4 /* Build configuration list for PBXNativeTarget "Editor" */;
 			buildPhases = (
-				CA544FD876015B9AA5977BDE /* Check Pods Manifest.lock */,
+				26A45FD1EB899181ABA7C15D /* Check Pods Manifest.lock */,
 				BEE46AEB1A08178B000876A4 /* Sources */,
 				BEE46AEC1A08178B000876A4 /* Frameworks */,
 				BEE46AED1A08178B000876A4 /* Resources */,
-				26D56AF5B56EFB3E82C1F943 /* Copy Pods Resources */,
+				0B4ABB77D3ABD640C3B82910 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -323,6 +324,7 @@
 				BE3CB50C1A14DBE0004512E2 /* Info.plist in Resources */,
 				BEE396501A14DA0400BB779E /* Images.xcassets in Resources */,
 				BEE3968F1A14DB2A00BB779E /* LaunchScreen.xib in Resources */,
+				BE78B9CA1A17954500EE76A6 /* Pods-Editor.debug.xcconfig in Resources */,
 				BEE396901A14DB2A00BB779E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +339,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		26D56AF5B56EFB3E82C1F943 /* Copy Pods Resources */ = {
+		0B4ABB77D3ABD640C3B82910 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -349,10 +351,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Story1/Pods-Story1-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Editor/Pods-Editor-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CA544FD876015B9AA5977BDE /* Check Pods Manifest.lock */ = {
+		26A45FD1EB899181ABA7C15D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -388,10 +390,10 @@
 				BEE3965B1A14DA0400BB779E /* ViewController.swift in Sources */,
 				BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */,
 				BEE3964D1A14DA0400BB779E /* Document.swift in Sources */,
-				BEE232AB1A16D06D00485F05 /* HamburgerButton.swift in Sources */,
 				BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */,
 				BEE396581A14DA0400BB779E /* Video.swift in Sources */,
 				BE3CB50B1A14DBCD004512E2 /* bridging-header.h in Sources */,
+				BE78B9CC1A1798F100EE76A6 /* HamburgerButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +435,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		BEE46B0C1A08178B000876A4 /* Debug */ = {
+		BE78B9C61A17948900EE76A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -451,16 +453,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -468,11 +464,48 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Debug;
+		};
+		BE78B9C71A17948900EE76A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Editor",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Editor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Editor;
+				SWIFT_OBJC_BRIDGING_HEADER = "Editor/bridging-header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Editor/bridging-header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Debug;
+		};
+		BE78B9C81A17948900EE76A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Story1Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Wolf.temp_caseinsensitive_renameTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Story1.app/Story1";
 			};
 			name = Debug;
 		};
@@ -512,32 +545,9 @@
 			};
 			name = Release;
 		};
-		BEE46B0F1A08178B000876A4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CC16F881F4A1B73CEA82E7B /* Pods-Story1.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Editor",
-					"$(PROJECT_DIR)/Frameworks",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = Editor/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = Editor;
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Editor/bridging-header.h";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Editor/bridging-header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		BEE46B101A08178B000876A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DEE6605CF04845A636BA0DE /* Pods-Story1.release.xcconfig */;
+			baseConfigurationReference = 607A2D96EA62BD48D9A31F08 /* Pods-Editor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -556,25 +566,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
-		};
-		BEE46B121A08178B000876A4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Story1Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = Wolf.temp_caseinsensitive_renameTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Story1.app/Story1";
-			};
-			name = Debug;
 		};
 		BEE46B131A08178B000876A4 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -597,8 +588,8 @@
 		BEE46AEA1A08178B000876A4 /* Build configuration list for PBXProject "Editor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BEE46B0C1A08178B000876A4 /* Debug */,
 				BEE46B0D1A08178B000876A4 /* Release */,
+				BE78B9C61A17948900EE76A6 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -606,8 +597,8 @@
 		BEE46B0E1A08178B000876A4 /* Build configuration list for PBXNativeTarget "Editor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BEE46B0F1A08178B000876A4 /* Debug */,
 				BEE46B101A08178B000876A4 /* Release */,
+				BE78B9C71A17948900EE76A6 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -615,8 +606,8 @@
 		BEE46B111A08178B000876A4 /* Build configuration list for PBXNativeTarget "EditorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BEE46B121A08178B000876A4 /* Debug */,
 				BEE46B131A08178B000876A4 /* Release */,
+				BE78B9C81A17948900EE76A6 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

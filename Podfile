@@ -3,14 +3,11 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-target 'Story1' do
+target 'Editor' do
 
 pod 'XCDYouTubeKit', '~> 2.0.2'
 pod 'SDWebImage', '~> 3.7.1'
-
-end
-
-target 'Story1Tests' do
+pod 'NMRangeSlider', '~> 1.1.1'
 
 end
 

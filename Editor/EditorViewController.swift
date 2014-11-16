@@ -2,16 +2,22 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class EditorViewController: UIViewController, UITextFieldDelegate {
+class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
-    @IBOutlet var SideBarWidthConstraint: NSLayoutConstraint!
     @IBOutlet var sidebarRightConstraint: NSLayoutConstraint!
+    @IBOutlet var rangesliderBottomConstraint: NSLayoutConstraint!
+    
     @IBOutlet var hashtagTextfield: UITextField!
     @IBOutlet var playerView: UIView!
     @IBOutlet var thumbnailView: UIImageView!
     
+    @IBOutlet var startTimeLabel: UILabel!
+    @IBOutlet var endTimeLabel: UILabel!
+    
     var PlayerVC: AVPlayerViewController!
     var imageGenerator: AVAssetImageGenerator!
+    
+    @IBOutlet var sliderView: NMRangeSlider!
     
     var video: Video!
     var mp4url: NSURL!
@@ -34,8 +40,16 @@ class EditorViewController: UIViewController, UITextFieldDelegate {
         })
 
         sidebarRightConstraint.constant = -132
+        rangesliderBottomConstraint.constant = -40
 
         hashtagTextfield.returnKeyType = UIReturnKeyType.Done
+        
+        navigationController?.interactivePopGestureRecognizer.delegate = self
+        
+    }
+    
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
+        return false;
     }
     
     func dismissKeyboard() {
@@ -56,10 +70,33 @@ class EditorViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func toggleSidebar(sender: AnyObject) {
+        
         if sidebarOpened {
+            PlayerVC.player.currentItem.forwardPlaybackEndTime = kCMTimeInvalid
+            
             animateSidebarWidthConstraint(-132)
+            animateRangesliderBottomConstraint(-40)
         } else {
+            
+            let cmtime = PlayerVC.player.currentItem.currentTime()
+            let seconds = Float(CMTimeGetSeconds(cmtime))
+            
+            if seconds < sliderView.maximumValue {
+                sliderView.minimumValue = seconds - 3
+                sliderView.lowerValue = seconds + 0
+                sliderView.maximumValue = seconds + 9
+                sliderView.upperValue = seconds + 6
+            } else {
+                sliderView.maximumValue = seconds + 9
+                sliderView.upperValue = seconds + 6
+                sliderView.minimumValue = seconds - 3
+                sliderView.lowerValue = seconds + 0
+            }
+            
+            sliderValueChanged(sliderView)
+            
             animateSidebarWidthConstraint(-16)
+            animateRangesliderBottomConstraint(0)
         }
         sidebarOpened = !sidebarOpened
     }
@@ -67,6 +104,13 @@ class EditorViewController: UIViewController, UITextFieldDelegate {
     func animateSidebarWidthConstraint(constant: Int) {
         UIView.animateWithDuration(0.2, animations: { () -> Void in
             self.sidebarRightConstraint.constant = CGFloat(constant)
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func animateRangesliderBottomConstraint(constant: Int) {
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.rangesliderBottomConstraint.constant = CGFloat(constant)
             self.view.layoutIfNeeded()
         })
     }
@@ -110,10 +154,35 @@ class EditorViewController: UIViewController, UITextFieldDelegate {
         self.PlayerVC.player.seekToTime(new_time)
     }
 
+    @IBAction func sliderValueChanged(sender: AnyObject) {
+        println(sliderView.lowerValue)
+        println(sliderView.upperValue)
+        startTimeLabel.text = secondsConvertToTimeFormat(Int(sliderView.lowerValue))
+        endTimeLabel.text = secondsConvertToTimeFormat(Int(sliderView.upperValue))
+    }
+    
+    @IBAction func replaySnippet(sender: AnyObject) {
+        let start_cmtime = CMTimeMakeWithSeconds(Float64(sliderView.lowerValue), 600)
+        PlayerVC.player.seekToTime(start_cmtime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+        
+        let end_cmtime = CMTimeMakeWithSeconds(Float64(sliderView.upperValue), 600)
+        PlayerVC.player.currentItem.forwardPlaybackEndTime = end_cmtime
+        
+        PlayerVC.player.play()
+    }
+    
     
     @IBAction func saveSnippet(sender: AnyObject) {
         let button = sender as UIButton
         button.setTitle("Saved!", forState: .Normal)
+    }
+    
+    func secondsConvertToTimeFormat(total: Int) -> String {
+        let seconds = total % 60
+        let minutes = (total / 60) % 60
+        let hours = total / 3600
+        
+        return String(format: "%02d:%02d:%02d", arguments: [hours, minutes, seconds])
     }
     
 
