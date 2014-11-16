@@ -73,6 +73,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         
         if sidebarOpened {
             PlayerVC.player.currentItem.forwardPlaybackEndTime = kCMTimeInvalid
+            thumbnailView.image = nil
             
             animateSidebarWidthConstraint(-132)
             animateRangesliderBottomConstraint(-40)
@@ -115,39 +116,6 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         })
     }
     
-    @IBAction func toggleButton(sender: AnyObject) {
-//        let button = sender as SnippetButton
-//        button.isActive = !button.isActive
-        
-        let cmtime = PlayerVC.player.currentTime()
-        let time = CMTimeGetSeconds(cmtime)
-        
-        imageGenerator.generateCGImagesAsynchronouslyForTimes([NSValue(CMTime: cmtime)], completionHandler: { (requestedTime, image, actualTime, result, error) -> Void in
-            if result == AVAssetImageGeneratorResult.Succeeded {
-                
-                // save image on the snippet object as attachment
-                let uiImage = UIImage(CGImage: image)
-                let data = UIImageJPEGRepresentation(uiImage, 0.5)
-                self.thumbnailView.image = uiImage
-                
-                let snippet = Snippet(annotation: "", video_id: self.video.identifier, start_at: Double(time), end_at: 0.0, image: data)
-                if snippet.save(nil) {
-                    println("snippet saved")
-                }
-                
-                if let id = CouchbaseManager.shared.currentUserId {
-                    if let profile = Profile.profileInDatabase(id) {
-                        let notif = Notification(device_token: profile.device_token!, user_name: profile.name)
-                        if notif.save(nil) {
-                            println("saved notification")
-                        }
-                    }
-                }
-                
-            }
-        })
-    }
-    
     @IBAction func rewindPlayback(sender: AnyObject) {
         let time = self.PlayerVC.player.currentTime()
         let new_time = CMTimeMakeWithSeconds(CMTimeGetSeconds(time) - 5, 600)
@@ -155,8 +123,6 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     }
 
     @IBAction func sliderValueChanged(sender: AnyObject) {
-        println(sliderView.lowerValue)
-        println(sliderView.upperValue)
         startTimeLabel.text = secondsConvertToTimeFormat(Int(sliderView.lowerValue))
         endTimeLabel.text = secondsConvertToTimeFormat(Int(sliderView.upperValue))
     }
@@ -174,7 +140,47 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     
     @IBAction func saveSnippet(sender: AnyObject) {
         let button = sender as UIButton
-        button.setTitle("Saved!", forState: .Normal)
+        
+        //        let button = sender as SnippetButton
+        //        button.isActive = !button.isActive
+        
+        let cmtime = CMTimeMakeWithSeconds(Float64(sliderView.lowerValue), 600)
+        imageGenerator.generateCGImagesAsynchronouslyForTimes([NSValue(CMTime: cmtime)], completionHandler: { (requestedTime, image, actualTime, result, error) -> Void in
+            if result == AVAssetImageGeneratorResult.Succeeded {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    // save image on the snippet object as attachment
+                    if image != nil {
+                        
+                        let uiImage = UIImage(CGImage: image)
+                        let data = UIImageJPEGRepresentation(uiImage, CGFloat(0.5))
+                        
+                        self.thumbnailView.image = uiImage
+                        
+                        let start_time = Double(self.sliderView.lowerValue)
+                        let end_time = Double(self.sliderView.upperValue)
+                        let snippet = Snippet(annotation: self.hashtagTextfield.text, video_id: self.video.identifier, start_at: start_time, end_at: end_time, image: data)
+                        if snippet.save(nil) {
+                            println("snippet saved")
+                            self.toggleSidebar(self)
+                        }
+                        
+                        if let id = CouchbaseManager.shared.currentUserId {
+                            if let profile = Profile.profileInDatabase(id) {
+                                let notif = Notification(device_token: profile.device_token!, user_name: profile.name)
+                                if notif.save(nil) {
+                                    println("saved notification")
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                })
+                
+            }
+        })
     }
     
     func secondsConvertToTimeFormat(total: Int) -> String {

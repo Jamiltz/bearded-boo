@@ -34,13 +34,19 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
         
         navBarForLoggedOutUser()
-        formTopLayoutConstraint.constant = -90
+        formTopLayoutConstraint.constant = 0
     }
     
     override func viewDidAppear(animated: Bool) { // to update the nav bar every time it appears on screen
         super.viewDidAppear(animated)
-        
         navBarForLoggedOutUser()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = tableView.indexPathForSelectedRow() {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     
     func navBarForLoggedOutUser() {

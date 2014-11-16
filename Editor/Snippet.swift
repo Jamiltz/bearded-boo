@@ -41,4 +41,20 @@ class Snippet: CBLModel {
         return query
     }
     
+    class func queryAllSnippets() -> CBLQuery {
+        let view = kDatabase.viewNamed("all_snippets")
+        if view.mapBlock == nil {
+            view
+                .setMapBlock({ (doc, emit) -> Void in
+                    if let type = doc["type"] as? String {
+                        if type == "snippet" {
+                            emit(doc["video_id"], doc)
+                        }
+                    }
+                }, version: "1")
+        }
+        
+        return view.createQuery()
+    }
+    
 }

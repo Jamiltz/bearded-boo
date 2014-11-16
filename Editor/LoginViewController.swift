@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+//        navigationController?.setNavigationBarHidden(true, animated: false)
         
         loginView.readPermissions = ["public_profile", "email"]
         loginView.delegate = self
@@ -30,6 +30,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         if shouldSkipLogin {
             start()
         }
+        
     }
     
     func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {

@@ -16,6 +16,12 @@ class TabViewController: UITabBarController {
         navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         tabBarController?.tabBar.barStyle = UIBarStyle.BlackTranslucent
         // Do any additional setup after loading the view.
+        
+        if let shouldSkipLogin = CouchbaseManager.shared.currentUserId {
+            
+        } else {
+            performSegueWithIdentifier("loginSegue", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
