@@ -26,24 +26,27 @@ class VideoViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
 
         Video.queryVideos()
         liveQuery = kDatabase.viewNamed("videos").createQuery().asLiveQuery()
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
-        
-        navBarForLoggedOutUser()
-        formTopLayoutConstraint.constant = 0
     }
     
-    override func viewDidAppear(animated: Bool) { // to update the nav bar every time it appears on screen
-        super.viewDidAppear(animated)
-        navBarForLoggedOutUser()
+    deinit {
+        liveQuery.removeObserver(self, forKeyPath: "rows")
+    }
+
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
         if let indexPath = tableView.indexPathForSelectedRow() {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
@@ -51,7 +54,7 @@ class VideoViewController: UIViewController, UITableViewDataSource {
     
     func navBarForLoggedOutUser() {
 //        if let userId = CouchbaseManager.shared.currentUserId {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "showHeaderView:")
+//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "showHeaderView:")
         
 //        } else {
         

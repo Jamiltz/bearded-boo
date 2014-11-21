@@ -1,23 +1,20 @@
 //
-//  TabViewController.swift
+//  LoginPageViewController.swift
 //  Editor
 //
-//  Created by James Nocentini on 15/11/2014.
+//  Created by James Nocentini on 21/11/2014.
 //  Copyright (c) 2014 James Nocentini. All rights reserved.
 //
 
 import UIKit
 
-class TabViewController: UITabBarController {
+class LoginPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        performSegueWithIdentifier("LoginSegue", sender: self)
         
-        if let shouldSkipLogin = CouchbaseManager.shared.currentUserId {
-            
-        } else {
-            performSegueWithIdentifier("loginSegue", sender: self)
-        }
     }
 
     override func didReceiveMemoryWarning() {

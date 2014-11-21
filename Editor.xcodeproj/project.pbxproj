@@ -14,6 +14,9 @@
 		BE3CB50C1A14DBE0004512E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE3968D1A14DAFE00BB779E /* Info.plist */; };
 		BE3CB51B1A14E391004512E2 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB6B8A1A0945BA0032821E /* CouchbaseLite.framework */; };
 		BE3CB51C1A14E393004512E2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE46B1A1A081D01000876A4 /* FacebookSDK.framework */; };
+		BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */; };
+		BE70E7F51A1F5F05000A85BF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F41A1F5F05000A85BF /* Utilities.swift */; };
+		BE70E7F71A1F5F4A000A85BF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */; };
 		BE77D2531A18CC65006C3F50 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE77D2521A18CC65006C3F50 /* StepsViewController.swift */; };
 		BE78B9CA1A17954500EE76A6 /* Pods-Editor.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */; };
 		BE78B9CC1A1798F100EE76A6 /* HamburgerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */; };
@@ -58,6 +61,9 @@
 		BE03604C1A0BFAF1003E2424 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE060B231A177ADD0081BBA1 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Editor/TabViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE232D8B1A1532A1009FB16F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Editor/Notification.swift; sourceTree = SOURCE_ROOT; };
+		BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPageViewController.swift; path = Editor/LoginPageViewController.swift; sourceTree = SOURCE_ROOT; };
+		BE70E7F41A1F5F05000A85BF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Editor/Utilities.swift; sourceTree = SOURCE_ROOT; };
+		BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Editor/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE77D2521A18CC65006C3F50 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StepsViewController.swift; path = Editor/StepsViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Editor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Editor/Pods-Editor.debug.xcconfig"; sourceTree = "<group>"; };
 		BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HamburgerButton.swift; path = Editor/HamburgerButton.swift; sourceTree = SOURCE_ROOT; };
@@ -171,6 +177,9 @@
 				BEE396861A14DAE400BB779E /* LaunchScreen.xib */,
 				BEE396881A14DAE400BB779E /* Main.storyboard */,
 				BEE3963B1A14DA0400BB779E /* EditorViewController.swift */,
+				BE70E7F41A1F5F05000A85BF /* Utilities.swift */,
+				BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */,
+				BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */,
 				BE77D2521A18CC65006C3F50 /* StepsViewController.swift */,
 				BE060B231A177ADD0081BBA1 /* TabViewController.swift */,
 				BEE3963C1A14DA0400BB779E /* FacebookManager.swift */,
@@ -385,13 +394,16 @@
 				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
 				BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */,
 				BEE396541A14DA0400BB779E /* Snippet.swift in Sources */,
+				BE70E7F71A1F5F4A000A85BF /* ProfileViewController.swift in Sources */,
 				BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */,
 				BEE396531A14DA0400BB779E /* Profile.swift in Sources */,
 				BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */,
+				BE70E7F51A1F5F05000A85BF /* Utilities.swift in Sources */,
 				BEE396561A14DA0400BB779E /* SnippetCell.swift in Sources */,
 				BEE396591A14DA0400BB779E /* VideoTableCell.swift in Sources */,
 				BEE3965B1A14DA0400BB779E /* ViewController.swift in Sources */,
 				BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */,
+				BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */,
 				BEE3964D1A14DA0400BB779E /* Document.swift in Sources */,
 				BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */,
 				BE77D2531A18CC65006C3F50 /* StepsViewController.swift in Sources */,
