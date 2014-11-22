@@ -2,20 +2,15 @@ import UIKit
 
 class VideoViewController: UIViewController, UITableViewDataSource {
     
-    
-    @IBOutlet var formView: UIView!
-    @IBOutlet var formTopLayoutConstraint: NSLayoutConstraint!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var videoTextField: UITextField!
     
     var liveQuery: CBLLiveQuery!
     var videos: [Video] = []
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (object as CBLLiveQuery) == liveQuery {
-            
             for (index, row) in enumerate(liveQuery.rows.allObjects) {
-                if index > videos.count {
+                if index >= videos.count {
                     videos.insert(Video(forDocument: (row as CBLQueryRow).document), atIndex: 0)
                 }
             }
@@ -40,70 +35,16 @@ class VideoViewController: UIViewController, UITableViewDataSource {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         if let indexPath = tableView.indexPathForSelectedRow() {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
-    }
-    
-    func navBarForLoggedOutUser() {
-//        if let userId = CouchbaseManager.shared.currentUserId {
-//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "showHeaderView:")
-        
-//        } else {
-        
-//        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func loginUser(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func saveVideo(sender: AnyObject) {
-        let urlOptional = NSURL(string: videoTextField.text)
-        if let url = urlOptional {
-            let query = url.query!
-            let video_id = query[advance(query.startIndex, 2)...advance(query.startIndex, 12)]
-            XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video_id, completionHandler: { (video, error) -> Void in
-                if video != nil {
-                    var aVideo = Video(url: url, title: video.title, identifier: video.identifier, image_url: video.mediumThumbnailURL) as Video
-                    if aVideo.save(nil) {
-                        println("saved new video")
-                    }
-                }
-            })
-            
-        }
-    }
-    
-    
-    func showHeaderView(sender: AnyObject) {
-        if (navigationItem.rightBarButtonItem?.tintColor != UIColor.redColor()) {
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.redColor()
-            animateFormTopConstraint(0)
-        } else {
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.blueColor()
-            animateFormTopConstraint(-90)
-        }
-        
-    }
-    
-    func animateFormTopConstraint(constant: Int) {
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.formTopLayoutConstraint.constant = CGFloat(constant)
-            self.view.layoutIfNeeded()
-        })
     }
 
     // MARK: - Table view data source
@@ -116,7 +57,7 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as VideoTableCell
 
         cell.title.text = videos[indexPath.row].title
-        cell.thumbnail_url = videos[indexPath.row].image_url.absoluteString
+        cell.video_id = videos[indexPath.row].video_id
         
         return cell
     }

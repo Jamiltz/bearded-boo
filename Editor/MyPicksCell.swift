@@ -1,23 +1,23 @@
 //
-//  VideoTableCell.swift
-//  Story1
+//  MyPicksCell.swift
+//  Editor
 //
-//  Created by James Nocentini on 06/11/2014.
+//  Created by James Nocentini on 21/11/2014.
 //  Copyright (c) 2014 James Nocentini. All rights reserved.
 //
 
 import UIKit
 
-class VideoTableCell: UITableViewCell {
+class MyPicksCell: UITableViewCell {
     
-
-    @IBOutlet var thumbnail: UIImageView!
-    @IBOutlet var title: UILabel!
+    @IBOutlet var thumbnailImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var momentsLabel: UILabel!
     
     var video_id: String = "" {
         didSet {
             let url = NSURL(string: "https://i.ytimg.com/vi/\(video_id)/0.jpg")!
-            thumbnail.sd_setImageWithURL(url)
+            thumbnailImageView.sd_setImageWithURL(url)
         }
     }
 
@@ -32,9 +32,4 @@ class VideoTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        title.text = ""
-    }
-    
 }

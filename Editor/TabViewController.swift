@@ -13,11 +13,11 @@ class TabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let shouldSkipLogin = CouchbaseManager.shared.currentUserId {
-            
-        } else {
-            performSegueWithIdentifier("loginSegue", sender: self)
-        }
+//        if let shouldSkipLogin = CouchbaseManager.shared.currentUserId {
+//            
+//        } else {
+//            performSegueWithIdentifier("loginSegue", sender: self)
+//        }
     }
 
     override func didReceiveMemoryWarning() {

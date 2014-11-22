@@ -10,6 +10,7 @@
 		41107AE4ECB1A0F0B5063DD5 /* libPods-Editor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D40EF3CCC68B72D32B87F8 /* libPods-Editor.a */; };
 		BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE060B231A177ADD0081BBA1 /* TabViewController.swift */; };
 		BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE232D8B1A1532A1009FB16F /* Notification.swift */; };
+		BE23BA9B1A1FB63300AC5FDF /* MyPicksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */; };
 		BE3CB50B1A14DBCD004512E2 /* bridging-header.h in Sources */ = {isa = PBXBuildFile; fileRef = BEE3968C1A14DAF500BB779E /* bridging-header.h */; };
 		BE3CB50C1A14DBE0004512E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE3968D1A14DAFE00BB779E /* Info.plist */; };
 		BE3CB51B1A14E391004512E2 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB6B8A1A0945BA0032821E /* CouchbaseLite.framework */; };
@@ -29,7 +30,7 @@
 		BEE396501A14DA0400BB779E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE3963D1A14DA0400BB779E /* Images.xcassets */; };
 		BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963F1A14DA0400BB779E /* LoginViewController.swift */; };
 		BEE396531A14DA0400BB779E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396401A14DA0400BB779E /* Profile.swift */; };
-		BEE396541A14DA0400BB779E /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396411A14DA0400BB779E /* Snippet.swift */; };
+		BEE396541A14DA0400BB779E /* Pick.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396411A14DA0400BB779E /* Pick.swift */; };
 		BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396421A14DA0400BB779E /* SnippetButton.swift */; };
 		BEE396561A14DA0400BB779E /* SnippetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396431A14DA0400BB779E /* SnippetCell.swift */; };
 		BEE396581A14DA0400BB779E /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396451A14DA0400BB779E /* Video.swift */; };
@@ -61,6 +62,7 @@
 		BE03604C1A0BFAF1003E2424 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE060B231A177ADD0081BBA1 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Editor/TabViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE232D8B1A1532A1009FB16F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Editor/Notification.swift; sourceTree = SOURCE_ROOT; };
+		BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPicksCell.swift; path = Editor/MyPicksCell.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPageViewController.swift; path = Editor/LoginPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F41A1F5F05000A85BF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Editor/Utilities.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Editor/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -76,7 +78,7 @@
 		BEE3963D1A14DA0400BB779E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Editor/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		BEE3963F1A14DA0400BB779E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Editor/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		BEE396401A14DA0400BB779E /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Editor/Profile.swift; sourceTree = SOURCE_ROOT; };
-		BEE396411A14DA0400BB779E /* Snippet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Snippet.swift; path = Editor/Snippet.swift; sourceTree = SOURCE_ROOT; };
+		BEE396411A14DA0400BB779E /* Pick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pick.swift; path = Editor/Pick.swift; sourceTree = SOURCE_ROOT; };
 		BEE396421A14DA0400BB779E /* SnippetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnippetButton.swift; path = Editor/SnippetButton.swift; sourceTree = SOURCE_ROOT; };
 		BEE396431A14DA0400BB779E /* SnippetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnippetCell.swift; path = Editor/SnippetCell.swift; sourceTree = SOURCE_ROOT; };
 		BEE396451A14DA0400BB779E /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = Editor/Video.swift; sourceTree = SOURCE_ROOT; };
@@ -137,6 +139,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BE090BA71A1FE9B30078F70E /* Profile Page */ = {
+			isa = PBXGroup;
+			children = (
+				BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */,
+				BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */,
+			);
+			name = "Profile Page";
+			sourceTree = "<group>";
+		};
+		BE090BAB1A1FEAAC0078F70E /* Channels Page */ = {
+			isa = PBXGroup;
+			children = (
+				BEE396471A14DA0400BB779E /* VideoViewController.swift */,
+				BEE396461A14DA0400BB779E /* VideoTableCell.swift */,
+			);
+			name = "Channels Page";
+			sourceTree = "<group>";
+		};
+		BE090BAC1A20C73C0078F70E /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				BE060B231A177ADD0081BBA1 /* TabViewController.swift */,
+			);
+			name = Tab;
+			sourceTree = "<group>";
+		};
 		BE09F20D1A0EDA2100817C18 /* Designables */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,8 +198,11 @@
 		BEE46AF11A08178B000876A4 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BE090BAC1A20C73C0078F70E /* Tab */,
 				BE09F20D1A0EDA2100817C18 /* Designables */,
 				BEEB6B981A0948640032821E /* Models */,
+				BE090BA71A1FE9B30078F70E /* Profile Page */,
+				BE090BAB1A1FEAAC0078F70E /* Channels Page */,
 				BEE396321A14DA0400BB779E /* AppDelegate.swift */,
 				BEE396391A14DA0400BB779E /* CouchbaseManager.swift */,
 				BEE396861A14DAE400BB779E /* LaunchScreen.xib */,
@@ -179,14 +210,10 @@
 				BEE3963B1A14DA0400BB779E /* EditorViewController.swift */,
 				BE70E7F41A1F5F05000A85BF /* Utilities.swift */,
 				BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */,
-				BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */,
 				BE77D2521A18CC65006C3F50 /* StepsViewController.swift */,
-				BE060B231A177ADD0081BBA1 /* TabViewController.swift */,
 				BEE3963C1A14DA0400BB779E /* FacebookManager.swift */,
 				BEE3963F1A14DA0400BB779E /* LoginViewController.swift */,
 				BEE396431A14DA0400BB779E /* SnippetCell.swift */,
-				BEE396461A14DA0400BB779E /* VideoTableCell.swift */,
-				BEE396471A14DA0400BB779E /* VideoViewController.swift */,
 				BEE396481A14DA0400BB779E /* ViewController.swift */,
 				BEE3963D1A14DA0400BB779E /* Images.xcassets */,
 				BEE46AF21A08178B000876A4 /* Supporting Files */,
@@ -243,7 +270,7 @@
 			children = (
 				BEE3963A1A14DA0400BB779E /* Document.swift */,
 				BEE396401A14DA0400BB779E /* Profile.swift */,
-				BEE396411A14DA0400BB779E /* Snippet.swift */,
+				BEE396411A14DA0400BB779E /* Pick.swift */,
 				BEE396451A14DA0400BB779E /* Video.swift */,
 				BE232D8B1A1532A1009FB16F /* Notification.swift */,
 			);
@@ -393,7 +420,8 @@
 				BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */,
 				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
 				BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */,
-				BEE396541A14DA0400BB779E /* Snippet.swift in Sources */,
+				BEE396541A14DA0400BB779E /* Pick.swift in Sources */,
+				BE23BA9B1A1FB63300AC5FDF /* MyPicksCell.swift in Sources */,
 				BE70E7F71A1F5F4A000A85BF /* ProfileViewController.swift in Sources */,
 				BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */,
 				BEE396531A14DA0400BB779E /* Profile.swift in Sources */,

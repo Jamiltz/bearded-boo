@@ -2,22 +2,20 @@ import UIKit
 
 class Video: CBLModel {
    
-    @NSManaged var url: NSURL
     @NSManaged var created_at: NSDate
     @NSManaged var title: String
-    @NSManaged var identifier: String
-    @NSManaged var image_url: NSURL
+    @NSManaged var video_id: String
     
-    init(url: NSURL, title: String, identifier: String, image_url: NSURL) {
+    var moments: Int?
+    
+    init(title: String, video_id: String) {
         
-        super.init(document: kDatabase.createDocument())
+        super.init(document: kDatabase.documentWithID(video_id))
         
         setValue("video", ofProperty: "type")
-        self.url = url
         self.created_at = NSDate()
         self.title = title
-        self.identifier = identifier
-        self.image_url = image_url
+        self.video_id = video_id
     }
     
     override init!(document: CBLDoc) {
