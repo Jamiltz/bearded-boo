@@ -13,6 +13,7 @@ class VideoTableCell: UITableViewCell {
 
     @IBOutlet var thumbnail: UIImageView!
     @IBOutlet var title: UILabel!
+    @IBOutlet var downloadButton: UIButton!
     
     var video_id: String = "" {
         didSet {

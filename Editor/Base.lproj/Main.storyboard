@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NHI-TJ-qJE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C68m" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NHI-TJ-qJE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -42,17 +42,33 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DfB-HY-2Ph">
+                                                            <rect key="frame" x="560" y="24" width="23" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="22" id="1AY-iD-kdd"/>
+                                                                <constraint firstAttribute="width" constant="23" id="Hj1-tV-xyn"/>
+                                                            </constraints>
+                                                            <state key="normal" image="download-icon">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="startDownload:" destination="Ggk-uC-3gz" eventType="touchUpInside" id="IPj-ZB-rhT"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="DfB-HY-2Ph" firstAttribute="trailing" secondItem="J04-yo-eRI" secondAttribute="trailingMargin" constant="-9" id="1VE-in-fTm"/>
                                                         <constraint firstItem="hlj-IU-hE9" firstAttribute="top" secondItem="J04-yo-eRI" secondAttribute="topMargin" constant="-8" id="7OD-pN-NdQ"/>
                                                         <constraint firstItem="5rR-wm-dxe" firstAttribute="leading" secondItem="hlj-IU-hE9" secondAttribute="trailing" constant="28" id="Cbn-of-IdQ"/>
                                                         <constraint firstItem="5rR-wm-dxe" firstAttribute="top" secondItem="J04-yo-eRI" secondAttribute="topMargin" constant="16" id="RI7-iu-ogG"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="hlj-IU-hE9" secondAttribute="bottom" constant="-8" id="V4P-2I-A08"/>
+                                                        <constraint firstItem="DfB-HY-2Ph" firstAttribute="top" secondItem="J04-yo-eRI" secondAttribute="topMargin" constant="16" id="tWS-GD-pFI"/>
                                                         <constraint firstItem="5rR-wm-dxe" firstAttribute="trailing" secondItem="J04-yo-eRI" secondAttribute="trailingMargin" constant="15" id="umg-3T-uFh"/>
                                                         <constraint firstItem="hlj-IU-hE9" firstAttribute="leading" secondItem="J04-yo-eRI" secondAttribute="leadingMargin" constant="-8" id="wmw-3n-L7c"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="downloadButton" destination="DfB-HY-2Ph" id="S9h-3l-8le"/>
                                                     <outlet property="thumbnail" destination="hlj-IU-hE9" id="C9f-Yd-DVM"/>
                                                     <outlet property="title" destination="5rR-wm-dxe" id="DCB-EW-i9S"/>
                                                     <segue destination="h7p-Vi-g04" kind="show" identifier="VideosToEditor" id="Wjc-IZ-Fji"/>
@@ -739,6 +755,7 @@
         <image name="channel-icon" width="27" height="25"/>
         <image name="channels-icon" width="30" height="26"/>
         <image name="discover-icon" width="28" height="24"/>
+        <image name="download-icon" width="23" height="21"/>
         <image name="import-icon" width="19" height="27"/>
         <image name="like-icon" width="43" height="38"/>
         <image name="like-icon-highlighted" width="43" height="38"/>

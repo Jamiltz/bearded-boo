@@ -19,6 +19,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (object as CBLLiveQuery) == liveQuery {
+            videos.removeAll(keepCapacity: false)
+            
             for (id, count) in (liveQuery.rows.allObjects[0] as CBLQueryRow).value as [String : Int] {
                 let video = Video(forDocument: kDatabase.existingDocumentWithID(id))
                 video.moments = count

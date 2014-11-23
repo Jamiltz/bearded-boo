@@ -27,11 +27,18 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let file = VideoDownloader.shared().videoIsOnDisk(video.video_id)
         
-        XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video.video_id, completionHandler: { (video, error) -> Void in
-            self.mp4url = (video as XCDYouTubeVideo).streamURLs[18] as NSURL
+        if file.isLocal {
+            self.mp4url = NSURL(fileURLWithPath: file.path)
             self.startPlaying()
-        })
+        } else {
+            XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video.video_id, completionHandler: { (video, error) -> Void in
+                self.mp4url = (video as XCDYouTubeVideo).streamURLs[18] as NSURL
+                self.startPlaying()
+            })
+        }
         
         navigationController?.interactivePopGestureRecognizer.delegate = self
     }

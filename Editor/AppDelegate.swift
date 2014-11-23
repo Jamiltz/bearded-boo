@@ -22,6 +22,7 @@ let kBlueColor = UIColor(hue:0.587, saturation:1.000, brightness:1.000, alpha: 1
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var backgroundSessionCompletionHandler: (() -> ())?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -76,6 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // can stay here
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+    }
+    
+    func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
+        self.backgroundSessionCompletionHandler = completionHandler
+        VideoDownloader.shared()
     }
     
     func applicationWillResignActive(application: UIApplication) {

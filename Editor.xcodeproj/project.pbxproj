@@ -21,6 +21,7 @@
 		BE77D2531A18CC65006C3F50 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE77D2521A18CC65006C3F50 /* StepsViewController.swift */; };
 		BE78B9CA1A17954500EE76A6 /* Pods-Editor.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */; };
 		BE78B9CC1A1798F100EE76A6 /* HamburgerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */; };
+		BE7FC59C1A214B57005C3520 /* VideoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7FC59B1A214B57005C3520 /* VideoDownloader.swift */; };
 		BEAAEE601A0C52DF00CE5D32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAAEE5F1A0C52DF00CE5D32 /* AVFoundation.framework */; };
 		BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396321A14DA0400BB779E /* AppDelegate.swift */; };
 		BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396391A14DA0400BB779E /* CouchbaseManager.swift */; };
@@ -69,6 +70,7 @@
 		BE77D2521A18CC65006C3F50 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StepsViewController.swift; path = Editor/StepsViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Editor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Editor/Pods-Editor.debug.xcconfig"; sourceTree = "<group>"; };
 		BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HamburgerButton.swift; path = Editor/HamburgerButton.swift; sourceTree = SOURCE_ROOT; };
+		BE7FC59B1A214B57005C3520 /* VideoDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoDownloader.swift; path = Editor/VideoDownloader.swift; sourceTree = SOURCE_ROOT; };
 		BEAAEE5F1A0C52DF00CE5D32 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BEE396321A14DA0400BB779E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Editor/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		BEE396391A14DA0400BB779E /* CouchbaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchbaseManager.swift; path = Editor/CouchbaseManager.swift; sourceTree = SOURCE_ROOT; };
@@ -174,6 +176,14 @@
 			name = Designables;
 			sourceTree = "<group>";
 		};
+		BE7FC59A1A214B2D005C3520 /* Downloader */ = {
+			isa = PBXGroup;
+			children = (
+				BE7FC59B1A214B57005C3520 /* VideoDownloader.swift */,
+			);
+			name = Downloader;
+			sourceTree = "<group>";
+		};
 		BEE46AE61A08178B000876A4 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 		BEE46AF11A08178B000876A4 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BE7FC59A1A214B2D005C3520 /* Downloader */,
 				BE090BAC1A20C73C0078F70E /* Tab */,
 				BE09F20D1A0EDA2100817C18 /* Designables */,
 				BEEB6B981A0948640032821E /* Models */,
@@ -421,6 +432,7 @@
 				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
 				BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */,
 				BEE396541A14DA0400BB779E /* Pick.swift in Sources */,
+				BE7FC59C1A214B57005C3520 /* VideoDownloader.swift in Sources */,
 				BE23BA9B1A1FB63300AC5FDF /* MyPicksCell.swift in Sources */,
 				BE70E7F71A1F5F4A000A85BF /* ProfileViewController.swift in Sources */,
 				BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */,
