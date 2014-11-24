@@ -43,7 +43,7 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         
         navigationController?.setNavigationBarHidden(false, animated: animated)
         if let indexPath = tableView.indexPathForSelectedRow() {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
         }
     }
 
@@ -61,6 +61,20 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         cell.downloadButton.tag = indexPath.row
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let video = videos[indexPath.row]
+            if video.deleteDocument(nil) {
+                videos.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+        }
     }
     
     @IBAction func startDownload(sender: UIButton) {

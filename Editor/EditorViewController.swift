@@ -15,12 +15,6 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     var liveQuery: CBLLiveQuery!
     var snippets: [Pick] = []
     
-    var sidebarOpened: Bool = false
-    
-    deinit {
-
-    }
-    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
@@ -65,7 +59,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         let cmtime = PlayerVC.player.currentTime()
         let seconds = Double(CMTimeGetSeconds(cmtime))
         
-        let pick = Pick(video_id: video.video_id, start_at: seconds, end_at: nil)
+        let pick = Pick(video_id: video.video_id, start_at: nil, end_at: seconds)
         if pick.save(nil) {
             println("saved pick")
         }

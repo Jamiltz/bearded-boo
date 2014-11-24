@@ -22,6 +22,8 @@
 		BE78B9CA1A17954500EE76A6 /* Pods-Editor.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */; };
 		BE78B9CC1A1798F100EE76A6 /* HamburgerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */; };
 		BE7FC59C1A214B57005C3520 /* VideoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7FC59B1A214B57005C3520 /* VideoDownloader.swift */; };
+		BE9C96551A23315500F820BB /* EditPicksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C96541A23315500F820BB /* EditPicksViewController.swift */; };
+		BE9C96571A233F5F00F820BB /* EditPicksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C96561A233F5F00F820BB /* EditPicksCell.swift */; };
 		BEAAEE601A0C52DF00CE5D32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAAEE5F1A0C52DF00CE5D32 /* AVFoundation.framework */; };
 		BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396321A14DA0400BB779E /* AppDelegate.swift */; };
 		BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396391A14DA0400BB779E /* CouchbaseManager.swift */; };
@@ -71,6 +73,8 @@
 		BE78B9C91A17954500EE76A6 /* Pods-Editor.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Editor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Editor/Pods-Editor.debug.xcconfig"; sourceTree = "<group>"; };
 		BE78B9CB1A1798F100EE76A6 /* HamburgerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HamburgerButton.swift; path = Editor/HamburgerButton.swift; sourceTree = SOURCE_ROOT; };
 		BE7FC59B1A214B57005C3520 /* VideoDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoDownloader.swift; path = Editor/VideoDownloader.swift; sourceTree = SOURCE_ROOT; };
+		BE9C96541A23315500F820BB /* EditPicksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditPicksViewController.swift; path = Editor/EditPicksViewController.swift; sourceTree = SOURCE_ROOT; };
+		BE9C96561A233F5F00F820BB /* EditPicksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditPicksCell.swift; path = Editor/EditPicksCell.swift; sourceTree = SOURCE_ROOT; };
 		BEAAEE5F1A0C52DF00CE5D32 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BEE396321A14DA0400BB779E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Editor/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		BEE396391A14DA0400BB779E /* CouchbaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchbaseManager.swift; path = Editor/CouchbaseManager.swift; sourceTree = SOURCE_ROOT; };
@@ -184,6 +188,15 @@
 			name = Downloader;
 			sourceTree = "<group>";
 		};
+		BE9C96531A23312100F820BB /* Edit Picks */ = {
+			isa = PBXGroup;
+			children = (
+				BE9C96541A23315500F820BB /* EditPicksViewController.swift */,
+				BE9C96561A233F5F00F820BB /* EditPicksCell.swift */,
+			);
+			name = "Edit Picks";
+			sourceTree = "<group>";
+		};
 		BEE46AE61A08178B000876A4 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +226,7 @@
 				BE09F20D1A0EDA2100817C18 /* Designables */,
 				BEEB6B981A0948640032821E /* Models */,
 				BE090BA71A1FE9B30078F70E /* Profile Page */,
+				BE9C96531A23312100F820BB /* Edit Picks */,
 				BE090BAB1A1FEAAC0078F70E /* Channels Page */,
 				BEE396321A14DA0400BB779E /* AppDelegate.swift */,
 				BEE396391A14DA0400BB779E /* CouchbaseManager.swift */,
@@ -427,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEE3964E1A14DA0400BB779E /* EditorViewController.swift in Sources */,
+				BE9C96551A23315500F820BB /* EditPicksViewController.swift in Sources */,
 				BEE3965A1A14DA0400BB779E /* VideoViewController.swift in Sources */,
 				BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */,
 				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
@@ -445,6 +460,7 @@
 				BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */,
 				BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */,
 				BEE3964D1A14DA0400BB779E /* Document.swift in Sources */,
+				BE9C96571A233F5F00F820BB /* EditPicksCell.swift in Sources */,
 				BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */,
 				BE77D2531A18CC65006C3F50 /* StepsViewController.swift in Sources */,
 				BEE396581A14DA0400BB779E /* Video.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UITableViewDataSource {
-    
+
     @IBOutlet var backgroundMaskView: UIView!
     @IBOutlet var tableView: UITableView!
     
@@ -40,14 +40,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         insertBlurView(backgroundMaskView, UIBlurEffectStyle.Dark)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView.indexPathForSelectedRow() {
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -66,6 +64,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         cell.momentsLabel.text = "\(videos[indexPath.row].moments!) moments"
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditPicksSegue" {
+            let vc = segue.destinationViewController as EditPicksViewController
+            vc.video_id = (sender as MyPicksCell).video_id
+        }
     }
     
     /*
