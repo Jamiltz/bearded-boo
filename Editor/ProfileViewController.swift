@@ -12,6 +12,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet var backgroundMaskView: UIView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var popoverView: UIView!
+    @IBOutlet var maskButton: UIButton!
     
     var liveQuery: CBLLiveQuery!
     var picks: [Pick] = []
@@ -66,6 +68,45 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    @IBAction func userButtonDidPress(sender: UIButton) {
+        popoverView.hidden = false
+        
+        let scale = CGAffineTransformMakeScale(0.3, 0.3)
+        let translate = CGAffineTransformMakeTranslation(50, -50)
+        popoverView.transform = CGAffineTransformConcat(scale, translate)
+        popoverView.alpha = 0
+        
+        showMask()
+        
+        spring(0.5) {
+            let scale = CGAffineTransformMakeScale(1, 1)
+            let translate = CGAffineTransformMakeTranslation(0, 0)
+            self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+            self.popoverView.alpha = 1
+        }
+    }
+    
+    func hidePopover() {
+        spring(0.5) {
+            self.popoverView.hidden = true
+        }
+    }
+    
+    func showMask() {
+        self.maskButton.hidden = false
+        self.maskButton.alpha = 0
+        spring(0.5) {
+            self.maskButton.alpha = 1
+        }
+    }
+    
+    @IBAction func maskButtonDidPress(sender: UIButton) {
+        spring(0.5) {
+            self.maskButton.alpha = 0
+        }
+        hidePopover()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EditPicksSegue" {
             let vc = segue.destinationViewController as EditPicksViewController
@@ -73,14 +114,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
-    */
 
 }

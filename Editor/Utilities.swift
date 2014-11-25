@@ -8,3 +8,9 @@ func insertBlurView (view: UIView, style: UIBlurEffectStyle) {
     blurEffectView.frame = view.bounds
     view.insertSubview(blurEffectView, atIndex: 0)
 }
+
+func spring(duration: NSTimeInterval, animations: (() -> Void)) {
+    UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: nil, animations: {
+        animations()
+    }, completion: nil)
+}
