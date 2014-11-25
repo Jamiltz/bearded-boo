@@ -431,6 +431,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="profile-icon" id="553-5M-QXu"/>
                     <navigationItem key="navigationItem" id="i6Y-mY-OfF"/>
                     <connections>
+                        <outlet property="loginView" destination="XVG-67-qj1" id="0BB-DV-RND"/>
                         <segue destination="5Vg-BM-Vut" kind="custom" identifier="LoginSegue" id="eah-58-yLg"/>
                     </connections>
                 </viewController>
@@ -450,7 +451,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-profile" translatesAutoresizingMaskIntoConstraints="NO" id="R9S-RS-a2V">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-profile" translatesAutoresizingMaskIntoConstraints="NO" id="R9S-RS-a2V">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="202"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="202" id="n1C-Fu-77d"/>
@@ -627,6 +628,9 @@
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="logout:" destination="5Vg-BM-Vut" eventType="touchUpInside" id="6bh-i1-s1v"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -639,6 +643,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="n2o-9y-67k" secondAttribute="trailing" constant="-16" id="AVK-8d-Rzy"/>
+                            <constraint firstItem="SL7-34-7dt" firstAttribute="height" secondItem="R9S-RS-a2V" secondAttribute="height" id="Cgk-ca-1fI"/>
                             <constraint firstItem="TdW-0P-Tyh" firstAttribute="top" secondItem="IeD-Ln-8q5" secondAttribute="bottom" id="FE1-sb-Mex"/>
                             <constraint firstItem="IeD-Ln-8q5" firstAttribute="top" secondItem="SL7-34-7dt" secondAttribute="bottom" id="PvA-oZ-ON9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uVx-79-6LP" secondAttribute="trailing" constant="-7" id="Q2T-PH-zJ9"/>
@@ -666,6 +671,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="jIR-r2-yZ9"/>
                                 <exclude reference="zrf-2b-nL4"/>
                                 <exclude reference="RVs-Va-hiR"/>
                             </mask>
@@ -673,10 +679,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="nfr-Pw-a4C"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="R9S-RS-a2V" id="uRN-eD-YpX"/>
                         <outlet property="backgroundMaskView" destination="SL7-34-7dt" id="gOW-PZ-aU8"/>
                         <outlet property="maskButton" destination="n2o-9y-67k" id="AbS-ax-z4G"/>
+                        <outlet property="nameLabel" destination="5G1-xq-4s3" id="gnw-du-KXg"/>
                         <outlet property="popoverView" destination="uVx-79-6LP" id="91a-Xu-6Re"/>
                         <outlet property="tableView" destination="TdW-0P-Tyh" id="cUY-r2-UKZ"/>
+                        <outlet property="thumbnailImageView" destination="XlA-JV-pi4" id="CtE-OG-GKc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eul-w7-CGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -738,6 +747,9 @@
                                         <state key="normal" image="forward-editor-icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="publishBrief" destination="4yi-je-jI0" eventType="touchUpInside" id="BhD-T4-WbF"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rs-9f-tzx">
                                         <rect key="frame" x="120" y="0.0" width="120" height="40"/>

@@ -140,6 +140,22 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
+    @IBAction func publishBrief() {
+        // check if a brief already exists for this video_id
+        if let brief = Brief.briefForVideoInDatabase(video_id) {
+            brief.updated_at = NSDate()
+            brief.status = "publishing"
+            if brief.save(nil) {
+                println("updated brief")
+            }
+        } else {
+            let brief = Brief(video_id: video_id, updated_at: NSDate(), status: "publishing", link: "")
+            if brief.save(nil) {
+                println("saved new brief")
+            }
+        }
+    }
+    
     func setSliderForPick(pick: Pick) {
         slider.minimumValue = 0
         slider.lowerValue = 0

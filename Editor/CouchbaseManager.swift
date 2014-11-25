@@ -14,8 +14,15 @@ class CouchbaseManager {
     var push: CBLReplication!
     
     var currentUserId: String? {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        return defaults.objectForKey("user_id") as String?
+        get {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            return defaults.objectForKey("user_id") as String?
+        }
+        set {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(newValue, forKey: "user_id")
+            defaults.synchronize()
+        }
     }
     
     func logoutUser(sender: AnyObject) {
@@ -62,6 +69,21 @@ class CouchbaseManager {
             
             pull.start()
             push.start()
+        }
+        
+    }
+    
+    func stopReplication() {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        if let _ = pull {
+            pull.stop()
+            notificationCenter.removeObserver(self, name: kCBLReplicationChangeNotification, object: pull)
+            pull = nil
+        }
+        if let _ = push {
+            push.stop()
+            notificationCenter.removeObserver(self, name: kCBLReplicationChangeNotification, object: push)
+            push = nil
         }
         
     }

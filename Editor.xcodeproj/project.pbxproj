@@ -15,6 +15,7 @@
 		BE3CB50C1A14DBE0004512E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE3968D1A14DAFE00BB779E /* Info.plist */; };
 		BE3CB51B1A14E391004512E2 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB6B8A1A0945BA0032821E /* CouchbaseLite.framework */; };
 		BE3CB51C1A14E393004512E2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE46B1A1A081D01000876A4 /* FacebookSDK.framework */; };
+		BE491B0C1A24FF4400B87107 /* Brief.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE491B0B1A24FF4400B87107 /* Brief.swift */; };
 		BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */; };
 		BE70E7F51A1F5F05000A85BF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F41A1F5F05000A85BF /* Utilities.swift */; };
 		BE70E7F71A1F5F4A000A85BF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */; };
@@ -66,6 +67,7 @@
 		BE060B231A177ADD0081BBA1 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Editor/TabViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE232D8B1A1532A1009FB16F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Editor/Notification.swift; sourceTree = SOURCE_ROOT; };
 		BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPicksCell.swift; path = Editor/MyPicksCell.swift; sourceTree = SOURCE_ROOT; };
+		BE491B0B1A24FF4400B87107 /* Brief.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Brief.swift; path = Editor/Brief.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPageViewController.swift; path = Editor/LoginPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F41A1F5F05000A85BF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Editor/Utilities.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Editor/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -298,6 +300,7 @@
 				BEE396411A14DA0400BB779E /* Pick.swift */,
 				BEE396451A14DA0400BB779E /* Video.swift */,
 				BE232D8B1A1532A1009FB16F /* Notification.swift */,
+				BE491B0B1A24FF4400B87107 /* Brief.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				BEE3965B1A14DA0400BB779E /* ViewController.swift in Sources */,
 				BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */,
 				BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */,
+				BE491B0C1A24FF4400B87107 /* Brief.swift in Sources */,
 				BEE3964D1A14DA0400BB779E /* Document.swift in Sources */,
 				BE9C96571A233F5F00F820BB /* EditPicksCell.swift in Sources */,
 				BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */,

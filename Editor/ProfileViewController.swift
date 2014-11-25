@@ -14,10 +14,23 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var popoverView: UIView!
     @IBOutlet var maskButton: UIButton!
+    @IBOutlet var thumbnailImageView: UIImageView!
+    @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
     
     var liveQuery: CBLLiveQuery!
     var picks: [Pick] = []
     var videos: [Video] = []
+    
+    var facebookUserId: String? {
+        didSet {
+            if let id = facebookUserId {
+                let url = NSURL(string: "https://graph.facebook.com/\(id)/picture?type=large")
+                thumbnailImageView.sd_setImageWithURL(url)
+                backgroundImageView.sd_setImageWithURL(url)
+            }
+        }
+    }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (object as CBLLiveQuery) == liveQuery {
@@ -32,10 +45,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
             tableView.reloadData()
         }
     }
+    
+    deinit {
+        liveQuery.removeObserver(self, forKeyPath: "rows")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let profile = Profile.profileInDatabase(CouchbaseManager.shared.currentUserId!)
+        facebookUserId = profile?.fb_id
+        nameLabel.text = profile?.name
+        
         liveQuery = Pick.queryUserPicks().asLiveQuery()
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
 
@@ -84,6 +105,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
             self.popoverView.transform = CGAffineTransformConcat(scale, translate)
             self.popoverView.alpha = 1
         }
+    }
+    
+    @IBAction func logout(sender: UIButton) {
+        FBSession.activeSession().closeAndClearTokenInformation()
+        CouchbaseManager.shared.currentUserId = nil
+        CouchbaseManager.shared.stopReplication()
+        
+        navigationController?.popViewControllerAnimated(true)
     }
     
     func hidePopover() {

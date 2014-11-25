@@ -8,12 +8,32 @@
 
 import UIKit
 
-class LoginPageViewController: UIViewController {
+class LoginPageViewController: UIViewController, FBLoginViewDelegate {
+    
+    @IBOutlet var loginView: FBLoginView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        performSegueWithIdentifier("LoginSegue", sender: self)
+        let shouldSkipLogin = CouchbaseManager.shared.currentUserId
+        println(shouldSkipLogin)
+        if (shouldSkipLogin != nil) {
+            performSegueWithIdentifier("LoginSegue", sender: self)
+        }
+        
+        loginView.readPermissions = ["public_profile", "email"]
+        loginView.delegate = self
+        
+    }
+    
+    func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
+        
+        let token = FBSession.activeSession().accessTokenData
+        
+        FBRequestConnection.startForMeWithCompletionHandler { (connection, result, error) -> Void in
+            CouchbaseManager.shared.loginWithFacebookUserInfo(result, token: token)
+//            self.performSegueWithIdentifier("LoginSegue", sender: self)
+        }
         
     }
 
