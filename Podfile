@@ -8,6 +8,7 @@ target 'Editor' do
 pod 'XCDYouTubeKit', '~> 2.0.2'
 pod 'SDWebImage', '~> 3.7.1'
 pod 'NMRangeSlider', '~> 1.1.1'
+pod 'LLACircularProgressView', '~> 0.1.1'
 
 end
 

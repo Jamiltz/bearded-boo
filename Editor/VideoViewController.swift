@@ -3,6 +3,7 @@ import UIKit
 class VideoViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var circularProgressView: LLACircularProgressView!
     
     var liveQuery: CBLLiveQuery!
     var videos: [Video] = []
@@ -60,6 +61,11 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         cell.video_id = videos[indexPath.row].video_id
         cell.downloadButton.tag = indexPath.row
         
+        let file = VideoDownloader.shared().videoIsOnDisk(videos[indexPath.row].video_id)
+        if file.isLocal {
+            cell.downloadButton.hidden = true
+        }
+        
         return cell
     }
     
@@ -99,7 +105,18 @@ class VideoViewController: UIViewController, UITableViewDataSource {
     
     func updateProgress(notification: NSNotification) {
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            println(notification.userInfo!["progress"])
+            let video_id = notification.userInfo!["video_id"]! as String
+            
+            var found: Int?
+            for (index, video) in enumerate(self.videos) {
+                if video.video_id == video_id {
+                    found = index
+                }
+            }
+            
+            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: found!, inSection: 0)) as VideoTableCell? {
+                cell.circularProgressView.setProgress(Float(notification.userInfo!["progress"]! as Double), animated: true)
+            }
         }
     }
     

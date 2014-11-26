@@ -26,7 +26,7 @@ class VideoDownloader: NSObject, NSURLSessionDownloadDelegate {
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-        let userInfo = ["progress": progress]
+        let userInfo = ["progress": progress, "video_id": videoIdFromRequestURL(downloadTask.originalRequest.URL)]
         
         NSNotificationCenter.defaultCenter().postNotificationName("DownloadProgress", object: downloadTask, userInfo: userInfo)
     }
@@ -68,6 +68,13 @@ class VideoDownloader: NSObject, NSURLSessionDownloadDelegate {
         let docsPath = paths[0].stringByAppendingPathComponent("Videos")
         let videoPath = docsPath.stringByAppendingPathComponent("\(video_id).mp4")
         return (NSFileManager.defaultManager().fileExistsAtPath(videoPath), videoPath)
+    }
+    
+    func videoIdFromRequestURL(url: NSURL) -> String {
+        let stringURL = url.absoluteString!
+        let count = countElements(stringURL)
+        let video_id = stringURL[advance(stringURL.startIndex, count - 11)...advance(stringURL.startIndex, count - 1)]
+        return video_id
     }
     
 }

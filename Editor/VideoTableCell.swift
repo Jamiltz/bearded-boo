@@ -14,6 +14,7 @@ class VideoTableCell: UITableViewCell {
     @IBOutlet var thumbnail: UIImageView!
     @IBOutlet var title: UILabel!
     @IBOutlet var downloadButton: UIButton!
+    @IBOutlet var circularProgressView: LLACircularProgressView!
     
     var video_id: String = "" {
         didSet {
@@ -37,6 +38,8 @@ class VideoTableCell: UITableViewCell {
         super.prepareForReuse()
         title.text = ""
         thumbnail.image = nil
+        downloadButton.hidden = false
+        circularProgressView.progress = 0.0
     }
     
 }

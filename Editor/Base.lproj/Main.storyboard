@@ -36,17 +36,20 @@
                                                                 <constraint firstAttribute="width" constant="69" id="KMQ-aD-mLT"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rR-wm-dxe">
-                                                            <rect key="frame" x="97" y="24" width="510" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rR-wm-dxe">
+                                                            <rect key="frame" x="97" y="8" width="402" height="53"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="53" id="0v9-5c-yEu"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DfB-HY-2Ph">
-                                                            <rect key="frame" x="560" y="24" width="23" height="22"/>
+                                                            <rect key="frame" x="550" y="20" width="30" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="22" id="1AY-iD-kdd"/>
-                                                                <constraint firstAttribute="width" constant="23" id="Hj1-tV-xyn"/>
+                                                                <constraint firstAttribute="height" constant="30" id="1AY-iD-kdd"/>
+                                                                <constraint firstAttribute="width" constant="30" id="Hj1-tV-xyn"/>
                                                             </constraints>
                                                             <state key="normal" image="download-icon">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,19 +58,36 @@
                                                                 <action selector="startDownload:" destination="Ggk-uC-3gz" eventType="touchUpInside" id="IPj-ZB-rhT"/>
                                                             </connections>
                                                         </button>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TVZ-kE-kAu" customClass="LLACircularProgressView">
+                                                            <rect key="frame" x="507" y="20" width="30" height="30"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="9rj-tM-C6h"/>
+                                                                <constraint firstAttribute="width" constant="30" id="gRH-Ls-c9c"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="DfB-HY-2Ph" firstAttribute="trailing" secondItem="J04-yo-eRI" secondAttribute="trailingMargin" constant="-9" id="1VE-in-fTm"/>
+                                                        <constraint firstItem="DfB-HY-2Ph" firstAttribute="trailing" secondItem="J04-yo-eRI" secondAttribute="trailingMargin" constant="-12" id="1VE-in-fTm"/>
                                                         <constraint firstItem="hlj-IU-hE9" firstAttribute="top" secondItem="J04-yo-eRI" secondAttribute="topMargin" constant="-8" id="7OD-pN-NdQ"/>
+                                                        <constraint firstItem="DfB-HY-2Ph" firstAttribute="leading" secondItem="TVZ-kE-kAu" secondAttribute="trailing" constant="13" id="8yb-xU-DX3"/>
                                                         <constraint firstItem="5rR-wm-dxe" firstAttribute="leading" secondItem="hlj-IU-hE9" secondAttribute="trailing" constant="28" id="Cbn-of-IdQ"/>
-                                                        <constraint firstItem="5rR-wm-dxe" firstAttribute="top" secondItem="J04-yo-eRI" secondAttribute="topMargin" constant="16" id="RI7-iu-ogG"/>
+                                                        <constraint firstItem="5rR-wm-dxe" firstAttribute="top" secondItem="J04-yo-eRI" secondAttribute="topMargin" id="RI7-iu-ogG"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="hlj-IU-hE9" secondAttribute="bottom" constant="-8" id="V4P-2I-A08"/>
-                                                        <constraint firstItem="DfB-HY-2Ph" firstAttribute="top" secondItem="J04-yo-eRI" secondAttribute="topMargin" constant="16" id="tWS-GD-pFI"/>
+                                                        <constraint firstItem="TVZ-kE-kAu" firstAttribute="leading" secondItem="5rR-wm-dxe" secondAttribute="trailing" constant="8" id="loj-JJ-upk"/>
+                                                        <constraint firstItem="TVZ-kE-kAu" firstAttribute="top" secondItem="DfB-HY-2Ph" secondAttribute="top" id="qQN-FH-ZNF"/>
+                                                        <constraint firstItem="DfB-HY-2Ph" firstAttribute="top" secondItem="J04-yo-eRI" secondAttribute="topMargin" constant="12" id="tWS-GD-pFI"/>
                                                         <constraint firstItem="5rR-wm-dxe" firstAttribute="trailing" secondItem="J04-yo-eRI" secondAttribute="trailingMargin" constant="15" id="umg-3T-uFh"/>
                                                         <constraint firstItem="hlj-IU-hE9" firstAttribute="leading" secondItem="J04-yo-eRI" secondAttribute="leadingMargin" constant="-8" id="wmw-3n-L7c"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="umg-3T-uFh"/>
+                                                        </mask>
+                                                    </variation>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="circularProgressView" destination="TVZ-kE-kAu" id="S6U-wY-Ybg"/>
                                                     <outlet property="downloadButton" destination="DfB-HY-2Ph" id="S9h-3l-8le"/>
                                                     <outlet property="thumbnail" destination="hlj-IU-hE9" id="C9f-Yd-DVM"/>
                                                     <outlet property="title" destination="5rR-wm-dxe" id="DCB-EW-i9S"/>
