@@ -16,7 +16,7 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
         super.viewDidLoad()
 
         let shouldSkipLogin = CouchbaseManager.shared.currentUserId
-        println(shouldSkipLogin)
+
         if (shouldSkipLogin != nil) {
             performSegueWithIdentifier("LoginSegue", sender: self)
         }
@@ -31,8 +31,13 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
         let token = FBSession.activeSession().accessTokenData
         
         FBRequestConnection.startForMeWithCompletionHandler { (connection, result, error) -> Void in
-            CouchbaseManager.shared.loginWithFacebookUserInfo(result, token: token)
-//            self.performSegueWithIdentifier("LoginSegue", sender: self)
+            let shouldSkipLogin = CouchbaseManager.shared.currentUserId
+            if shouldSkipLogin == nil {
+                CouchbaseManager.shared.loginWithFacebookUserInfo(result, token: token)
+                self.performSegueWithIdentifier("LoginSegue", sender: self)
+            } else {
+                CouchbaseManager.shared.loginWithFacebookUserInfo(result, token: token)
+            }
         }
         
     }
