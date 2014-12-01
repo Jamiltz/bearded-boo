@@ -63,13 +63,14 @@ class CouchbaseManager {
             
             push = kDatabase.createPushReplication(syncURL)
             push.continuous = true
-            
-//            let auth = CBLAuthenticator.facebookAuthenticatorWithToken(token)
-//            pull.authenticator = auth
-            
-            pull.start()
-            push.start()
         }
+        println(token)
+        let auth = CBLAuthenticator.facebookAuthenticatorWithToken(token)
+        pull.authenticator = auth
+        push.authenticator = auth
+        
+        pull.start()
+        push.start()
         
     }
     

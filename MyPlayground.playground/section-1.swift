@@ -15,3 +15,7 @@ let string = "http://r7---sn-cu-aigz.googlevideo.com/videoplayback?initcwndbps=1
 let count = countElements(string)
 let sub2 = string[advance(string.startIndex, count - 11)...advance(string.startIndex, count - 1)]
 sub2
+
+var dict = ["james": 23, "luka": 12, "oliver": 16]
+dict.count
+

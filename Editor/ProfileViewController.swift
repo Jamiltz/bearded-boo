@@ -36,13 +36,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         if (object as CBLLiveQuery) == liveQuery {
             videos.removeAll(keepCapacity: false)
             
-            for (id, count) in (liveQuery.rows.allObjects[0] as CBLQueryRow).value as [String : Int] {
-                let video = Video(forDocument: kDatabase.existingDocumentWithID(id))
-                video.moments = count
-                videos.insert(video, atIndex: 0)
+            if liveQuery.rows.allObjects.count > 0 {
+                for (id, count) in (liveQuery.rows.allObjects[0] as CBLQueryRow).value as [String : Int] {
+                    let video = Video(forDocument: kDatabase.existingDocumentWithID(id))
+                    video.moments = count
+                    videos.insert(video, atIndex: 0)
+                }
+                tableView.reloadData()
             }
             
-            tableView.reloadData()
         }
     }
     

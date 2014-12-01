@@ -22,6 +22,9 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     var liveQuery: CBLLiveQuery!
     var picks: [Pick] = []
     
+    var oldLowerValue: Float = 0.0
+    var oldUpperValue: Float = 0.0
+    
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (object as CBLLiveQuery) == liveQuery {
             for (index, row) in enumerate(liveQuery.rows.allObjects) {
@@ -107,6 +110,17 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     
     @IBAction func sliderValuesChanged(sender: NMRangeSlider) {
         updateSliderLabels()
+        
+        if slider.lowerValue != oldLowerValue {
+            replayPickWithSliderValues(self)
+        }
+        
+        if slider.upperValue != oldUpperValue {
+            replayPickFromEnd()
+        }
+        
+        oldLowerValue = slider.lowerValue
+        oldUpperValue = slider.upperValue
     }
     
     @IBAction func savePick() {
@@ -120,8 +134,18 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    @IBAction func replayPickWithSliderValues(sender: UIButton) {
+    @IBAction func replayPickWithSliderValues(sender: AnyObject) {
         let start_cmtime = CMTimeMakeWithSeconds(Float64(slider.lowerValue), 600)
+        playerVC.player.seekToTime(start_cmtime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+        
+        let end_cmtime = CMTimeMakeWithSeconds(Float64(slider.upperValue), 600)
+        playerVC.player.currentItem.forwardPlaybackEndTime = end_cmtime
+        
+        playerVC.player.play()
+    }
+    
+    func replayPickFromEnd() {
+        let start_cmtime = CMTimeMakeWithSeconds(Float64(slider.upperValue - 3), 600)
         playerVC.player.seekToTime(start_cmtime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
         
         let end_cmtime = CMTimeMakeWithSeconds(Float64(slider.upperValue), 600)
