@@ -18,6 +18,8 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
         let shouldSkipLogin = CouchbaseManager.shared.currentUserId
 
         if (shouldSkipLogin != nil) {
+            CouchbaseManager.shared.currentDatabase = CouchbaseManager.shared.databaseForUser(shouldSkipLogin!)
+            
             performSegueWithIdentifier("LoginSegue", sender: self)
         }
         

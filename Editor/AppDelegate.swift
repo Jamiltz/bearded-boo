@@ -10,9 +10,8 @@ import UIKit
 
 let kFBAppId = "789449301118942"
 
+let kSyncGatewayWebSocketSupport = false
 typealias CBLDoc = CBLDocument
-let kDatabaseName = "wolf"
-let kDatabase = CBLManager.sharedInstance().databaseNamed(kDatabaseName, error: nil)
 
 let kGreenColor = UIColor(hue:0.405, saturation:0.716, brightness:0.663, alpha: 1)
 let kRedColor = UIColor(hue:0.980, saturation:0.861, brightness:0.816, alpha: 1)
@@ -29,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // only for debugging
 //        NSUserDefaults.standardUserDefaults().removeObjectForKey("user_id")
-        
-        CouchbaseManager.shared.startReplicationWithFacebookAccessToken("")
         
         let shouldSkipLogin = CouchbaseManager.shared.currentUserId
         

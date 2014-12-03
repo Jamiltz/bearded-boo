@@ -10,6 +10,7 @@
 		41107AE4ECB1A0F0B5063DD5 /* libPods-Editor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D40EF3CCC68B72D32B87F8 /* libPods-Editor.a */; };
 		BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE060B231A177ADD0081BBA1 /* TabViewController.swift */; };
 		BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE232D8B1A1532A1009FB16F /* Notification.swift */; };
+		BE23A2641A2F1B4500D3FBB5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23A2631A2F1B4500D3FBB5 /* String.swift */; };
 		BE23BA9B1A1FB63300AC5FDF /* MyPicksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */; };
 		BE3CB50B1A14DBCD004512E2 /* bridging-header.h in Sources */ = {isa = PBXBuildFile; fileRef = BEE3968C1A14DAF500BB779E /* bridging-header.h */; };
 		BE3CB50C1A14DBE0004512E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEE3968D1A14DAFE00BB779E /* Info.plist */; };
@@ -66,6 +67,7 @@
 		BE03604C1A0BFAF1003E2424 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE060B231A177ADD0081BBA1 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Editor/TabViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE232D8B1A1532A1009FB16F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Editor/Notification.swift; sourceTree = SOURCE_ROOT; };
+		BE23A2631A2F1B4500D3FBB5 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Editor/String.swift; sourceTree = SOURCE_ROOT; };
 		BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPicksCell.swift; path = Editor/MyPicksCell.swift; sourceTree = SOURCE_ROOT; };
 		BE491B0B1A24FF4400B87107 /* Brief.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Brief.swift; path = Editor/Brief.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPageViewController.swift; path = Editor/LoginPageViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -182,6 +184,14 @@
 			name = Designables;
 			sourceTree = "<group>";
 		};
+		BE23A2621A2F1B2700D3FBB5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BE23A2631A2F1B4500D3FBB5 /* String.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		BE7FC59A1A214B2D005C3520 /* Downloader */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +233,7 @@
 		BEE46AF11A08178B000876A4 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BE23A2621A2F1B2700D3FBB5 /* Extensions */,
 				BE7FC59A1A214B2D005C3520 /* Downloader */,
 				BE090BAC1A20C73C0078F70E /* Tab */,
 				BE09F20D1A0EDA2100817C18 /* Designables */,
@@ -461,6 +472,7 @@
 				BEE396591A14DA0400BB779E /* VideoTableCell.swift in Sources */,
 				BEE3965B1A14DA0400BB779E /* ViewController.swift in Sources */,
 				BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */,
+				BE23A2641A2F1B4500D3FBB5 /* String.swift in Sources */,
 				BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */,
 				BE491B0C1A24FF4400B87107 /* Brief.swift in Sources */,
 				BEE3964D1A14DA0400BB779E /* Document.swift in Sources */,

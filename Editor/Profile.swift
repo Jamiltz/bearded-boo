@@ -11,7 +11,7 @@ class Profile: CBLModel {
     
     init(name: String, user_id: String, fb_id: String) {
         
-        super.init(document: kDatabase.documentWithID("p:\(user_id)"))
+        super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID("p:\(user_id)"))
         
         setValue("profile", forKey: "type")
         self.name = name
@@ -26,7 +26,7 @@ class Profile: CBLModel {
     
     class func profileInDatabase(userId: String) -> Profile? {
         let profileDocId = "p:\(userId)"
-        let doc = kDatabase.existingDocumentWithID(profileDocId)
+        let doc = CouchbaseManager.shared.currentDatabase.existingDocumentWithID(profileDocId)
         if doc != nil {
             return Profile(forDocument: doc)
         } else {

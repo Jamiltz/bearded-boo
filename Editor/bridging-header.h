@@ -12,3 +12,4 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NMRangeSlider.h"
 #import "LLACircularProgressView.h"
+#import <CommonCrypto/CommonCrypto.h>

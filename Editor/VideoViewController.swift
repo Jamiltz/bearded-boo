@@ -24,7 +24,7 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         Video.queryVideos()
-        liveQuery = kDatabase.viewNamed("videos").createQuery().asLiveQuery()
+        liveQuery = CouchbaseManager.shared.currentDatabase.viewNamed("videos").createQuery().asLiveQuery()
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
     }
     

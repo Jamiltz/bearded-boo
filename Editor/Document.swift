@@ -5,7 +5,7 @@ class Player: CBLModel {
     @NSManaged var firstname: String
     
     init(firstname: String) {
-        super.init(document: kDatabase.createDocument())
+        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
         
         setValue("player", ofProperty: "type")
         self.firstname = firstname

@@ -15,7 +15,7 @@ class Notification: CBLModel {
     
     init(device_token: String, user_name: String) {
         
-        super.init(document: kDatabase.createDocument())
+        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
         
         setValue("notification", ofProperty: "type")
         self.device_token = device_token

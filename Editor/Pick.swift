@@ -8,7 +8,7 @@ class Pick: CBLModel {
     
     
     init(video_id: String, start_at: Double?, end_at: Double) {
-        super.init(document: kDatabase.createDocument())
+        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
         
         setValue("pick", ofProperty: "type")
         self.video_id = video_id
@@ -25,7 +25,7 @@ class Pick: CBLModel {
     }
     
     class func queryUserPicks() -> CBLQuery {
-        let view = kDatabase.viewNamed("user_picks")
+        let view = CouchbaseManager.shared.currentDatabase.viewNamed("user_picks")
         if view.mapBlock == nil {
             view
                 .setMapBlock({ (doc, emit) -> Void in
@@ -54,7 +54,7 @@ class Pick: CBLModel {
     }
     
     class func queryVideoPicks(video_id: String) -> CBLQuery {
-        let view = kDatabase.viewNamed("video_picks")
+        let view = CouchbaseManager.shared.currentDatabase.viewNamed("video_picks")
         if view.mapBlock == nil {
             view
                 .setMapBlock({ (doc, emit) -> Void in
@@ -73,7 +73,7 @@ class Pick: CBLModel {
     }
     
     class func querySnippetsForVideo(id: String) -> CBLQuery {
-        let view = kDatabase.viewNamed("snippets")
+        let view = CouchbaseManager.shared.currentDatabase.viewNamed("snippets")
         if view.mapBlock == nil {
             view
                 .setMapBlock({ (doc, emit) -> Void in
@@ -92,7 +92,7 @@ class Pick: CBLModel {
     }
     
     class func queryAllSnippets() -> CBLQuery {
-        let view = kDatabase.viewNamed("all_snippets")
+        let view = CouchbaseManager.shared.currentDatabase.viewNamed("all_snippets")
         if view.mapBlock == nil {
             view
                 .setMapBlock({ (doc, emit) -> Void in

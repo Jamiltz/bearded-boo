@@ -19,3 +19,11 @@ sub2
 var dict = ["james": 23, "luka": 12, "oliver": 16]
 dict.count
 
+var str3 = "1dqw"
+str3[advance(str3.startIndex, 0)...advance(str3.startIndex, 3)]
+
+extension String {
+    func MD5() {
+        
+    }
+}

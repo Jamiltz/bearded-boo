@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
             
             if liveQuery.rows.allObjects.count > 0 {
                 for (id, count) in (liveQuery.rows.allObjects[0] as CBLQueryRow).value as [String : Int] {
-                    let video = Video(forDocument: kDatabase.existingDocumentWithID(id))
+                    let video = Video(forDocument: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(id))
                     video.moments = count
                     videos.insert(video, atIndex: 0)
                 }
@@ -111,8 +111,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func logout(sender: UIButton) {
         FBSession.activeSession().closeAndClearTokenInformation()
+        FBSession.activeSession().close()
+        FBSession.setActiveSession(nil)
         CouchbaseManager.shared.currentUserId = nil
         CouchbaseManager.shared.stopReplication()
+        CouchbaseManager.shared.currentDatabase = nil
         
         navigationController?.popViewControllerAnimated(true)
     }

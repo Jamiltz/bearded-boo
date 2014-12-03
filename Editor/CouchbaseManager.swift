@@ -25,18 +25,19 @@ class CouchbaseManager {
         }
     }
     
-    func logoutUser(sender: AnyObject) {
-        println("log out user")
-    }
+    var currentDatabase: CBLDatabase!
     
     func loginWithFacebookUserInfo(result: AnyObject, token: FBAccessTokenData) {
+        
         let userId = result["email"] as String
         let name = result["name"] as String
+        
+        let database = databaseForUser(userId)
+        currentDatabase = database
         
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(userId, forKey: "user_id")
         defaults.synchronize()
-        
         
         var profile: Profile? = Profile.profileInDatabase(userId)
         
@@ -58,13 +59,20 @@ class CouchbaseManager {
         
         if pull == nil { // check its nil
             let syncURL = NSURL(string: kSyncGatewayUrl)
-            pull = kDatabase.createPullReplication(syncURL)
+            pull = CouchbaseManager.shared.currentDatabase.createPullReplication(syncURL)
             pull.continuous = true
+            if (!kSyncGatewayWebSocketSupport) {
+                pull.customProperties = ["websocket": false];
+            }
             
-            push = kDatabase.createPushReplication(syncURL)
+            push = CouchbaseManager.shared.currentDatabase.createPushReplication(syncURL)
             push.continuous = true
+            
+//            let notificationCenter = NSNotificationCenter.defaultCenter()
+//            notificationCenter.addObserver(self, selector: "replicationProgress:", name: kCBLReplicationChangeNotification, object: pull)
+//            notificationCenter.addObserver(self, selector: "replicationProgress:", name: kCBLReplicationChangeNotification, object: push)
         }
-        println(token)
+        
         let auth = CBLAuthenticator.facebookAuthenticatorWithToken(token)
         pull.authenticator = auth
         push.authenticator = auth
@@ -74,19 +82,41 @@ class CouchbaseManager {
         
     }
     
+    func replicationProgress(notification: NSNotification) {
+        if pull.status == CBLReplicationStatus.Active || push.status == CBLReplicationStatus.Active {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        } else {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        }
+        
+        println(pull.lastError)
+        println(push.lastError)
+    }
+    
     func stopReplication() {
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        if let _ = pull {
+        if pull != nil {
             pull.stop()
             notificationCenter.removeObserver(self, name: kCBLReplicationChangeNotification, object: pull)
             pull = nil
         }
-        if let _ = push {
+        if push != nil {
             push.stop()
             notificationCenter.removeObserver(self, name: kCBLReplicationChangeNotification, object: push)
             push = nil
         }
         
+    }
+    
+    func databaseForUser(user: String) -> CBLDatabase {
+        let hash = String(format: "db%@", arguments: [user.md5.lowercaseString])
+        println("hash name :: \(hash)")
+        var error: NSError?
+        let database = CBLManager.sharedInstance().databaseNamed(hash, error: &error)
+        if (error != nil) {
+            println("cannot create database because \(error)")
+        }
+        return database
     }
     
 }

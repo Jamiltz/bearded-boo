@@ -10,7 +10,7 @@ class Video: CBLModel {
     
     init(title: String, video_id: String) {
         
-        super.init(document: kDatabase.documentWithID(video_id))
+        super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID(video_id))
         
         setValue("video", ofProperty: "type")
         self.created_at = NSDate()
@@ -23,7 +23,7 @@ class Video: CBLModel {
     }
     
     class func queryVideos() -> CBLView {
-        let view = kDatabase.viewNamed("videos")
+        let view = CouchbaseManager.shared.currentDatabase.viewNamed("videos")
         if view.mapBlock == nil {
             view.setMapBlock({ (doc, emit) -> Void in
                 if let type = doc["type"] as? String {

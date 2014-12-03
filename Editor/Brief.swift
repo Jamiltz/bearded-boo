@@ -17,7 +17,7 @@ class Brief: CBLModel {
     
     init(video_id: String, updated_at: NSDate, status: String, link: String) {
         
-        super.init(document: kDatabase.documentWithID("b:\(video_id)"))
+        super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID("b:\(video_id)"))
         
         setValue("brief", ofProperty: "type")
         self.video_id = video_id
@@ -32,7 +32,7 @@ class Brief: CBLModel {
     
     class func briefForVideoInDatabase(video_id: String) -> Brief? {
         let briefDocId = "b:\(video_id)"
-        let doc = kDatabase.existingDocumentWithID(briefDocId)
+        let doc = CouchbaseManager.shared.currentDatabase.existingDocumentWithID(briefDocId)
         if doc != nil {
             return Brief(forDocument: doc)
         } else {
