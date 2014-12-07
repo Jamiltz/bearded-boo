@@ -41,6 +41,13 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         return false;
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AllPicksSegue" {
+            let vc = segue.destinationViewController as EditPicksViewController
+            vc.video_id = video.video_id
+        }
+    }
+    
     func startPlaying() {
         if let avpVC = childViewControllers.first as? AVPlayerViewController {
             PlayerVC = avpVC
@@ -65,7 +72,11 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         }
     }
     
-    
+    @IBAction func forwardPlayback(sender: AnyObject) {
+        let time = self.PlayerVC.player.currentTime()
+        let new_time = CMTimeMakeWithSeconds(CMTimeGetSeconds(time) + 5, 600)
+        self.PlayerVC.player.seekToTime(new_time)
+    }
     
     @IBAction func backButtonAction(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
