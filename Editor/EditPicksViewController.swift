@@ -85,6 +85,7 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EditPicksCellIdentifier", forIndexPath: indexPath) as EditPicksCell
         
         cell.indexLabel.text = "\(indexPath.row)"
+        cell.highlight = picks[indexPath.row].highlight
         
         return cell
     }
@@ -108,9 +109,20 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         playerVC.player.play()
     }
     
-    @IBAction func sliderValuesChanged(sender: NMRangeSlider) {
-        updateSliderLabels()
+    @IBAction func doubleTappedCell(sender: AnyObject) {
+        let tappedPoint = sender.locationInView(collectionView)
+        let tappedCellPath = collectionView.indexPathForItemAtPoint(tappedPoint)
         
+        if let path = tappedCellPath {
+            let pick = picks[path.item]
+            pick.highlight = !pick.highlight
+            if pick.save(nil) {
+                println("updated pick")
+            }
+        }
+    }
+    
+    @IBAction func sliderTouchUp(sender: NMRangeSlider) {
         if slider.lowerValue != oldLowerValue {
             replayPickWithSliderValues(self)
         }
@@ -121,6 +133,10 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         
         oldLowerValue = slider.lowerValue
         oldUpperValue = slider.upperValue
+    }
+    
+    @IBAction func sliderValuesChanged(sender: NMRangeSlider) {
+        updateSliderLabels()
     }
     
     @IBAction func savePick() {
@@ -204,23 +220,23 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         // get the center point of the slider handles and use this to arrange the labels
         var lowerCenter: CGPoint = CGPoint()
         lowerCenter.x = slider.lowerCenter.x + slider.frame.origin.x
-        lowerCenter.y = slider.center.y - 40
+        lowerCenter.y = slider.center.y - 50
         lowerLabel.center = lowerCenter
-        lowerLabel.text = secondsConvertToTimeFormat(Int(slider.lowerValue))
+        lowerLabel.text = secondsConvertToTimeFormat(slider.lowerValue)
         
         var upperCenter: CGPoint = CGPoint()
         upperCenter.x = slider.upperCenter.x + slider.frame.origin.x
-        upperCenter.y = slider.center.y - 40
+        upperCenter.y = slider.center.y - 50
         upperLabel.center = upperCenter
-        upperLabel.text = secondsConvertToTimeFormat(Int(slider.upperValue))
+        upperLabel.text = secondsConvertToTimeFormat(slider.upperValue)
     }
     
-    func secondsConvertToTimeFormat(total: Int) -> String {
+    func secondsConvertToTimeFormat(total: Float) -> String {
         let seconds = total % 60
-        let minutes = (total / 60) % 60
-        let hours = total / 3600
-        
-        return String(format: "%02d:%02d:%02d", arguments: [hours, minutes, seconds])
+        let minutes = (Int(total) / 60) % 60
+        let hours = Int(total) / 3600
+
+        return String(format: "%02d:%02d:%02f", arguments: [hours, minutes, seconds])
     }
     
 }

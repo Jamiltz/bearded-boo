@@ -5,6 +5,7 @@ class Pick: CBLModel {
     @NSManaged var video_id: String
     @NSManaged var start_at: Double
     @NSManaged var end_at: Double
+    @NSManaged var highlight: Bool
     
     
     init(video_id: String, start_at: Double?, end_at: Double) {

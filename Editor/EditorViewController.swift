@@ -43,6 +43,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AllPicksSegue" {
+            PlayerVC.player.pause()
             let vc = segue.destinationViewController as EditPicksViewController
             vc.video_id = video.video_id
         }
