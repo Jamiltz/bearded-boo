@@ -213,12 +213,14 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         }
         
         var delta: Int64 = 0 * Int64(NSEC_PER_SEC)
-        
         var time = dispatch_time(DISPATCH_TIME_NOW, delta)
         
         dispatch_after(time, dispatch_get_main_queue(), {
             self.updateSliderLabels()
         });
+        
+        oldLowerValue = slider.lowerValue
+        oldUpperValue = slider.upperValue
     }
     
     func updateSliderLabels() {
