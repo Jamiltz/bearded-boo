@@ -202,7 +202,6 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         slider.upperValue = 1
         slider.maximumValue = 1
         
-        
         slider.maximumValue = Float(pick.end_at + 3)
         slider.upperValue = Float(pick.end_at)
         if pick.start_at == 0.0 {
@@ -213,7 +212,13 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
             slider.minimumValue = Float(pick.start_at - 3)
         }
         
-        updateSliderLabels()
+        var delta: Int64 = 0 * Int64(NSEC_PER_SEC)
+        
+        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.updateSliderLabels()
+        });
     }
     
     func updateSliderLabels() {
