@@ -659,35 +659,11 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0Z-Jh-CHb">
                                 <rect key="frame" x="0.0" y="20" width="600" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1SR-p6-6T5">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="DSd-fR-DyC"/>
-                                        </constraints>
-                                        <state key="normal" image="back-editor-icon">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwl-7V-voR">
-                                        <rect key="frame" x="360" y="0.0" width="120" height="40"/>
-                                        <state key="normal" image="delete-editor-icon">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deletePick" destination="4yi-je-jI0" eventType="touchUpInside" id="xEg-A4-JRZ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzZ-yz-Nm6">
-                                        <rect key="frame" x="480" y="0.0" width="120" height="40"/>
-                                        <state key="normal" image="forward-editor-icon">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="publishBrief" destination="4yi-je-jI0" eventType="touchUpInside" id="BhD-T4-WbF"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rs-9f-tzx">
-                                        <rect key="frame" x="120" y="0.0" width="120" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="484-Np-Uat"/>
+                                        </constraints>
                                         <state key="normal" image="save-editor-icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -696,7 +672,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqb-VW-5bJ">
-                                        <rect key="frame" x="240" y="0.0" width="120" height="40"/>
+                                        <rect key="frame" x="200" y="0.0" width="200" height="40"/>
                                         <state key="normal" image="rewind-editor-icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -704,34 +680,41 @@
                                             <action selector="replayPickWithSliderValues:" destination="4yi-je-jI0" eventType="touchUpInside" id="Y4i-wA-mDZ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwl-7V-voR">
+                                        <rect key="frame" x="400" y="0.0" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="fvu-4a-fHf"/>
+                                        </constraints>
+                                        <state key="normal" image="delete-editor-icon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deletePick" destination="4yi-je-jI0" eventType="touchUpInside" id="xEg-A4-JRZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="width" secondItem="h0Z-Jh-CHb" secondAttribute="width" multiplier="0.2" id="25A-NI-4nf"/>
-                                    <constraint firstItem="VzZ-yz-Nm6" firstAttribute="leading" secondItem="fwl-7V-voR" secondAttribute="trailing" id="8Ui-IC-nJP"/>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="top" secondItem="h0Z-Jh-CHb" secondAttribute="top" id="BFk-zR-vsy"/>
-                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="height" secondItem="1SR-p6-6T5" secondAttribute="height" id="BW3-6S-kCq"/>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="height" secondItem="VzZ-yz-Nm6" secondAttribute="height" id="FJf-l0-bVa"/>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="top" secondItem="5rs-9f-tzx" secondAttribute="top" id="Gf1-pI-tnN"/>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="width" secondItem="5rs-9f-tzx" secondAttribute="width" id="Iwc-2y-qRK"/>
+                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="width" secondItem="5rs-9f-tzx" secondAttribute="width" id="5Se-tW-nnH"/>
+                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="width" secondItem="fwl-7V-voR" secondAttribute="width" id="5em-gZ-6jS"/>
+                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="top" secondItem="5rs-9f-tzx" secondAttribute="top" id="8t1-7l-9eJ"/>
+                                    <constraint firstItem="fwl-7V-voR" firstAttribute="leading" secondItem="dqb-VW-5bJ" secondAttribute="trailing" id="FVz-fE-4ic"/>
+                                    <constraint firstItem="5rs-9f-tzx" firstAttribute="leading" secondItem="h0Z-Jh-CHb" secondAttribute="leading" id="FsJ-Nx-i4I"/>
                                     <constraint firstItem="fwl-7V-voR" firstAttribute="leading" secondItem="5rs-9f-tzx" secondAttribute="trailing" id="MqW-xJ-sgC"/>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="height" secondItem="5rs-9f-tzx" secondAttribute="height" id="OQw-rI-2DL"/>
-                                    <constraint firstItem="5rs-9f-tzx" firstAttribute="leading" secondItem="1SR-p6-6T5" secondAttribute="trailing" id="TXz-Im-EAn"/>
-                                    <constraint firstItem="fwl-7V-voR" firstAttribute="width" secondItem="1SR-p6-6T5" secondAttribute="width" id="YRR-BM-esY"/>
+                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="top" secondItem="fwl-7V-voR" secondAttribute="top" id="Sxl-uE-Q0z"/>
+                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="leading" secondItem="5rs-9f-tzx" secondAttribute="trailing" id="Tgm-uP-wYk"/>
                                     <constraint firstItem="dqb-VW-5bJ" firstAttribute="leading" secondItem="5rs-9f-tzx" secondAttribute="trailing" id="ZsX-0b-qTW"/>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="leading" secondItem="h0Z-Jh-CHb" secondAttribute="leading" id="bJ7-gi-dIV"/>
+                                    <constraint firstItem="5rs-9f-tzx" firstAttribute="top" secondItem="h0Z-Jh-CHb" secondAttribute="top" id="cEM-M1-6N4"/>
                                     <constraint firstAttribute="height" constant="40" id="eSf-a9-mA9"/>
-                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="width" secondItem="1SR-p6-6T5" secondAttribute="width" id="iQo-Xl-EOk"/>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="top" secondItem="VzZ-yz-Nm6" secondAttribute="top" id="jxa-hy-QTF"/>
-                                    <constraint firstItem="1SR-p6-6T5" firstAttribute="width" secondItem="VzZ-yz-Nm6" secondAttribute="width" id="mrt-kq-aIj"/>
-                                    <constraint firstItem="fwl-7V-voR" firstAttribute="top" secondItem="1SR-p6-6T5" secondAttribute="top" id="ndL-H9-iAb"/>
+                                    <constraint firstItem="5rs-9f-tzx" firstAttribute="width" secondItem="h0Z-Jh-CHb" secondAttribute="width" multiplier="0.3334" id="fYR-ro-cBg"/>
+                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="height" secondItem="5rs-9f-tzx" secondAttribute="height" id="ldv-Bx-vRI"/>
                                     <constraint firstItem="fwl-7V-voR" firstAttribute="leading" secondItem="dqb-VW-5bJ" secondAttribute="trailing" id="phE-Hx-OnR"/>
-                                    <constraint firstItem="fwl-7V-voR" firstAttribute="height" secondItem="1SR-p6-6T5" secondAttribute="height" id="tcA-db-iF2"/>
-                                    <constraint firstItem="dqb-VW-5bJ" firstAttribute="top" secondItem="1SR-p6-6T5" secondAttribute="top" id="w5i-fQ-3Je"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="ZsX-0b-qTW"/>
                                         <exclude reference="MqW-xJ-sgC"/>
+                                        <exclude reference="phE-Hx-OnR"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -791,7 +774,7 @@
                                                     <rect key="frame" x="2" y="2" width="196" height="96"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hy-9h-jRa">
-                                                            <rect key="frame" x="91" y="32.5" width="14" height="31.5"/>
+                                                            <rect key="frame" x="91" y="32" width="14" height="31.5"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="23"/>
                                                             <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -949,7 +932,6 @@
     <resources>
         <image name="Edit Picks" width="750" height="1334"/>
         <image name="Profile Logged In" width="750" height="1334"/>
-        <image name="back-editor-icon" width="37" height="18"/>
         <image name="back-icon" width="36" height="36"/>
         <image name="background-profile" width="750" height="408"/>
         <image name="channels-icon" width="30" height="26"/>
@@ -957,7 +939,6 @@
         <image name="delete-editor-icon" width="16" height="21"/>
         <image name="discover-icon" width="28" height="24"/>
         <image name="download-icon" width="23" height="21"/>
-        <image name="forward-editor-icon" width="37" height="18"/>
         <image name="forward-icon" width="41" height="35"/>
         <image name="like-icon" width="52" height="47"/>
         <image name="like-icon-highlighted" width="43" height="38"/>
