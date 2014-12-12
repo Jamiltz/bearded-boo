@@ -40,4 +40,18 @@ class Brief: CBLModel {
         }
     }
     
+    class func queryBriefs() -> CBLView {
+        let view = CouchbaseManager.shared.currentDatabase.viewNamed("briefs")
+        if view.mapBlock == nil {
+            view.setMapBlock({ (doc, emit) -> Void in
+                if let type = doc["type"] as? String {
+                    if type == "brief" {
+                        emit(doc["_id"], doc)
+                    }
+                }
+            }, version: "1")
+        }
+        return view
+    }
+    
 }

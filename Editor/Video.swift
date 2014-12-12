@@ -17,7 +17,7 @@ class Video: CBLModel {
         self.title = title
         self.video_id = video_id
     }
-    
+
     override init!(document: CBLDoc) {
         super.init(document: document)
     }

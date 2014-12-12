@@ -50,7 +50,6 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
 
         playerVC = childViewControllers.first! as AVPlayerViewController
         
-        
         let file = VideoDownloader.shared().videoIsOnDisk(video_id)
         
         if file.isLocal {
@@ -70,6 +69,25 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.topItem?.title = "Edit Picks"
+        
+        let image = UIImage(named: "publish-icon")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "publishSelectedPicks:")
+    }
+    
+    func publishSelectedPicks(sender: AnyObject) {
+        // check if a brief already exists for this video_id
+        if let brief = Brief.briefForVideoInDatabase(video_id) {
+            brief.updated_at = NSDate()
+            brief.status = "publishing"
+            if brief.save(nil) {
+                println("updated brief")
+            }
+        } else {
+            let brief = Brief(video_id: video_id, updated_at: NSDate(), status: "publishing", link: "")
+            if brief.save(nil) {
+                println("saved new brief")
+            }
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -176,22 +194,6 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
             if pick.deleteDocument(nil) {
                 println("deleted pick")
                 picks.removeAtIndex(indexPaths[0].item)
-            }
-        }
-    }
-    
-    @IBAction func publishBrief() {
-        // check if a brief already exists for this video_id
-        if let brief = Brief.briefForVideoInDatabase(video_id) {
-            brief.updated_at = NSDate()
-            brief.status = "publishing"
-            if brief.save(nil) {
-                println("updated brief")
-            }
-        } else {
-            let brief = Brief(video_id: video_id, updated_at: NSDate(), status: "publishing", link: "")
-            if brief.save(nil) {
-                println("saved new brief")
             }
         }
     }
