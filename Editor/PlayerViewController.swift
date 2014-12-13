@@ -45,6 +45,7 @@ class PlayerViewController: AVPlayerViewController {
         println("end")
         if currentIndex < picks.count - 1 {
             currentIndex++
+            player.currentItem.forwardPlaybackEndTime = kCMTimeInvalid
             playFirstPick(picks[currentIndex])
         }
     }

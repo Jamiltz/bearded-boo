@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class EditPicksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class EditPicksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate {
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var slider: NMRangeSlider!
@@ -19,6 +19,7 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     
     var video_id: String = ""
     var playerVC: AVPlayerViewController!
+    var alertView: UIAlertView!
     var liveQuery: CBLLiveQuery!
     var picks: [Pick] = []
     
@@ -63,6 +64,9 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         
         liveQuery = Pick.querySnippetsForVideo(video_id).asLiveQuery()
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
+        
+        alertView = UIAlertView(title: "Publish your Picks", message: "The selected picks (in green) will appear in the news feed. Provide a descriptive subject:", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Confirm")
+        alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -70,11 +74,22 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.topItem?.title = "Edit Picks"
         
-        let image = UIImage(named: "publish-icon")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: "publishSelectedPicks:")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showConfirmMessage:")
     }
     
-    func publishSelectedPicks(sender: AnyObject) {
+    func showConfirmMessage(sender: AnyObject) {
+        alertView.show()
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            if let text = alertView.textFieldAtIndex(0)?.text {
+                publishSelectedPicks(text)
+            }
+        }
+    }
+    
+    func publishSelectedPicks(title: String) {
         
         let selectedPicks = picks.filter { (pick) -> Bool in
             if pick.highlight == true {
@@ -85,7 +100,7 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         
         let profile = Profile.profileInDatabase(CouchbaseManager.shared.currentUserId!)!
         
-        let brief = Brief(video_id: video_id, updated_at: NSDate(), picks: selectedPicks, fb_id: profile.fb_id, name: profile.name, caption: "A sample caption text that can be 3 lines. And emoji maybe?")
+        let brief = Brief(video_id: video_id, updated_at: NSDate(), picks: selectedPicks, fb_id: profile.fb_id, name: profile.name, caption: title)
         if brief.save(nil) {
             println("saved new brief")
         }
