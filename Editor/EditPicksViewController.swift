@@ -75,19 +75,34 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func publishSelectedPicks(sender: AnyObject) {
-        // check if a brief already exists for this video_id
-        if let brief = Brief.briefForVideoInDatabase(video_id) {
-            brief.updated_at = NSDate()
-            brief.status = "publishing"
-            if brief.save(nil) {
-                println("updated brief")
+        
+        let selectedPicks = picks.filter { (pick) -> Bool in
+            if pick.highlight == true {
+                return true
             }
-        } else {
-            let brief = Brief(video_id: video_id, updated_at: NSDate(), status: "publishing", link: "")
-            if brief.save(nil) {
-                println("saved new brief")
-            }
+            return false
         }
+        
+        let profile = Profile.profileInDatabase(CouchbaseManager.shared.currentUserId!)!
+        
+        let brief = Brief(video_id: video_id, updated_at: NSDate(), picks: selectedPicks, fb_id: profile.fb_id, name: profile.name, caption: "A sample caption text that can be 3 lines. And emoji maybe?")
+        if brief.save(nil) {
+            println("saved new brief")
+        }
+        
+        // check if a brief already exists for this video_id
+//        if let brief = Brief.briefForVideoInDatabase(video_id) {
+//            brief.updated_at = NSDate()
+//            brief.status = "publishing"
+//            if brief.save(nil) {
+//                println("updated brief")
+//            }
+//        } else {
+//            let brief = Brief(video_id: video_id, updated_at: NSDate(), status: "publishing", link: "")
+//            if brief.save(nil) {
+//                println("saved new brief")
+//            }
+//        }
     }
     
     override func viewWillDisappear(animated: Bool) {

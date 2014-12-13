@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
-class FeedViewController: UIViewController, UICollectionViewDataSource {
+class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet var collectionView: UICollectionView!
     
+    var playerVC: AVPlayerViewController!
     var liveQuery: CBLLiveQuery!
     var briefs: [Brief] = []
     
@@ -34,6 +37,8 @@ class FeedViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        playerVC = childViewControllers.first! as AVPlayerViewController
+        
         liveQuery = Brief.queryBriefs().createQuery().asLiveQuery()
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
     }
@@ -50,7 +55,31 @@ class FeedViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FeedCellIdentifier", forIndexPath: indexPath) as FeedCell
         
+        cell.video_id = briefs[indexPath.row].video_id
+        cell.facebookUserId = briefs[indexPath.row].fb_id
+        cell.nameLabel.text = briefs[indexPath.row].name
+        cell.videoLabel.text = briefs[indexPath.row].caption
+        cell.deleteButton.tag = indexPath.row
+        
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let brief = briefs[indexPath.row]
+        
+        XCDYouTubeClient.defaultClient().getVideoWithIdentifier(brief.video_id, completionHandler: { (video, error) -> Void in
+            let mp4Url = video.streamURLs[18] as NSURL
+            self.playerVC.player = AVPlayer(URL: mp4Url)
+            self.playerVC.player.play()
+        })
+    }
+    
+    @IBAction func deleteBrief(sender: UIButton) {
+        let aBrief = briefs[sender.tag]
+        if aBrief.deleteDocument(nil) {
+            println("deleted brief")
+            briefs.removeAtIndex(sender.tag)
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

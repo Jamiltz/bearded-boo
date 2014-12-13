@@ -12,18 +12,22 @@ class Brief: CBLModel {
    
     @NSManaged var video_id: String
     @NSManaged var updated_at: NSDate
-    @NSManaged var status: String
-    @NSManaged var link: String
+    @NSManaged var picks: [Pick]
+    @NSManaged var fb_id: String
+    @NSManaged var name: String
+    @NSManaged var caption: String
     
-    init(video_id: String, updated_at: NSDate, status: String, link: String) {
+    init(video_id: String, updated_at: NSDate, picks: [Pick], fb_id: String, name: String, caption: String) {
         
         super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID("b:\(video_id)"))
         
         setValue("brief", ofProperty: "type")
         self.video_id = video_id
         self.updated_at = updated_at
-        self.status = status
-        self.link = link
+        self.picks = picks
+        self.fb_id = fb_id
+        self.name = name
+        self.caption = caption
     }
     
     override init!(document: CBLDoc) {
