@@ -12,7 +12,7 @@ class Brief: CBLModel {
    
     @NSManaged var video_id: String
     @NSManaged var updated_at: NSDate
-    @NSManaged var picks: [Pick]
+    @NSManaged var picks: NSArray
     @NSManaged var fb_id: String
     @NSManaged var name: String
     @NSManaged var caption: String

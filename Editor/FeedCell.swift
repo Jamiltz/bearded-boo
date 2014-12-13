@@ -32,6 +32,12 @@ class FeedCell: UICollectionViewCell {
         }
     }
     
+    override var selected: Bool {
+        didSet {
+            backgroundColor = selected ? kCardSelectedColor : UIColor.whiteColor()
+        }
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         thumbnail.image = nil

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		41107AE4ECB1A0F0B5063DD5 /* libPods-Editor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D40EF3CCC68B72D32B87F8 /* libPods-Editor.a */; };
 		BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE060B231A177ADD0081BBA1 /* TabViewController.swift */; };
+		BE10BC411A3C671E000CCCF7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE10BC401A3C671E000CCCF7 /* PlayerViewController.swift */; };
 		BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE232D8B1A1532A1009FB16F /* Notification.swift */; };
 		BE23A2641A2F1B4500D3FBB5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23A2631A2F1B4500D3FBB5 /* String.swift */; };
 		BE23BA9B1A1FB63300AC5FDF /* MyPicksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */; };
@@ -68,6 +69,7 @@
 		607A2D96EA62BD48D9A31F08 /* Pods-Editor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Editor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Editor/Pods-Editor.release.xcconfig"; sourceTree = "<group>"; };
 		BE03604C1A0BFAF1003E2424 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE060B231A177ADD0081BBA1 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Editor/TabViewController.swift; sourceTree = SOURCE_ROOT; };
+		BE10BC401A3C671E000CCCF7 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerViewController.swift; path = Editor/PlayerViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE232D8B1A1532A1009FB16F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Editor/Notification.swift; sourceTree = SOURCE_ROOT; };
 		BE23A2631A2F1B4500D3FBB5 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Editor/String.swift; sourceTree = SOURCE_ROOT; };
 		BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPicksCell.swift; path = Editor/MyPicksCell.swift; sourceTree = SOURCE_ROOT; };
@@ -188,6 +190,14 @@
 			name = Designables;
 			sourceTree = "<group>";
 		};
+		BE10BC3F1A3C66FC000CCCF7 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				BE10BC401A3C671E000CCCF7 /* PlayerViewController.swift */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
 		BE23A2621A2F1B2700D3FBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +256,7 @@
 		BEE46AF11A08178B000876A4 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BE10BC3F1A3C66FC000CCCF7 /* Player */,
 				BECCD7181A3B5A550058A698 /* Feed Page */,
 				BE23A2621A2F1B2700D3FBB5 /* Extensions */,
 				BE7FC59A1A214B2D005C3520 /* Downloader */,
@@ -473,6 +484,7 @@
 				BEE3965A1A14DA0400BB779E /* VideoViewController.swift in Sources */,
 				BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */,
 				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
+				BE10BC411A3C671E000CCCF7 /* PlayerViewController.swift in Sources */,
 				BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */,
 				BEE396541A14DA0400BB779E /* Pick.swift in Sources */,
 				BE7FC59C1A214B57005C3520 /* VideoDownloader.swift in Sources */,

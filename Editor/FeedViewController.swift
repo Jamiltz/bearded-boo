@@ -14,7 +14,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBOutlet var collectionView: UICollectionView!
     
-    var playerVC: AVPlayerViewController!
+    var playerVC: PlayerViewController!
     var liveQuery: CBLLiveQuery!
     var briefs: [Brief] = []
     
@@ -37,7 +37,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        playerVC = childViewControllers.first! as AVPlayerViewController
+        playerVC = childViewControllers.first! as PlayerViewController
         
         liveQuery = Brief.queryBriefs().createQuery().asLiveQuery()
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
@@ -70,8 +70,21 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         XCDYouTubeClient.defaultClient().getVideoWithIdentifier(brief.video_id, completionHandler: { (video, error) -> Void in
             let mp4Url = video.streamURLs[18] as NSURL
             self.playerVC.player = AVPlayer(URL: mp4Url)
-            self.playerVC.player.play()
+            
+            self.loadBrief(brief)
         })
+    }
+    
+    func loadBrief(brief: Brief) {
+        
+        var picks: [Pick] = []
+        for (index, id) in enumerate(brief.picks) {
+            let pick = Pick(forDocument: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(id as String))
+            picks.append(pick)
+        }
+        
+        playerVC.loadContent(picks)
+        
     }
     
     @IBAction func deleteBrief(sender: UIButton) {
