@@ -1,12 +1,5 @@
-//
-//  AppDelegate.swift
-//  Story1
-//
-//  Created by James Nocentini on 03/11/2014.
-//  Copyright (c) 2014 James Nocentini. All rights reserved.
-//
-
 import UIKit
+import AVFoundation
 
 let kFBAppId = "789449301118942"
 
@@ -42,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
 //        let profile = Profile.profileInDatabase(shouldSkipLogin!)
+        
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
 
         return true
     }

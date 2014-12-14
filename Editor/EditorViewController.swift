@@ -19,6 +19,10 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         return UIStatusBarStyle.LightContent
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidEnterBackgroundNotification, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +39,8 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         }
         
         navigationController?.interactivePopGestureRecognizer.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
@@ -81,6 +87,19 @@ class EditorViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     
     @IBAction func backButtonAction(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+        println("background")
+        
+        var delta: Int64 = 1 * Int64(NSEC_PER_MSEC)
+        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        
+        if PlayerVC.player.rate == 1.0 {
+            dispatch_after(time, dispatch_get_main_queue(), {
+                self.PlayerVC.player.play()
+            })
+        }
     }
 
     /*
