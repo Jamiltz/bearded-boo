@@ -100,7 +100,16 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         
         let profile = Profile.profileInDatabase(CouchbaseManager.shared.currentUserId!)!
         
-        let brief = Brief(video_id: video_id, updated_at: NSDate(), picks: selectedPicks, fb_id: profile.fb_id, name: profile.name, caption: title)
+        var length: Double = 0.0
+        for (index, pick) in enumerate(selectedPicks) {
+            if pick.start_at == 0.0 {
+                length += 12.0
+            } else {
+                length += (pick.end_at - pick.start_at)
+            }
+        }
+        
+        let brief = Brief(video_id: video_id, updated_at: NSDate(), picks: selectedPicks, fb_id: profile.fb_id, name: profile.name, caption: title, length: Int(length))
         if brief.save(nil) {
             println("saved new brief")
         }

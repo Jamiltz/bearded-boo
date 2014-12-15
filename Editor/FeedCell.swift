@@ -15,6 +15,7 @@ class FeedCell: UICollectionViewCell {
     @IBOutlet var deleteButton: UIButton!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var videoLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     
     var video_id: String = "" {
         didSet {

@@ -16,8 +16,9 @@ class Brief: CBLModel {
     @NSManaged var fb_id: String
     @NSManaged var name: String
     @NSManaged var caption: String
+    @NSManaged var length: Int
     
-    init(video_id: String, updated_at: NSDate, picks: [Pick], fb_id: String, name: String, caption: String) {
+    init(video_id: String, updated_at: NSDate, picks: [Pick], fb_id: String, name: String, caption: String, length: Int) {
         
         super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID("b:\(video_id)"))
         
@@ -28,6 +29,7 @@ class Brief: CBLModel {
         self.fb_id = fb_id
         self.name = name
         self.caption = caption
+        self.length = length
     }
     
     override init!(document: CBLDoc) {

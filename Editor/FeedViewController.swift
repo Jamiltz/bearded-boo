@@ -60,6 +60,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.nameLabel.text = briefs[indexPath.row].name
         cell.videoLabel.text = briefs[indexPath.row].caption
         cell.deleteButton.tag = indexPath.row
+        cell.timeLabel.text = "\(briefs[indexPath.row].length) seconds"
         
         return cell
     }
