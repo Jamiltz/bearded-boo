@@ -56,15 +56,22 @@ class VideoViewController: UIViewController, UITableViewDataSource {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as VideoTableCell
-
-        cell.title.text = videos[indexPath.row].title
-        cell.video_id = videos[indexPath.row].video_id
+        let video = videos[indexPath.row]
+        
+        cell.title.text = video.title
+        cell.video_id = video.video_id
         cell.downloadButton.tag = indexPath.row
         
-        let file = VideoDownloader.shared().videoIsOnDisk(videos[indexPath.row].video_id)
-        if file.isLocal {
+        if video.isDownloading { // if the video is downloading show the progress bar
+            println("yep")
             cell.downloadButton.hidden = true
-        } else {
+            cell.circularProgressView.hidden = false
+        }
+        
+        
+        let file = VideoDownloader.shared().videoIsOnDisk(video.video_id)
+        if file.isLocal { // if the file exists locally hide the progress bar and download button
+            cell.downloadButton.hidden = true
             cell.circularProgressView.hidden = true
         }
         
@@ -89,21 +96,23 @@ class VideoViewController: UIViewController, UITableViewDataSource {
 
         let aVideo = videos[sender.tag]
         if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag, inSection: 0)) as VideoTableCell? {
-            cell.downloadButton.hidden = true
-            cell.circularProgressView.hidden = false
-            
             XCDYouTubeClient.defaultClient().getVideoWithIdentifier(aVideo.video_id, completionHandler: { (video, error) -> Void in
                 let mp4Url = (video as XCDYouTubeVideo).streamURLs[18] as NSURL
                 let url = NSURL(string: "\(mp4Url.absoluteString!)&\(aVideo.video_id)")!
-                self.createDownloadTask(url, cell: cell)
+                
+                self.createDownloadTask(url, video: aVideo)
+                let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
             })
         }
         
     }
     
-    func createDownloadTask(url: NSURL, cell: VideoTableCell) {
+    func createDownloadTask(url: NSURL, video: Video) {
         let task = VideoDownloader.shared().session.downloadTaskWithURL(url)
-        cell.downloadTask = task
+        video.isDownloading = true
+        video.downloadTask = task
+        video.taskIdentifier = task.taskIdentifier
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProgress:", name: "DownloadProgress", object: task)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "finishDownload:", name: "DownloadCompletion", object: task)
@@ -132,15 +141,33 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         println(notification.userInfo!["filePath"])
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+        for (index, video) in enumerate(self.videos) {
+            if let taskIdentifier = video.taskIdentifier {
+                if taskIdentifier == notification.userInfo!["taskIdentifier"] as Int {
+                    println("found")
+                    video.downloadTask = nil
+                    video.isDownloading = false
+                    video.taskIdentifier = nil
+                    videos[index] = video
+                    
+                    let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                }
+            }
+        }
     }
     
     @IBAction func stopDownload(sender: UIButton) {
 
         let cell = sender.superview!.superview! as VideoTableCell
-        if let task = cell.downloadTask {
-            task.cancel()
-            cell.circularProgressView.hidden = true
-            cell.downloadButton.hidden = false
+        if let indexPath = tableView.indexPathForCell(cell) {
+            let aVideo = videos[indexPath.row]
+            aVideo.downloadTask!.cancel()
+            aVideo.isDownloading = false
+            aVideo.taskIdentifier = nil
+            
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
             cell.circularProgressView.setProgress(0.0, animated: false)
         }
         

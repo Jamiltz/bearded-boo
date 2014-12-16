@@ -35,7 +35,7 @@ class VideoDownloader: NSObject, NSURLSessionDownloadDelegate {
 
         let filePath = self.buildDownloadPath(downloadTask.originalRequest.URL)
         NSFileManager.defaultManager().copyItemAtPath(location.path!, toPath: filePath, error: nil)
-        let userInfo = ["filePath": filePath]
+        let userInfo = ["filePath": filePath, "taskIdentifier": downloadTask.taskIdentifier]
         NSNotificationCenter.defaultCenter().postNotificationName("DownloadCompletion", object: downloadTask, userInfo: userInfo)
         
     }

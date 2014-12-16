@@ -6,6 +6,10 @@ class Video: CBLModel {
     @NSManaged var title: String
     @NSManaged var video_id: String
     
+    var downloadTask: NSURLSessionDownloadTask?
+    var isDownloading: Bool = false
+    var taskIdentifier: Int?
+    
     var moments: Int?
     
     init(title: String, video_id: String) {
