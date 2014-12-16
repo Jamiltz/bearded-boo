@@ -11,7 +11,8 @@ import UIKit
 class LoginPageViewController: UIViewController, FBLoginViewDelegate {
     
     @IBOutlet var loginView: FBLoginView!
-
+    @IBOutlet var backgroundMaskView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +27,7 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
         loginView.readPermissions = ["public_profile", "email"]
         loginView.delegate = self
         
+        insertBlurView(backgroundMaskView, UIBlurEffectStyle.Dark)
     }
     
     func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
@@ -42,6 +44,10 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
             }
         }
         
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
 
     /*
