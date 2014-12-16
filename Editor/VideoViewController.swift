@@ -64,6 +64,8 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         let file = VideoDownloader.shared().videoIsOnDisk(videos[indexPath.row].video_id)
         if file.isLocal {
             cell.downloadButton.hidden = true
+        } else {
+            cell.circularProgressView.hidden = true
         }
         
         return cell
@@ -84,22 +86,28 @@ class VideoViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func startDownload(sender: UIButton) {
-        println(sender.tag)
-        
+
         let aVideo = videos[sender.tag]
-        XCDYouTubeClient.defaultClient().getVideoWithIdentifier(aVideo.video_id, completionHandler: { (video, error) -> Void in
-            let mp4Url = (video as XCDYouTubeVideo).streamURLs[18] as NSURL
-            let url = NSURL(string: "\(mp4Url.absoluteString!)&\(aVideo.video_id)")!
-            self.createDownloadTask(url)
-        })
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag, inSection: 0)) as VideoTableCell? {
+            cell.downloadButton.hidden = true
+            cell.circularProgressView.hidden = false
+            
+            XCDYouTubeClient.defaultClient().getVideoWithIdentifier(aVideo.video_id, completionHandler: { (video, error) -> Void in
+                let mp4Url = (video as XCDYouTubeVideo).streamURLs[18] as NSURL
+                let url = NSURL(string: "\(mp4Url.absoluteString!)&\(aVideo.video_id)")!
+                self.createDownloadTask(url, cell: cell)
+            })
+        }
+        
     }
     
-    func createDownloadTask(url: NSURL) {
+    func createDownloadTask(url: NSURL, cell: VideoTableCell) {
         let task = VideoDownloader.shared().session.downloadTaskWithURL(url)
+        cell.downloadTask = task
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProgress:", name: "DownloadProgress", object: task)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "finishDownload:", name: "DownloadCompletion", object: task)
-        
+
         task.resume()
     }
     
@@ -124,6 +132,18 @@ class VideoViewController: UIViewController, UITableViewDataSource {
         println(notification.userInfo!["filePath"])
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    @IBAction func stopDownload(sender: UIButton) {
+
+        let cell = sender.superview!.superview! as VideoTableCell
+        if let task = cell.downloadTask {
+            task.cancel()
+            cell.circularProgressView.hidden = true
+            cell.downloadButton.hidden = false
+            cell.circularProgressView.setProgress(0.0, animated: false)
+        }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -16,6 +16,8 @@ class VideoTableCell: UITableViewCell {
     @IBOutlet var downloadButton: UIButton!
     @IBOutlet var circularProgressView: LLACircularProgressView!
     
+    var downloadTask: NSURLSessionDownloadTask?
+    
     var video_id: String = "" {
         didSet {
             let url = NSURL(string: "https://i.ytimg.com/vi/\(video_id)/0.jpg")!
