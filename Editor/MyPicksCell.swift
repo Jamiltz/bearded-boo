@@ -13,6 +13,8 @@ class MyPicksCell: UITableViewCell {
     @IBOutlet var thumbnailImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var momentsLabel: UILabel!
+    @IBOutlet var downloadButton: UIButton!
+    @IBOutlet var circularProgressView: LLACircularProgressView!
     
     var video_id: String = "" {
         didSet {
@@ -30,6 +32,16 @@ class MyPicksCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailImageView.image = nil
+        titleLabel.text = ""
+        momentsLabel.text = ""
+        downloadButton.hidden = false
+        circularProgressView.progress = 0.0
+        circularProgressView.hidden = true
     }
 
 }

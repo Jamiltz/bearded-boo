@@ -130,7 +130,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgw-UL-qRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1832" y="-475"/>
+            <point key="canvasLocation" x="-1832" y="-535"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Mps-FO-cdO">
+            <objects>
+                <viewController id="O90-U4-5dU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q02-Rd-IUJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="DD5-gC-T1z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gbh-Y2-CdI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="02-Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Ygi-N3-hkB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nl1-Ug-cgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1340.5" y="-1233.5"/>
         </scene>
         <!--Looking good!-->
         <scene sceneID="BHy-5M-vla">
@@ -343,7 +367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAr-Jk-46b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1147" y="-475"/>
+            <point key="canvasLocation" x="-1147" y="-535"/>
         </scene>
         <!--Profile-->
         <scene sceneID="tbv-lC-kKV">
@@ -540,7 +564,7 @@
             </objects>
             <point key="canvasLocation" x="-1832" y="-2281"/>
         </scene>
-        <!--Profile-->
+        <!--Login Page View Controller-->
         <scene sceneID="T4s-5h-ah8">
             <objects>
                 <viewController id="RiJ-de-bxH" customClass="LoginPageViewController" customModule="Editor" customModuleProvider="target" sceneMemberID="viewController">
@@ -556,7 +580,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEf-YC-7aD">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVG-67-qj1" customClass="FBLoginView">
                                         <rect key="frame" x="161" y="346" width="279" height="45"/>
@@ -598,6 +622,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dEx-aJ-BgU" firstAttribute="top" secondItem="YEf-YC-7aD" secondAttribute="bottom" constant="-200" id="1dr-ga-UIV"/>
+                            <constraint firstItem="YEf-YC-7aD" firstAttribute="bottom" secondItem="KHG-cx-ncD" secondAttribute="bottom" id="2ZV-N3-r2z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YEf-YC-7aD" secondAttribute="trailing" constant="-16" id="8db-M2-UWx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KHG-cx-ncD" secondAttribute="trailing" constant="-16" id="B00-Nd-193"/>
                             <constraint firstItem="YEf-YC-7aD" firstAttribute="top" secondItem="p7L-Q9-Mkp" secondAttribute="bottom" constant="-20" id="FFW-iq-VJh"/>
@@ -607,8 +633,13 @@
                             <constraint firstItem="KHG-cx-ncD" firstAttribute="top" secondItem="p7L-Q9-Mkp" secondAttribute="bottom" constant="-20" id="UH3-Mq-Sbe"/>
                             <constraint firstItem="dEx-aJ-BgU" firstAttribute="top" secondItem="KHG-cx-ncD" secondAttribute="bottom" id="tkT-Bd-y19"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2ZV-N3-r2z"/>
+                                <exclude reference="FM5-Qj-aaF"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile-icon" id="553-5M-QXu"/>
                     <navigationItem key="navigationItem" id="i6Y-mY-OfF"/>
                     <connections>
                         <outlet property="backgroundMaskView" destination="YEf-YC-7aD" id="EsR-ym-fAf"/>
@@ -745,16 +776,46 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rig-DJ-hdP">
+                                                    <rect key="frame" x="562" y="25" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="0Is-45-mAp"/>
+                                                        <constraint firstAttribute="width" constant="30" id="qQq-fM-ttw"/>
+                                                    </constraints>
+                                                    <state key="normal" image="download-icon">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="startDownload:" destination="5Vg-BM-Vut" eventType="touchUpInside" id="Coe-AX-TdE"/>
+                                                        <action selector="startDownload:" destination="Ggk-uC-3gz" eventType="touchUpInside" id="nOJ-7l-9XE"/>
+                                                    </connections>
+                                                </button>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gzt-gt-Drc" customClass="LLACircularProgressView">
+                                                    <rect key="frame" x="562" y="25" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="TXn-Zy-8tE"/>
+                                                        <constraint firstAttribute="width" constant="30" id="dKw-Tu-feK"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="stopDownload:" destination="Ggk-uC-3gz" eventType="touchUpInside" id="180-BV-izd"/>
+                                                        <action selector="stopDownload:" destination="5Vg-BM-Vut" eventType="touchUpInside" id="Adv-Lr-X5S"/>
+                                                    </connections>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MwC-AE-dig" firstAttribute="top" secondItem="rIt-hx-MSF" secondAttribute="topMargin" constant="-8" id="1LS-j0-AUf"/>
                                                 <constraint firstItem="MwC-AE-dig" firstAttribute="leading" secondItem="rIt-hx-MSF" secondAttribute="leadingMargin" constant="95" id="27b-lJ-1eC"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="MwC-AE-dig" secondAttribute="trailing" constant="70" id="2gY-Id-TM4"/>
                                                 <constraint firstItem="MwC-AE-dig" firstAttribute="leading" secondItem="1X4-lQ-tec" secondAttribute="trailing" constant="8" id="4cf-sy-C6r"/>
+                                                <constraint firstItem="Rig-DJ-hdP" firstAttribute="top" secondItem="rIt-hx-MSF" secondAttribute="topMargin" constant="17" id="69z-tC-87Z"/>
                                                 <constraint firstItem="D1w-eS-AEq" firstAttribute="bottom" secondItem="rIt-hx-MSF" secondAttribute="bottomMargin" id="IZM-KG-IK4"/>
                                                 <constraint firstItem="MwC-AE-dig" firstAttribute="leading" secondItem="rIt-hx-MSF" secondAttribute="leadingMargin" constant="80" id="N4Y-S7-Kgf"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="1X4-lQ-tec" secondAttribute="trailing" constant="512" id="Opf-Mh-igF"/>
                                                 <constraint firstItem="MwC-AE-dig" firstAttribute="leading" secondItem="1X4-lQ-tec" secondAttribute="trailing" constant="8" id="QMK-aN-O1z"/>
+                                                <constraint firstItem="Gzt-gt-Drc" firstAttribute="trailing" secondItem="rIt-hx-MSF" secondAttribute="trailingMargin" id="Qu4-RP-riT"/>
+                                                <constraint firstItem="Gzt-gt-Drc" firstAttribute="top" secondItem="rIt-hx-MSF" secondAttribute="topMargin" constant="17" id="bhv-Q5-g6E"/>
+                                                <constraint firstItem="Rig-DJ-hdP" firstAttribute="trailing" secondItem="rIt-hx-MSF" secondAttribute="trailingMargin" id="eG9-e7-Imz"/>
                                                 <constraint firstItem="1X4-lQ-tec" firstAttribute="top" secondItem="rIt-hx-MSF" secondAttribute="topMargin" constant="-8" id="m3E-cT-qcP"/>
                                                 <constraint firstItem="D1w-eS-AEq" firstAttribute="trailing" secondItem="rIt-hx-MSF" secondAttribute="trailingMargin" id="pt7-is-syd"/>
                                                 <constraint firstItem="1X4-lQ-tec" firstAttribute="leading" secondItem="rIt-hx-MSF" secondAttribute="leadingMargin" constant="-8" id="sT7-Bb-tYY"/>
@@ -769,6 +830,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="circularProgressView" destination="Gzt-gt-Drc" id="e4V-9g-dUO"/>
+                                            <outlet property="downloadButton" destination="Rig-DJ-hdP" id="RWP-2w-e2r"/>
                                             <outlet property="momentsLabel" destination="D1w-eS-AEq" id="p81-70-fvk"/>
                                             <outlet property="thumbnailImageView" destination="1X4-lQ-tec" id="YRk-w1-EiW"/>
                                             <outlet property="titleLabel" destination="MwC-AE-dig" id="bsR-cF-Ojr"/>
@@ -877,7 +940,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWN-j6-Qgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1305.5" y="-2217.5"/>
+            <point key="canvasLocation" x="-1264.5" y="-2247.5"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="qBn-FN-hMW">
@@ -885,7 +948,7 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="f8H-1E-eKT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gho-be-LLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1164" y="-1720"/>
+            <point key="canvasLocation" x="-188" y="-928"/>
         </scene>
         <!--Edit Picks View Controller-->
         <scene sceneID="25o-NE-XdQ">
@@ -1098,7 +1161,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1164" y="-1267"/>
+            <point key="canvasLocation" x="-188" y="-475"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="8jw-27-oNr">
@@ -1106,10 +1169,11 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="pIr-JX-ZLq" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1e-Mg-xc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1147" y="143"/>
+            <point key="canvasLocation" x="-1147" y="82.5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="02-Profile" width="750" height="1334"/>
         <image name="06-Picks Feed" width="750" height="1334"/>
         <image name="back-icon" width="36" height="36"/>
         <image name="background-profile" width="750" height="408"/>

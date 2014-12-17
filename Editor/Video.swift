@@ -40,4 +40,31 @@ class Video: CBLModel {
         return view
     }
     
+    class func queryVideosAndPicksNumber() -> CBLView {
+        let view = CouchbaseManager.shared.currentDatabase.viewNamed("videos_with_picks")
+        if view.mapBlock == nil {
+            view.setMapBlock({ (doc, emit) -> Void in
+                if let type = doc["type"] as? String {
+                    switch type {
+                        case "video":
+                            emit(doc["video_id"], doc["title"])
+                        case "pick":
+                            emit(doc["video_id"], nil)
+                        default:
+                            break
+                    }
+                }
+            }, reduceBlock: { (keys, values, rereduce) -> AnyObject! in
+                let title = values.filter({ (element) -> Bool in
+                    if let str = element as? String {
+                        return true
+                    }
+                    return false
+                }).first!
+                return [title, values.count - 1]
+            }, version: "2")
+        }
+        return view
+    }
+    
 }
