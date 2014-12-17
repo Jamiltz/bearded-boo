@@ -669,24 +669,8 @@
                                     <constraint firstAttribute="height" constant="170" id="n1C-Fu-77d"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeD-Ln-8q5">
-                                <rect key="frame" x="0.0" y="170" width="600" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="D0I-ms-Dvj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="-22" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="All Bookmarks" image="channels-icon">
-                                    <color key="titleColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Ggk-uC-3gz" kind="show" id="Kaf-bt-QYm"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="80" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="TdW-0P-Tyh">
-                                <rect key="frame" x="0.0" y="220" width="600" height="380"/>
+                                <rect key="frame" x="0.0" y="170" width="600" height="430"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyPicksCellIdentifier" rowHeight="80" id="c7B-Jh-BeD" customClass="MyPicksCell" customModule="Editor" customModuleProvider="target">
@@ -876,12 +860,8 @@
                             <constraint firstItem="n2o-9y-67k" firstAttribute="top" secondItem="5Z6-KY-uO8" secondAttribute="bottom" constant="-20" id="9i2-c2-aOy"/>
                             <constraint firstItem="SL7-34-7dt" firstAttribute="height" secondItem="R9S-RS-a2V" secondAttribute="height" id="Cgk-ca-1fI"/>
                             <constraint firstItem="5zH-y8-fDg" firstAttribute="top" secondItem="n2o-9y-67k" secondAttribute="bottom" id="EZ3-bt-2C9"/>
-                            <constraint firstItem="TdW-0P-Tyh" firstAttribute="top" secondItem="IeD-Ln-8q5" secondAttribute="bottom" id="FE1-sb-Mex"/>
-                            <constraint firstItem="IeD-Ln-8q5" firstAttribute="top" secondItem="SL7-34-7dt" secondAttribute="bottom" id="HCT-wH-tvi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IeD-Ln-8q5" secondAttribute="trailing" constant="-16" id="KJa-og-LDX"/>
-                            <constraint firstItem="IeD-Ln-8q5" firstAttribute="top" secondItem="SL7-34-7dt" secondAttribute="bottom" id="PvA-oZ-ON9"/>
+                            <constraint firstItem="TdW-0P-Tyh" firstAttribute="top" secondItem="R9S-RS-a2V" secondAttribute="bottom" id="GlJ-nG-XGb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uVx-79-6LP" secondAttribute="trailing" constant="-7" id="Q2T-PH-zJ9"/>
-                            <constraint firstAttribute="centerX" secondItem="IeD-Ln-8q5" secondAttribute="centerX" constant="150" id="RVs-Va-hiR"/>
                             <constraint firstItem="n2o-9y-67k" firstAttribute="leading" secondItem="sbR-h6-tEi" secondAttribute="leadingMargin" constant="-16" id="Sg8-2U-R0R"/>
                             <constraint firstItem="TdW-0P-Tyh" firstAttribute="leading" secondItem="sbR-h6-tEi" secondAttribute="leadingMargin" constant="-16" id="T5z-83-YmG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TdW-0P-Tyh" secondAttribute="trailing" constant="-16" id="Tt5-ko-KW9"/>
@@ -893,17 +873,12 @@
                             <constraint firstItem="SL7-34-7dt" firstAttribute="height" secondItem="R9S-RS-a2V" secondAttribute="height" id="jIR-r2-yZ9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R9S-RS-a2V" secondAttribute="trailing" constant="-16" id="k1P-az-Ubv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n2o-9y-67k" secondAttribute="trailing" constant="-16" id="l1K-ud-jMn"/>
-                            <constraint firstItem="IeD-Ln-8q5" firstAttribute="leading" secondItem="sbR-h6-tEi" secondAttribute="leadingMargin" constant="-16" id="mTf-a7-kgG"/>
-                            <constraint firstAttribute="width" secondItem="IeD-Ln-8q5" secondAttribute="width" multiplier="2" constant="-600" id="oUa-xe-OoY"/>
                             <constraint firstItem="R9S-RS-a2V" firstAttribute="leading" secondItem="sbR-h6-tEi" secondAttribute="leadingMargin" constant="-16" id="otd-NP-Zez"/>
                             <constraint firstItem="SL7-34-7dt" firstAttribute="top" secondItem="5Z6-KY-uO8" secondAttribute="bottom" constant="-20" id="tCy-P3-7FB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="jIR-r2-yZ9"/>
-                                <exclude reference="PvA-oZ-ON9"/>
-                                <exclude reference="RVs-Va-hiR"/>
-                                <exclude reference="oUa-xe-OoY"/>
                             </mask>
                         </variation>
                     </view>
@@ -1292,7 +1267,6 @@
         <image name="06-Picks Feed" width="750" height="1334"/>
         <image name="back-icon" width="36" height="36"/>
         <image name="background-profile" width="750" height="408"/>
-        <image name="channels-icon" width="30" height="26"/>
         <image name="delete-editor-icon" width="16" height="21"/>
         <image name="discover-icon" width="28" height="24"/>
         <image name="download-icon" width="23" height="21"/>
@@ -1310,6 +1284,6 @@
         <image name="user-icon" width="37" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SFB-oR-MmI"/>
+        <segue reference="vZQ-k5-38J"/>
     </inferredMetricsTieBreakers>
 </document>
