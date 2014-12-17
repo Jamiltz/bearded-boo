@@ -10,12 +10,14 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class EditPicksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate {
+class EditPicksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var slider: NMRangeSlider!
     @IBOutlet var lowerLabel: UILabel!
     @IBOutlet var upperLabel: UILabel!
+    @IBOutlet var editSliderControls: UIView!
+    @IBOutlet var editTopControls: UIView!
     
     var video_id: String = ""
     var playerVC: AVPlayerViewController!
@@ -25,6 +27,9 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     
     var oldLowerValue: Float = 0.0
     var oldUpperValue: Float = 0.0
+    
+    var currentTime: CMTime = kCMTimeZero
+    var isEditingMode: Bool = false
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (object as CBLLiveQuery) == liveQuery {
@@ -67,6 +72,14 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         
         alertView = UIAlertView(title: "Publish your Picks", message: "The selected picks (in green) will appear in the news feed. Provide a descriptive subject:", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Confirm")
         alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        
+        navigationController?.interactivePopGestureRecognizer.delegate = self
+    }
+    
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
+        return false;
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -75,6 +88,32 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         navigationController?.navigationBar.topItem?.title = "Edit Picks"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showConfirmMessage:")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    func showEditMode() {
+        currentTime = playerVC.player.currentTime()
+        
+        editTopControls.transform = CGAffineTransformMakeTranslation(0, 0)
+        editSliderControls.transform = CGAffineTransformMakeTranslation(0, 0)
+        
+        spring(0.5, { () -> Void in
+            self.editTopControls.transform = CGAffineTransformMakeTranslation(0, 40)
+            self.editSliderControls.transform = CGAffineTransformMakeTranslation(0, 100)
+        })
+    }
+    
+    func hideEditMode() {
+        playerVC.player.currentItem.forwardPlaybackEndTime = kCMTimeInvalid
+        playerVC.player.seekToTime(currentTime)
+        
+        spring(0.5, { () -> Void in
+            self.editTopControls.transform = CGAffineTransformMakeTranslation(0, 0)
+            self.editSliderControls.transform = CGAffineTransformMakeTranslation(0, 0)
+        })
     }
     
     func showConfirmMessage(sender: AnyObject) {
@@ -133,6 +172,41 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    @IBAction func rewindPlayback(sender: AnyObject) {
+        let time = playerVC.player.currentTime()
+        let new_time = CMTimeMakeWithSeconds(CMTimeGetSeconds(time) - 5, 600)
+        playerVC.player.seekToTime(new_time)
+    }
+    
+    @IBAction func savePick(sender: AnyObject) {
+        let cmtime = playerVC.player.currentTime()
+        let seconds = Double(CMTimeGetSeconds(cmtime))
+        
+        let pick = Pick(video_id: video_id, start_at: nil, end_at: seconds)
+        if pick.save(nil) {
+            println("saved pick")
+        }
+    }
+    
+    @IBAction func forwardPlayback(sender: AnyObject) {
+        let time = playerVC.player.currentTime()
+        let new_time = CMTimeMakeWithSeconds(CMTimeGetSeconds(time) + 5, 600)
+        playerVC.player.seekToTime(new_time)
+    }
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+        println("background")
+        
+        var delta: Int64 = 1 * Int64(NSEC_PER_MSEC)
+        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        
+        if playerVC.player.rate == 1.0 {
+            dispatch_after(time, dispatch_get_main_queue(), {
+                self.playerVC.player.play()
+            })
+        }
+    }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return picks.count
@@ -148,8 +222,14 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        if !isEditingMode {
+            showEditMode()
+            isEditingMode = true
+        }
+        
         let pick = picks[indexPath.item]
-
+        
         setSliderForPick(pick)
         
         playerVC.player.currentItem.forwardPlaybackEndTime = kCMTimeInvalid
@@ -164,6 +244,16 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         let end_cmtime = CMTimeMakeWithSeconds(Float64(pick.end_at), 600)
         playerVC.player.currentItem.forwardPlaybackEndTime = end_cmtime
         playerVC.player.play()
+    }
+    
+    @IBAction func panGesture(sender: UIButton) {
+        if isEditingMode {
+            hideEditMode()
+            if let indexPaths = collectionView.indexPathsForSelectedItems() as? [NSIndexPath] {
+                collectionView.deselectItemAtIndexPath(indexPaths[0], animated: true)
+            }
+            isEditingMode = false
+        }
     }
     
     @IBAction func doubleTappedCell(sender: AnyObject) {

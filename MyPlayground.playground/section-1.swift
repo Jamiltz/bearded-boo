@@ -26,4 +26,4 @@ extension String {
     func MD5() {
         
     }
-}
+//}

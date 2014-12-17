@@ -42,6 +42,7 @@ class MyPicksCell: UITableViewCell {
         downloadButton.hidden = false
         circularProgressView.progress = 0.0
         circularProgressView.hidden = true
+        video_id = ""
     }
 
 }
