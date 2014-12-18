@@ -14,7 +14,7 @@ class EditPicksCell: UICollectionViewCell {
     var highlight: Bool? {
         didSet {
             if highlight! {
-                highlightView.backgroundColor = kGreenColor
+                highlightView.backgroundColor = kBlueIconColor
             }
         }
     }

@@ -10,6 +10,7 @@ let kGreenColor = UIColor(hue:0.405, saturation:0.716, brightness:0.663, alpha: 
 let kRedColor = UIColor(hue:0.980, saturation:0.861, brightness:0.816, alpha: 1)
 let kBlueColor = UIColor(hue:0.587, saturation:1.000, brightness:1.000, alpha: 1)
 let kCardSelectedColor = UIColor(hue:0.591, saturation:0.457, brightness:0.996, alpha: 1)
+let kBlueIconColor = UIColor(hue:0.596, saturation:0.675, brightness:0.976, alpha: 1)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

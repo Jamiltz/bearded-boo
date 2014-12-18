@@ -35,7 +35,7 @@ class FeedCell: UICollectionViewCell {
     
     override var selected: Bool {
         didSet {
-            backgroundColor = selected ? kCardSelectedColor : UIColor.whiteColor()
+            backgroundColor = selected ? kBlueIconColor : UIColor.whiteColor()
         }
     }
     

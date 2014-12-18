@@ -34,6 +34,7 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
         
         let token = FBSession.activeSession().accessTokenData
         
+        // FATAL :: http call crashing the app when offline
         FBRequestConnection.startForMeWithCompletionHandler { (connection, result, error) -> Void in
             let shouldSkipLogin = CouchbaseManager.shared.currentUserId
             if shouldSkipLogin == nil {

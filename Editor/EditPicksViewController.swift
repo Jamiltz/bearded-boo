@@ -33,10 +33,10 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (object as CBLLiveQuery) == liveQuery {
+            picks.removeAll(keepCapacity: false)
+            
             for (index, row) in enumerate(liveQuery.rows.allObjects) {
-                if index >= picks.count {
-                    picks.append(Pick(forDocument: (row as CBLQueryRow).document))
-                }
+                picks.append(Pick(forDocument: (row as CBLQueryRow).document))
             }
             
             picks.sort({ (a, b) -> Bool in
@@ -61,6 +61,7 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         if file.isLocal {
             playerVC.player = AVPlayer(URL: NSURL(fileURLWithPath: file.path)!)
         } else {
+            // FATAL :: http call crashing app when offline
             XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video_id, completionHandler: { (video, error) -> Void in
                 let mp4Url = video.streamURLs[18] as NSURL
                 self.playerVC.player = AVPlayer(URL: mp4Url)
