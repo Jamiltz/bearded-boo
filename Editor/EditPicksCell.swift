@@ -1,15 +1,16 @@
 import UIKit
 
-class EditPicksCell: UICollectionViewCell {
+class EditPicksCell: UITableViewCell {
     
     @IBOutlet var highlightView: UIView!
     @IBOutlet var indexLabel: UILabel!
+    @IBOutlet var startTimeLabel: UILabel!
     
-    override var selected: Bool {
-        didSet {
-            backgroundColor = selected ? kGrayColor : UIColor.clearColor()
-        }
-    }
+//    override var selected: Bool {
+//        didSet {
+//            backgroundColor = selected ? kGrayColor : UIColor.clearColor()
+//        }
+//    }
     
     var highlight: Bool? {
         didSet {
@@ -18,11 +19,12 @@ class EditPicksCell: UICollectionViewCell {
             }
         }
     }
+
     
     override func prepareForReuse() {
         super.prepareForReuse()
         highlight = false
-        highlightView.backgroundColor = UIColor.clearColor()
+//        highlightView.backgroundColor = UIColor.clearColor()
     }
     
 }

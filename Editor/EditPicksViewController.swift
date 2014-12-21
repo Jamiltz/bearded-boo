@@ -10,9 +10,9 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class EditPicksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate {
+class EditPicksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate {
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var slider: NMRangeSlider!
     @IBOutlet var lowerLabel: UILabel!
     @IBOutlet var upperLabel: UILabel!
@@ -43,7 +43,13 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
                 return a.end_at < b.end_at
             })
             
-            collectionView.reloadData()
+            let selectedIndex = tableView.indexPathForSelectedRow()
+            
+            tableView.reloadData()
+            
+            if let indexPath = selectedIndex {
+                tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+            }
         }
     }
     
@@ -77,6 +83,7 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
         navigationController?.interactivePopGestureRecognizer.delegate = self
+
     }
     
 //    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
@@ -208,22 +215,32 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
             })
         }
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat(80)
+    }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return picks.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EditPicksCellIdentifier", forIndexPath: indexPath) as EditPicksCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("EditPicksCellIdentifier", forIndexPath: indexPath) as EditPicksCell
+        let pick = picks[indexPath.row]
         
-        cell.indexLabel.text = "\(indexPath.row)"
-        cell.highlight = picks[indexPath.row].highlight
+        if pick.start_at == 0.0 {
+            cell.startTimeLabel.text = secondsConvertToTimeFormat(Float(pick.end_at - 12.0))
+        } else {
+            cell.startTimeLabel.text = secondsConvertToTimeFormat(Float(pick.start_at))
+        }
+//        cell.indexLabel.text = "\(indexPath.row)"
+//        cell.highlight = picks[indexPath.row].highlight
+        
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if !isEditingMode {
             showEditMode()
             isEditingMode = true
@@ -247,12 +264,26 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         playerVC.player.play()
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let pick = picks[indexPath.row]
+            if pick.deleteDocument(nil) {
+                picks.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+        }
+    }
+    
     @IBAction func panGesture(sender: UIButton) {
         if isEditingMode {
             hideEditMode()
-            if let indexPaths = collectionView.indexPathsForSelectedItems() as? [NSIndexPath] {
+            if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
                 if indexPaths.count > 0 {
-                    collectionView.deselectItemAtIndexPath(indexPaths[0], animated: true)
+                    tableView.deselectRowAtIndexPath(indexPaths[0], animated: true)
                 }
             }
             isEditingMode = false
@@ -260,8 +291,8 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     @IBAction func doubleTappedCell(sender: AnyObject) {
-        let tappedPoint = sender.locationInView(collectionView)
-        let tappedCellPath = collectionView.indexPathForItemAtPoint(tappedPoint)
+        let tappedPoint = sender.locationInView(tableView)
+        let tappedCellPath = tableView.indexPathForRowAtPoint(tappedPoint)
 
         if let path = tappedCellPath {
             let pick = picks[path.item]
@@ -283,14 +314,16 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         
         oldLowerValue = slider.lowerValue
         oldUpperValue = slider.upperValue
+        
+        savePick()
     }
     
     @IBAction func sliderValuesChanged(sender: NMRangeSlider) {
         updateSliderLabels()
     }
     
-    @IBAction func savePick() {
-        if let indexPaths = collectionView.indexPathsForSelectedItems() as? [NSIndexPath] {
+    func savePick() {
+        if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
             let pick = picks[indexPaths[0].item]
             pick.start_at = Double(slider.lowerValue)
             pick.end_at = Double(slider.upperValue)
@@ -321,7 +354,7 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     @IBAction func deletePick() {
-        if let indexPaths = collectionView.indexPathsForSelectedItems() as? [NSIndexPath] {
+        if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
             let pick = picks[indexPaths[0].item]
             if pick.deleteDocument(nil) {
                 println("deleted pick")

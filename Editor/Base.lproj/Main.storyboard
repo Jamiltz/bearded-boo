@@ -577,7 +577,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWN-j6-Qgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1264.5" y="-2247.5"/>
+            <point key="canvasLocation" x="-1268.5" y="-2247.5"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="qBn-FN-hMW">
@@ -585,7 +585,7 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="f8H-1E-eKT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gho-be-LLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-698" y="-1720"/>
+            <point key="canvasLocation" x="-698" y="-1718"/>
         </scene>
         <!--Edit Picks View Controller-->
         <scene sceneID="25o-NE-XdQ">
@@ -770,7 +770,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="fvu-4a-fHf"/>
                                         </constraints>
-                                        <state key="normal" image="delete-editor-icon">
+                                        <state key="normal" image="bubble-icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -803,96 +803,73 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-SA-Ydz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-V8-uAF">
                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
-                                <gestureRecognizers/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z88-ZY-bEe">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditPicksCellIdentifier" id="XbH-XI-Wyv" customClass="EditPicksCell" customModule="Editor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditPicksCellIdentifier" rowHeight="80" id="m3b-nE-UIJ" customClass="EditPicksCell" customModule="Editor" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m3b-nE-UIJ" id="Ay7-cT-LwQ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRg-P3-mpL">
-                                                    <rect key="frame" x="2" y="2" width="196" height="96"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hy-9h-jRa">
-                                                            <rect key="frame" x="58" y="31" width="81" height="31.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="31.5" id="GPy-th-kon"/>
-                                                                <constraint firstAttribute="width" constant="81" id="KJB-dj-9bb"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="23"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:27:12.4" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dF0-kD-too">
+                                                    <rect key="frame" x="8" y="8" width="105" height="39"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="centerY" secondItem="4Hy-9h-jRa" secondAttribute="centerY" constant="1.25" id="CDL-Jv-8k3"/>
-                                                        <constraint firstAttribute="centerX" secondItem="4Hy-9h-jRa" secondAttribute="centerX" id="am7-cI-l1l"/>
+                                                        <constraint firstAttribute="width" constant="105" id="6fo-8Y-nm9"/>
+                                                        <constraint firstAttribute="height" constant="39" id="OFq-Ge-qzy"/>
                                                     </constraints>
-                                                </view>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="22"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="KRg-P3-mpL" firstAttribute="leading" secondItem="XbH-XI-Wyv" secondAttribute="leading" constant="2" id="0z9-eB-kgr"/>
-                                            <constraint firstItem="KRg-P3-mpL" firstAttribute="trailing" secondItem="XbH-XI-Wyv" secondAttribute="trailing" constant="-2" id="FRe-uU-cQW"/>
-                                            <constraint firstItem="KRg-P3-mpL" firstAttribute="top" secondItem="XbH-XI-Wyv" secondAttribute="top" constant="2" id="y9N-SV-gum"/>
-                                            <constraint firstItem="KRg-P3-mpL" firstAttribute="bottom" secondItem="XbH-XI-Wyv" secondAttribute="bottom" constant="-2" id="zBv-LW-FX9"/>
-                                        </constraints>
-                                        <size key="customSize" width="200" height="100"/>
+                                            <constraints>
+                                                <constraint firstItem="dF0-kD-too" firstAttribute="leading" secondItem="Ay7-cT-LwQ" secondAttribute="leadingMargin" id="r3C-aF-SvQ"/>
+                                                <constraint firstItem="dF0-kD-too" firstAttribute="top" secondItem="Ay7-cT-LwQ" secondAttribute="topMargin" id="vqk-E7-q9g"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="highlightView" destination="KRg-P3-mpL" id="DY3-Sa-Arm"/>
-                                            <outlet property="indexLabel" destination="4Hy-9h-jRa" id="JsC-PX-24a"/>
+                                            <outlet property="startTimeLabel" destination="dF0-kD-too" id="JqA-2F-V2m"/>
                                         </connections>
-                                    </collectionViewCell>
-                                </cells>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="4yi-je-jI0" id="ykT-rr-MfC"/>
-                                    <outlet property="delegate" destination="4yi-je-jI0" id="H9Y-YS-boN"/>
-                                    <outletCollection property="gestureRecognizers" destination="1cN-V4-qp6" appends="YES" id="Lpc-SS-Km8"/>
+                                    <outlet property="dataSource" destination="4yi-je-jI0" id="TDI-Vg-la4"/>
+                                    <outlet property="delegate" destination="4yi-je-jI0" id="XiR-7J-cna"/>
                                 </connections>
-                            </collectionView>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mPc-cZ-Y44" firstAttribute="leading" secondItem="H6Q-fF-Jeh" secondAttribute="leadingMargin" constant="-16" id="5C4-VD-96q"/>
+                            <constraint firstItem="Jda-V8-uAF" firstAttribute="top" secondItem="mPc-cZ-Y44" secondAttribute="bottom" id="BoF-3d-tSb"/>
                             <constraint firstItem="h0Z-Jh-CHb" firstAttribute="leading" secondItem="H6Q-fF-Jeh" secondAttribute="leadingMargin" constant="-16" id="CT4-a7-4Xi"/>
-                            <constraint firstItem="aF7-SA-Ydz" firstAttribute="top" secondItem="mPc-cZ-Y44" secondAttribute="bottom" id="JJ7-XE-WtT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jda-V8-uAF" secondAttribute="trailing" constant="-16" id="GxH-Qn-rbC"/>
+                            <constraint firstItem="kAw-GL-spG" firstAttribute="top" secondItem="Jda-V8-uAF" secondAttribute="bottom" id="JHt-kd-ht0"/>
                             <constraint firstItem="mPc-cZ-Y44" firstAttribute="top" secondItem="ryg-7r-TJW" secondAttribute="bottom" constant="-100" id="No0-Vh-iiV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mPc-cZ-Y44" secondAttribute="trailing" constant="-16" id="P9f-oz-MLG"/>
-                            <constraint firstItem="kAw-GL-spG" firstAttribute="top" secondItem="aF7-SA-Ydz" secondAttribute="bottom" id="Qvc-xT-5B5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="h0Z-Jh-CHb" secondAttribute="trailing" constant="-16" id="SrU-Vd-DRh"/>
                             <constraint firstItem="VGe-3Q-a21" firstAttribute="top" secondItem="h0Z-Jh-CHb" secondAttribute="bottom" id="UjE-vT-6Me"/>
                             <constraint firstItem="h0Z-Jh-CHb" firstAttribute="top" secondItem="ryg-7r-TJW" secondAttribute="top" constant="-20" id="WYi-sF-TIB"/>
                             <constraint firstItem="ryg-7r-TJW" firstAttribute="top" secondItem="VGe-3Q-a21" secondAttribute="bottom" constant="-20" id="ZO9-GN-o1B"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ryg-7r-TJW" secondAttribute="trailing" constant="-16" id="cmc-RT-0Gx"/>
                             <constraint firstItem="h0Z-Jh-CHb" firstAttribute="top" secondItem="VGe-3Q-a21" secondAttribute="bottom" constant="20" id="gkD-5n-uPa"/>
-                            <constraint firstItem="aF7-SA-Ydz" firstAttribute="leading" secondItem="H6Q-fF-Jeh" secondAttribute="leadingMargin" constant="-16" id="ouC-as-17T"/>
+                            <constraint firstItem="Jda-V8-uAF" firstAttribute="leading" secondItem="H6Q-fF-Jeh" secondAttribute="leadingMargin" constant="-16" id="gnu-lh-WU4"/>
                             <constraint firstItem="ryg-7r-TJW" firstAttribute="leading" secondItem="H6Q-fF-Jeh" secondAttribute="leadingMargin" constant="-16" id="stM-MC-g3T"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="aF7-SA-Ydz" secondAttribute="trailing" constant="-16" id="t5B-uj-yIu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="gkD-5n-uPa"/>
                                 <exclude reference="UjE-vT-6Me"/>
+                                <exclude reference="gkD-5n-uPa"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="aF7-SA-Ydz" id="zGE-8s-cJn"/>
                         <outlet property="editSliderControls" destination="mPc-cZ-Y44" id="aHw-bc-nJC"/>
                         <outlet property="editTopControls" destination="h0Z-Jh-CHb" id="2QW-Oc-Uto"/>
                         <outlet property="lowerLabel" destination="3j7-5J-DHI" id="TpI-HE-PBA"/>
                         <outlet property="slider" destination="ILv-Kg-reC" id="K0x-of-erh"/>
+                        <outlet property="tableView" destination="Jda-V8-uAF" id="Yhi-LV-yNB"/>
                         <outlet property="upperLabel" destination="wZ4-qm-dOv" id="6uJ-a3-pqO"/>
                     </connections>
                 </viewController>
@@ -918,7 +895,7 @@
         <image name="06-Picks Feed" width="750" height="1334"/>
         <image name="back-icon" width="36" height="36"/>
         <image name="background-profile" width="750" height="408"/>
-        <image name="delete-editor-icon" width="16" height="21"/>
+        <image name="bubble-icon" width="29" height="25"/>
         <image name="download-icon" width="23" height="21"/>
         <image name="feed-icon" width="37" height="37"/>
         <image name="forward-icon" width="41" height="35"/>
@@ -928,7 +905,7 @@
         <image name="logout-icon" width="25" height="20"/>
         <image name="popover-background" width="170" height="48"/>
         <image name="profile-icon" width="30" height="30"/>
-        <image name="rewind-editor-icon" width="26" height="23"/>
+        <image name="rewind-editor-icon" width="29" height="25"/>
         <image name="rewind-icon" width="41" height="35"/>
         <image name="save-editor-icon" width="24" height="20"/>
         <image name="user-icon" width="37" height="37"/>
