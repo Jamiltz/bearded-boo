@@ -79,9 +79,9 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         navigationController?.interactivePopGestureRecognizer.delegate = self
     }
     
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
-        return false;
-    }
+//    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
+//        return false;
+//    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -251,7 +251,9 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
         if isEditingMode {
             hideEditMode()
             if let indexPaths = collectionView.indexPathsForSelectedItems() as? [NSIndexPath] {
-                collectionView.deselectItemAtIndexPath(indexPaths[0], animated: true)
+                if indexPaths.count > 0 {
+                    collectionView.deselectItemAtIndexPath(indexPaths[0], animated: true)
+                }
             }
             isEditingMode = false
         }
@@ -260,7 +262,7 @@ class EditPicksViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBAction func doubleTappedCell(sender: AnyObject) {
         let tappedPoint = sender.locationInView(collectionView)
         let tappedCellPath = collectionView.indexPathForItemAtPoint(tappedPoint)
-        
+
         if let path = tappedCellPath {
             let pick = picks[path.item]
             pick.highlight = !pick.highlight

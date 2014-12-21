@@ -7,7 +7,7 @@ class EditPicksCell: UICollectionViewCell {
     
     override var selected: Bool {
         didSet {
-            backgroundColor = selected ? UIColor.whiteColor() : UIColor.clearColor()
+            backgroundColor = selected ? kGrayColor : UIColor.clearColor()
         }
     }
     

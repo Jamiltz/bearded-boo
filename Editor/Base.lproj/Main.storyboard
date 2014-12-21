@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C78c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xpg-z7-zxR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xpg-z7-zxR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -941,7 +941,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mPc-cZ-Y44">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPc-cZ-Y44">
                                 <rect key="frame" x="0.0" y="100" width="600" height="200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILv-Kg-reC" customClass="NMRangeSlider">
@@ -1077,7 +1077,7 @@
                                     <outletCollection property="gestureRecognizers" destination="aUP-un-eVJ" appends="YES" id="oqs-v8-s51"/>
                                 </connections>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ryg-7r-TJW">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryg-7r-TJW">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="qcu-VX-kbS"/>
@@ -1086,8 +1086,8 @@
                                     <segue destination="f8H-1E-eKT" kind="embed" id="qKc-oa-dWf"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0Z-Jh-CHb">
-                                <rect key="frame" x="0.0" y="-40" width="600" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0Z-Jh-CHb">
+                                <rect key="frame" x="0.0" y="-20" width="600" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rs-9f-tzx">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
@@ -1148,7 +1148,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-SA-Ydz">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-SA-Ydz">
                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
                                 <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z88-ZY-bEe">
@@ -1168,15 +1168,19 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRg-P3-mpL">
                                                     <rect key="frame" x="2" y="2" width="196" height="96"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hy-9h-jRa">
-                                                            <rect key="frame" x="91" y="32" width="14" height="31.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hy-9h-jRa">
+                                                            <rect key="frame" x="58" y="31" width="81" height="31.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="31.5" id="GPy-th-kon"/>
+                                                                <constraint firstAttribute="width" constant="81" id="KJB-dj-9bb"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="23"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="centerY" secondItem="4Hy-9h-jRa" secondAttribute="centerY" id="CDL-Jv-8k3"/>
+                                                        <constraint firstAttribute="centerY" secondItem="4Hy-9h-jRa" secondAttribute="centerY" constant="1.25" id="CDL-Jv-8k3"/>
                                                         <constraint firstAttribute="centerX" secondItem="4Hy-9h-jRa" secondAttribute="centerX" id="am7-cI-l1l"/>
                                                     </constraints>
                                                 </view>
@@ -1199,7 +1203,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="4yi-je-jI0" id="ykT-rr-MfC"/>
                                     <outlet property="delegate" destination="4yi-je-jI0" id="H9Y-YS-boN"/>
-                                    <outletCollection property="gestureRecognizers" destination="1cN-V4-qp6" appends="YES" id="o63-Ml-hFi"/>
+                                    <outletCollection property="gestureRecognizers" destination="1cN-V4-qp6" appends="YES" id="Lpc-SS-Km8"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -1213,8 +1217,8 @@
                             <constraint firstItem="kAw-GL-spG" firstAttribute="top" secondItem="aF7-SA-Ydz" secondAttribute="bottom" id="Qvc-xT-5B5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="h0Z-Jh-CHb" secondAttribute="trailing" constant="-16" id="SrU-Vd-DRh"/>
                             <constraint firstItem="VGe-3Q-a21" firstAttribute="top" secondItem="h0Z-Jh-CHb" secondAttribute="bottom" id="UjE-vT-6Me"/>
-                            <constraint firstItem="h0Z-Jh-CHb" firstAttribute="top" secondItem="ryg-7r-TJW" secondAttribute="top" constant="-40" id="WYi-sF-TIB"/>
-                            <constraint firstItem="ryg-7r-TJW" firstAttribute="top" secondItem="VGe-3Q-a21" secondAttribute="bottom" id="ZO9-GN-o1B"/>
+                            <constraint firstItem="h0Z-Jh-CHb" firstAttribute="top" secondItem="ryg-7r-TJW" secondAttribute="top" constant="-20" id="WYi-sF-TIB"/>
+                            <constraint firstItem="ryg-7r-TJW" firstAttribute="top" secondItem="VGe-3Q-a21" secondAttribute="bottom" constant="-20" id="ZO9-GN-o1B"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ryg-7r-TJW" secondAttribute="trailing" constant="-16" id="cmc-RT-0Gx"/>
                             <constraint firstItem="h0Z-Jh-CHb" firstAttribute="top" secondItem="VGe-3Q-a21" secondAttribute="bottom" constant="20" id="gkD-5n-uPa"/>
                             <constraint firstItem="aF7-SA-Ydz" firstAttribute="leading" secondItem="H6Q-fF-Jeh" secondAttribute="leadingMargin" constant="-16" id="ouC-as-17T"/>
@@ -1223,8 +1227,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="UjE-vT-6Me"/>
                                 <exclude reference="gkD-5n-uPa"/>
+                                <exclude reference="UjE-vT-6Me"/>
                             </mask>
                         </variation>
                     </view>
@@ -1240,8 +1244,8 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b47-0q-Z3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer delaysTouchesBegan="YES" numberOfTapsRequired="2" id="1cN-V4-qp6">
                     <connections>
-                        <action selector="doubleTappedCell:" destination="4yi-je-jI0" id="OtU-xx-Ibg"/>
-                        <outlet property="delegate" destination="4yi-je-jI0" id="D53-32-0hy"/>
+                        <action selector="doubleTappedCell:" destination="4yi-je-jI0" id="JfE-J5-mhM"/>
+                        <outlet property="delegate" destination="4yi-je-jI0" id="PeL-h6-rmA"/>
                     </connections>
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="up" id="aUP-un-eVJ">
