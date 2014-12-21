@@ -33,7 +33,6 @@
 		BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396321A14DA0400BB779E /* AppDelegate.swift */; };
 		BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396391A14DA0400BB779E /* CouchbaseManager.swift */; };
 		BEE3964D1A14DA0400BB779E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963A1A14DA0400BB779E /* Document.swift */; };
-		BEE3964E1A14DA0400BB779E /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963B1A14DA0400BB779E /* EditorViewController.swift */; };
 		BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963C1A14DA0400BB779E /* FacebookManager.swift */; };
 		BEE396501A14DA0400BB779E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE3963D1A14DA0400BB779E /* Images.xcassets */; };
 		BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963F1A14DA0400BB779E /* LoginViewController.swift */; };
@@ -42,8 +41,6 @@
 		BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396421A14DA0400BB779E /* SnippetButton.swift */; };
 		BEE396561A14DA0400BB779E /* SnippetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396431A14DA0400BB779E /* SnippetCell.swift */; };
 		BEE396581A14DA0400BB779E /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396451A14DA0400BB779E /* Video.swift */; };
-		BEE396591A14DA0400BB779E /* VideoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396461A14DA0400BB779E /* VideoTableCell.swift */; };
-		BEE3965A1A14DA0400BB779E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396471A14DA0400BB779E /* VideoViewController.swift */; };
 		BEE3965B1A14DA0400BB779E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396481A14DA0400BB779E /* ViewController.swift */; };
 		BEE3968F1A14DB2A00BB779E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE396861A14DAE400BB779E /* LaunchScreen.xib */; };
 		BEE396901A14DB2A00BB779E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEE396881A14DAE400BB779E /* Main.storyboard */; };
@@ -89,7 +86,6 @@
 		BEE396321A14DA0400BB779E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Editor/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		BEE396391A14DA0400BB779E /* CouchbaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchbaseManager.swift; path = Editor/CouchbaseManager.swift; sourceTree = SOURCE_ROOT; };
 		BEE3963A1A14DA0400BB779E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Editor/Document.swift; sourceTree = SOURCE_ROOT; };
-		BEE3963B1A14DA0400BB779E /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditorViewController.swift; path = Editor/EditorViewController.swift; sourceTree = SOURCE_ROOT; };
 		BEE3963C1A14DA0400BB779E /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookManager.swift; path = Editor/FacebookManager.swift; sourceTree = SOURCE_ROOT; };
 		BEE3963D1A14DA0400BB779E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Editor/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		BEE3963F1A14DA0400BB779E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Editor/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -98,8 +94,6 @@
 		BEE396421A14DA0400BB779E /* SnippetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnippetButton.swift; path = Editor/SnippetButton.swift; sourceTree = SOURCE_ROOT; };
 		BEE396431A14DA0400BB779E /* SnippetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnippetCell.swift; path = Editor/SnippetCell.swift; sourceTree = SOURCE_ROOT; };
 		BEE396451A14DA0400BB779E /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = Editor/Video.swift; sourceTree = SOURCE_ROOT; };
-		BEE396461A14DA0400BB779E /* VideoTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoTableCell.swift; path = Editor/VideoTableCell.swift; sourceTree = SOURCE_ROOT; };
-		BEE396471A14DA0400BB779E /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoViewController.swift; path = Editor/VideoViewController.swift; sourceTree = SOURCE_ROOT; };
 		BEE396481A14DA0400BB779E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Editor/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		BEE396871A14DAE400BB779E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Editor/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		BEE396891A14DAE400BB779E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Editor/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
@@ -162,15 +156,6 @@
 				BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */,
 			);
 			name = "Profile Page";
-			sourceTree = "<group>";
-		};
-		BE090BAB1A1FEAAC0078F70E /* Channels Page */ = {
-			isa = PBXGroup;
-			children = (
-				BEE396471A14DA0400BB779E /* VideoViewController.swift */,
-				BEE396461A14DA0400BB779E /* VideoTableCell.swift */,
-			);
-			name = "Channels Page";
 			sourceTree = "<group>";
 		};
 		BE090BAC1A20C73C0078F70E /* Tab */ = {
@@ -265,12 +250,10 @@
 				BEEB6B981A0948640032821E /* Models */,
 				BE090BA71A1FE9B30078F70E /* Profile Page */,
 				BE9C96531A23312100F820BB /* Edit Picks */,
-				BE090BAB1A1FEAAC0078F70E /* Channels Page */,
 				BEE396321A14DA0400BB779E /* AppDelegate.swift */,
 				BEE396391A14DA0400BB779E /* CouchbaseManager.swift */,
 				BEE396861A14DAE400BB779E /* LaunchScreen.xib */,
 				BEE396881A14DAE400BB779E /* Main.storyboard */,
-				BEE3963B1A14DA0400BB779E /* EditorViewController.swift */,
 				BE70E7F41A1F5F05000A85BF /* Utilities.swift */,
 				BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */,
 				BE77D2521A18CC65006C3F50 /* StepsViewController.swift */,
@@ -479,9 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEE3964E1A14DA0400BB779E /* EditorViewController.swift in Sources */,
 				BE9C96551A23315500F820BB /* EditPicksViewController.swift in Sources */,
-				BEE3965A1A14DA0400BB779E /* VideoViewController.swift in Sources */,
 				BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */,
 				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
 				BE10BC411A3C671E000CCCF7 /* PlayerViewController.swift in Sources */,
@@ -496,7 +477,6 @@
 				BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */,
 				BE70E7F51A1F5F05000A85BF /* Utilities.swift in Sources */,
 				BEE396561A14DA0400BB779E /* SnippetCell.swift in Sources */,
-				BEE396591A14DA0400BB779E /* VideoTableCell.swift in Sources */,
 				BEE3965B1A14DA0400BB779E /* ViewController.swift in Sources */,
 				BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */,
 				BECCD7171A3B5A4E0058A698 /* FeedViewController.swift in Sources */,
