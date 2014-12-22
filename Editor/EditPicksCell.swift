@@ -5,6 +5,7 @@ class EditPicksCell: UITableViewCell {
     @IBOutlet var highlightView: UIView!
     @IBOutlet var indexLabel: UILabel!
     @IBOutlet var startTimeLabel: UILabel!
+    @IBOutlet var captionLabel: UILabel!
     
 //    override var selected: Bool {
 //        didSet {
@@ -24,6 +25,7 @@ class EditPicksCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         highlight = false
+        captionLabel.text = ""
 //        highlightView.backgroundColor = UIColor.clearColor()
     }
     

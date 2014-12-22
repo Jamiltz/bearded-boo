@@ -5,10 +5,11 @@ class Pick: CBLModel {
     @NSManaged var video_id: String
     @NSManaged var start_at: Double
     @NSManaged var end_at: Double
+    @NSManaged var caption: String?
     @NSManaged var highlight: Bool
     
     
-    init(video_id: String, start_at: Double?, end_at: Double) {
+    init(video_id: String, start_at: Double?, end_at: Double, caption: String) {
         super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
         
         setValue("pick", ofProperty: "type")
@@ -19,6 +20,7 @@ class Pick: CBLModel {
         }
 
         self.end_at = end_at
+        self.caption = caption
     }
     
     override init!(document: CBLDoc) {

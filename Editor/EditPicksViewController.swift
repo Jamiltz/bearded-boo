@@ -22,6 +22,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     var video_id: String = ""
     var playerVC: AVPlayerViewController!
     var alertView: UIAlertView!
+    var captionAlertView: UIAlertView!
     var liveQuery: CBLLiveQuery!
     var picks: [Pick] = []
     
@@ -80,6 +81,9 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         alertView = UIAlertView(title: "Publish your Picks", message: "The selected picks (in green) will appear in the news feed. Provide a descriptive subject:", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Confirm")
         alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
         
+        captionAlertView = UIAlertView(title: "Caption", message: "Give a descriptive title to this pick", delegate: self, cancelButtonTitle: "Close", otherButtonTitles: "Save")
+        captionAlertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
         navigationController?.interactivePopGestureRecognizer.delegate = self
@@ -126,14 +130,6 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     
     func showConfirmMessage(sender: AnyObject) {
         alertView.show()
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 1 {
-            if let text = alertView.textFieldAtIndex(0)?.text {
-                publishSelectedPicks(text)
-            }
-        }
     }
     
     func publishSelectedPicks(title: String) {
@@ -191,7 +187,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         let cmtime = playerVC.player.currentTime()
         let seconds = Double(CMTimeGetSeconds(cmtime))
         
-        let pick = Pick(video_id: video_id, start_at: nil, end_at: seconds)
+        let pick = Pick(video_id: video_id, start_at: nil, end_at: seconds, caption: "")
         if pick.save(nil) {
             println("saved pick")
         }
@@ -236,6 +232,12 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
 //        cell.indexLabel.text = "\(indexPath.row)"
 //        cell.highlight = picks[indexPath.row].highlight
         
+        cell.captionLabel.text = ""
+        if let caption = pick.caption {
+            cell.captionLabel.text = caption
+        }
+        
+        cell.captionLabel.sizeToFit()
         
         return cell
     }
@@ -353,6 +355,15 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         playerVC.player.play()
     }
     
+    @IBAction func editCaption() {
+        if let indexPath = tableView.indexPathForSelectedRow() {
+            if let caption = picks[indexPath.row].caption {
+                captionAlertView.textFieldAtIndex(0)?.text = picks[indexPath.row].caption
+            }
+            captionAlertView.show()
+        }
+    }
+    
     @IBAction func deletePick() {
         if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
             let pick = picks[indexPaths[0].item]
@@ -361,6 +372,24 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
                 picks.removeAtIndex(indexPaths[0].item)
             }
         }
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            if let indexPath = tableView.indexPathForSelectedRow() {
+                let pick = picks[indexPath.row]
+                pick.caption = captionAlertView.textFieldAtIndex(0)?.text
+                if pick.save(nil) {
+                    println("updated pick")
+                }
+            }
+        }
+        
+        //        if buttonIndex == 1 {
+        //            if let text = alertView.textFieldAtIndex(0)?.text {
+        //                publishSelectedPicks(text)
+        //            }
+        //        }
     }
     
     func setSliderForPick(pick: Pick) {

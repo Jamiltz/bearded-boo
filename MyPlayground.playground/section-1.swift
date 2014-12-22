@@ -27,3 +27,14 @@ extension String {
         
     }
 //}
+
+
+var string = "a test string"
+
+func reverseString(aString: String) {
+    
+    var l: String = aString.count
+    
+    whil
+    
+}
