@@ -380,6 +380,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
                 let pick = picks[indexPath.row]
                 pick.caption = captionAlertView.textFieldAtIndex(0)?.text
                 if pick.save(nil) {
+                    captionAlertView.textFieldAtIndex(0)?.text = ""
                     println("updated pick")
                 }
             }
