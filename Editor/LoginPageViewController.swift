@@ -23,9 +23,12 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
             
             performSegueWithIdentifier("LoginSegue", sender: self)
         }
+//        } else {
+            loginView.readPermissions = ["public_profile", "email"]
+            loginView.delegate = self
+//        }
         
-        loginView.readPermissions = ["public_profile", "email"]
-        loginView.delegate = self
+        
         
         insertBlurView(backgroundMaskView, UIBlurEffectStyle.Dark)
     }

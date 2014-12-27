@@ -10,6 +10,7 @@
 		41107AE4ECB1A0F0B5063DD5 /* libPods-Editor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D40EF3CCC68B72D32B87F8 /* libPods-Editor.a */; };
 		BE060B241A177ADD0081BBA1 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE060B231A177ADD0081BBA1 /* TabViewController.swift */; };
 		BE10BC411A3C671E000CCCF7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE10BC401A3C671E000CCCF7 /* PlayerViewController.swift */; };
+		BE1B25B51A4F03B000B17CD4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B25B41A4F03B000B17CD4 /* SearchViewController.swift */; };
 		BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE232D8B1A1532A1009FB16F /* Notification.swift */; };
 		BE23A2641A2F1B4500D3FBB5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23A2631A2F1B4500D3FBB5 /* String.swift */; };
 		BE23BA9B1A1FB63300AC5FDF /* MyPicksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */; };
@@ -67,6 +68,7 @@
 		BE03604C1A0BFAF1003E2424 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE060B231A177ADD0081BBA1 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Editor/TabViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE10BC401A3C671E000CCCF7 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerViewController.swift; path = Editor/PlayerViewController.swift; sourceTree = SOURCE_ROOT; };
+		BE1B25B41A4F03B000B17CD4 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = Editor/SearchViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE232D8B1A1532A1009FB16F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Editor/Notification.swift; sourceTree = SOURCE_ROOT; };
 		BE23A2631A2F1B4500D3FBB5 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Editor/String.swift; sourceTree = SOURCE_ROOT; };
 		BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPicksCell.swift; path = Editor/MyPicksCell.swift; sourceTree = SOURCE_ROOT; };
@@ -183,6 +185,14 @@
 			name = Player;
 			sourceTree = "<group>";
 		};
+		BE1B25B31A4F024900B17CD4 /* YouTube */ = {
+			isa = PBXGroup;
+			children = (
+				BE1B25B41A4F03B000B17CD4 /* SearchViewController.swift */,
+			);
+			name = YouTube;
+			sourceTree = "<group>";
+		};
 		BE23A2621A2F1B2700D3FBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +251,7 @@
 		BEE46AF11A08178B000876A4 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BE1B25B31A4F024900B17CD4 /* YouTube */,
 				BE10BC3F1A3C66FC000CCCF7 /* Player */,
 				BECCD7181A3B5A550058A698 /* Feed Page */,
 				BE23A2621A2F1B2700D3FBB5 /* Extensions */,
@@ -484,6 +495,7 @@
 				BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */,
 				BE491B0C1A24FF4400B87107 /* Brief.swift in Sources */,
 				BEE3964D1A14DA0400BB779E /* Document.swift in Sources */,
+				BE1B25B51A4F03B000B17CD4 /* SearchViewController.swift in Sources */,
 				BE9C96571A233F5F00F820BB /* EditPicksCell.swift in Sources */,
 				BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */,
 				BE77D2531A18CC65006C3F50 /* StepsViewController.swift in Sources */,
