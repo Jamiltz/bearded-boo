@@ -13,7 +13,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let url = NSURL(string: "https://www.googleapis.com/youtube/v3/search?q=ios+swift&key=AIzaSyBk_t-gAGOQ9A0iyAQ_XAwoTfyvLmmQRhQ&part=snippet")!
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+            println(NSString(data: data, encoding: NSUTF8StringEncoding))
+        })
+        task.resume()
     }
 
     override func didReceiveMemoryWarning() {
