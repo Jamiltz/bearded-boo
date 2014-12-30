@@ -19,6 +19,8 @@
 		BE3CB51B1A14E391004512E2 /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB6B8A1A0945BA0032821E /* CouchbaseLite.framework */; };
 		BE3CB51C1A14E393004512E2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE46B1A1A081D01000876A4 /* FacebookSDK.framework */; };
 		BE491B0C1A24FF4400B87107 /* Brief.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE491B0B1A24FF4400B87107 /* Brief.swift */; };
+		BE4B2BD41A52AAF9003DA49C /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B2BD31A52AAF9003DA49C /* SearchResultCell.swift */; };
+		BE4B2BD61A52AD16003DA49C /* YouTubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B2BD51A52AD16003DA49C /* YouTubeVideo.swift */; };
 		BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */; };
 		BE70E7F51A1F5F05000A85BF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F41A1F5F05000A85BF /* Utilities.swift */; };
 		BE70E7F71A1F5F4A000A85BF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */; };
@@ -73,6 +75,8 @@
 		BE23A2631A2F1B4500D3FBB5 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Editor/String.swift; sourceTree = SOURCE_ROOT; };
 		BE23BA9A1A1FB63300AC5FDF /* MyPicksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPicksCell.swift; path = Editor/MyPicksCell.swift; sourceTree = SOURCE_ROOT; };
 		BE491B0B1A24FF4400B87107 /* Brief.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Brief.swift; path = Editor/Brief.swift; sourceTree = SOURCE_ROOT; };
+		BE4B2BD31A52AAF9003DA49C /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultCell.swift; path = Editor/SearchResultCell.swift; sourceTree = SOURCE_ROOT; };
+		BE4B2BD51A52AD16003DA49C /* YouTubeVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouTubeVideo.swift; path = Editor/YouTubeVideo.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPageViewController.swift; path = Editor/LoginPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F41A1F5F05000A85BF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Editor/Utilities.swift; sourceTree = SOURCE_ROOT; };
 		BE70E7F61A1F5F4A000A85BF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Editor/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				BE1B25B41A4F03B000B17CD4 /* SearchViewController.swift */,
+				BE4B2BD31A52AAF9003DA49C /* SearchResultCell.swift */,
 			);
 			name = YouTube;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 			children = (
 				BEE3963A1A14DA0400BB779E /* Document.swift */,
 				BEE396401A14DA0400BB779E /* Profile.swift */,
+				BE4B2BD51A52AD16003DA49C /* YouTubeVideo.swift */,
 				BEE396411A14DA0400BB779E /* Pick.swift */,
 				BEE396451A14DA0400BB779E /* Video.swift */,
 				BE232D8B1A1532A1009FB16F /* Notification.swift */,
@@ -476,7 +482,9 @@
 				BE9C96551A23315500F820BB /* EditPicksViewController.swift in Sources */,
 				BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */,
 				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
+				BE4B2BD61A52AD16003DA49C /* YouTubeVideo.swift in Sources */,
 				BE10BC411A3C671E000CCCF7 /* PlayerViewController.swift in Sources */,
+				BE4B2BD41A52AAF9003DA49C /* SearchResultCell.swift in Sources */,
 				BE232D8C1A1532A1009FB16F /* Notification.swift in Sources */,
 				BEE396541A14DA0400BB779E /* Pick.swift in Sources */,
 				BE7FC59C1A214B57005C3520 /* VideoDownloader.swift in Sources */,

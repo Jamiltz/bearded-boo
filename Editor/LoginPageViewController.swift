@@ -22,12 +22,12 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
             CouchbaseManager.shared.currentDatabase = CouchbaseManager.shared.databaseForUser(shouldSkipLogin!)
             
             performSegueWithIdentifier("LoginSegue", sender: self)
-        }
-//        } else {
+//        }
+        } else {
             loginView.readPermissions = ["public_profile", "email"]
             loginView.delegate = self
-//        }
-        
+        }
+    
         
         
         insertBlurView(backgroundMaskView, UIBlurEffectStyle.Dark)

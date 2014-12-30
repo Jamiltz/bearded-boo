@@ -603,9 +603,36 @@
                                     <outlet property="delegate" destination="7aX-hG-Gqb" id="pI5-St-x06"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ov8-RW-5kD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ov8-RW-5kD">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCellId" rowHeight="78" id="nUe-Ig-m9N" customClass="SearchResultCell" customModule="Editor" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nUe-Ig-m9N" id="O2o-tY-qoE">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMf-2K-FU4">
+                                                    <rect key="frame" x="8" y="8" width="358" height="62"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="62" id="0Ek-zp-U7X"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nMf-2K-FU4" firstAttribute="top" secondItem="O2o-tY-qoE" secondAttribute="topMargin" id="0rs-rs-SOM"/>
+                                                <constraint firstItem="nMf-2K-FU4" firstAttribute="leading" secondItem="O2o-tY-qoE" secondAttribute="leadingMargin" id="Z4o-qb-n1K"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nMf-2K-FU4" secondAttribute="trailing" constant="226" id="r1N-zK-vbo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="nMf-2K-FU4" id="PGu-G4-VVX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="7aX-hG-Gqb" id="A3q-PT-wbE"/>
                                     <outlet property="delegate" destination="7aX-hG-Gqb" id="26Q-zr-zgk"/>
@@ -649,6 +676,7 @@
                     </view>
                     <connections>
                         <outlet property="searchDisplayController" destination="SfX-Ev-DUc" id="q3E-MM-gRz"/>
+                        <outlet property="tableView" destination="Ov8-RW-5kD" id="2Pr-Qh-8Gj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd6-Eg-HYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -982,8 +1010,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="gkD-5n-uPa"/>
                                 <exclude reference="UjE-vT-6Me"/>
+                                <exclude reference="gkD-5n-uPa"/>
                             </mask>
                         </variation>
                     </view>

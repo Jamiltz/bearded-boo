@@ -26,15 +26,7 @@ extension String {
     func MD5() {
         
     }
-//}
-
-
-var string = "a test string"
-
-func reverseString(aString: String) {
-    
-    var l: String = aString.count
-    
-    whil
-    
 }
+
+let str2 = "ios swift"
+let escapedString = str2.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding);
