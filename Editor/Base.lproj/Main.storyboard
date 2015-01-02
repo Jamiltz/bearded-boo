@@ -596,15 +596,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="WIM-Cf-nUf">
-                                <rect key="frame" x="0.0" y="56" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="7aX-hG-Gqb" id="pI5-St-x06"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ov8-RW-5kD">
-                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
+                                <rect key="frame" x="0.0" y="56" width="600" height="544"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCellId" rowHeight="78" id="nUe-Ig-m9N" customClass="SearchResultCell" customModule="Editor" customModuleProvider="target">
@@ -656,23 +649,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WIM-Cf-nUf" firstAttribute="top" secondItem="TUw-w4-gha" secondAttribute="bottom" id="3nP-9q-4aa"/>
-                            <constraint firstItem="Ov8-RW-5kD" firstAttribute="top" secondItem="WIM-Cf-nUf" secondAttribute="bottom" id="5ua-9x-UEb"/>
+                            <constraint firstItem="Ov8-RW-5kD" firstAttribute="top" secondItem="pIl-is-89J" secondAttribute="bottom" constant="36" id="CIE-Oc-d06"/>
                             <constraint firstItem="hkb-5a-ikg" firstAttribute="top" secondItem="Ov8-RW-5kD" secondAttribute="bottom" id="TEZ-m6-kHa"/>
                             <constraint firstItem="TUw-w4-gha" firstAttribute="leading" secondItem="iDD-Nm-6Wh" secondAttribute="leadingMargin" constant="-16" id="XMC-eK-rJw"/>
-                            <constraint firstItem="WIM-Cf-nUf" firstAttribute="top" secondItem="pIl-is-89J" secondAttribute="bottom" constant="100" id="ZJV-dW-p4I"/>
                             <constraint firstItem="Ov8-RW-5kD" firstAttribute="leading" secondItem="iDD-Nm-6Wh" secondAttribute="leadingMargin" constant="-16" id="cL0-p7-uKF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ov8-RW-5kD" secondAttribute="trailing" constant="-16" id="n7U-EI-Fom"/>
                             <constraint firstItem="TUw-w4-gha" firstAttribute="top" secondItem="pIl-is-89J" secondAttribute="bottom" constant="-20" id="t3Z-ka-VuJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TUw-w4-gha" secondAttribute="trailing" constant="-16" id="tRW-xJ-qxF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WIM-Cf-nUf" secondAttribute="trailing" constant="-16" id="uHI-WY-ziK"/>
-                            <constraint firstItem="WIM-Cf-nUf" firstAttribute="leading" secondItem="iDD-Nm-6Wh" secondAttribute="leadingMargin" constant="-16" id="wZM-a9-0lL"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ZJV-dW-p4I"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="searchDisplayController" destination="SfX-Ev-DUc" id="q3E-MM-gRz"/>
@@ -683,7 +667,6 @@
                 <searchDisplayController id="SfX-Ev-DUc">
                     <connections>
                         <outlet property="delegate" destination="7aX-hG-Gqb" id="gQ8-ds-8rN"/>
-                        <outlet property="searchBar" destination="WIM-Cf-nUf" id="sMr-kR-zRU"/>
                         <outlet property="searchContentsController" destination="7aX-hG-Gqb" id="J0a-Jf-m0D"/>
                         <outlet property="searchResultsDataSource" destination="7aX-hG-Gqb" id="hKX-8b-C6G"/>
                         <outlet property="searchResultsDelegate" destination="7aX-hG-Gqb" id="QLI-xf-eh6"/>
@@ -1010,8 +993,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="UjE-vT-6Me"/>
                                 <exclude reference="gkD-5n-uPa"/>
+                                <exclude reference="UjE-vT-6Me"/>
                             </mask>
                         </variation>
                     </view>

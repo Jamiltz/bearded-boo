@@ -8,16 +8,29 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     @IBOutlet var tableView: UITableView!
     
     var videos: [YouTubeVideo] = []
+    
+    var searchController: UISearchController!
+    
+    var searchTask: NSURLSessionTask?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let url = NSURL(string: "https://www.googleapis.com/youtube/v3/search?q=ios+swift&key=AIzaSyBk_t-gAGOQ9A0iyAQ_XAwoTfyvLmmQRhQ&part=snippet")!
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        
+        searchController.delegate = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self // se we can monitor text changes + others
         
     }
 
@@ -26,41 +39,64 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        // make search request to YouTube
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        println("search")
+        let searchString = searchController.searchBar.text
+        
         let escapedString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         
         let url = NSURL(string: "https://www.googleapis.com/youtube/v3/search?q=\(escapedString)&key=AIzaSyBk_t-gAGOQ9A0iyAQ_XAwoTfyvLmmQRhQ&part=snippet")!
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
-            println(NSString(data: data, encoding: NSUTF8StringEncoding))
-            let json: AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)!
-//            controller.searchResultsTableView.reloadData()
-            if let items = json["items"] as? [[String : AnyObject]] {
-                self.videos.removeAll(keepCapacity: false)
-                self.tableView.reloadData()
-                for item in items {
-                    var video_id: String
-                    var title: String
-                    if let id = item["id"] as? [String : AnyObject] {
-                        video_id = id["videoId"] as String
+        if let searchTask = searchTask {
+            searchTask.cancel()
+        }
+        searchTask = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data2, response, error) -> Void in
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                println(data2.length)
+                
+                let escapedString = NSString(data: data2, encoding: NSUTF8StringEncoding)!
+                let str = NSString(CString: escapedString, encoding: NSNonLossyASCIIStringEncoding)
+//                let parser = SBJson4Parser()
+//                parser.parse(data2)
+                println(escapedString)
+                let data = str!.dataUsingEncoding(NSUTF16LittleEndianStringEncoding, allowLossyConversion: true)!
+                
+                if data.length != 0 {
+                    var error: NSError?
+                    let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error)
+                    println(error)
+                    
+                    if let json = json {
                         
-                        if let snippet = item["snippet"] as? [String : AnyObject] {
-                            title = snippet["title"] as String
-                            
-                            let video = YouTubeVideo(video_id: video_id, title: title)
-                            self.videos.append(video)
+                        if let items = json["items"] as? [[String : AnyObject]] {
+                            self.videos.removeAll(keepCapacity: false)
+                            for item in items {
+                                var video_id: String
+                                var title: String
+                                if let id = item["id"] as? [String : AnyObject] {
+                                    video_id = id["videoId"] as String
+                                    
+                                    if let snippet = item["snippet"] as? [String : AnyObject] {
+                                        title = snippet["title"] as String
+                                        
+                                        let video = YouTubeVideo(video_id: video_id, title: title)
+                                        self.videos.append(video)
+                                    }
+                                }
+                            }
+                            //                        println(self.videos.count)
+                            self.tableView.reloadData()
                         }
+                        
                     }
+                    
                 }
-                println(self.videos.count)
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    self.tableView.reloadData()
-                })
-            }
+                
+                //            controller.searchResultsTableView.reloadData()
+            })
         })
-        task.resume()
         
-        return false
+        searchTask!.resume()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
