@@ -28,7 +28,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nl1-Ug-cgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1340.5" y="-1233.5"/>
+            <point key="canvasLocation" x="-1387.5" y="-1248.5"/>
         </scene>
         <!--Profile-->
         <scene sceneID="tbv-lC-kKV">
@@ -600,29 +600,46 @@
                                 <rect key="frame" x="0.0" y="56" width="600" height="544"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCellId" rowHeight="78" id="nUe-Ig-m9N" customClass="SearchResultCell" customModule="Editor" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCellId" rowHeight="80" id="nUe-Ig-m9N" customClass="SearchResultCell" customModule="Editor" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nUe-Ig-m9N" id="O2o-tY-qoE">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMf-2K-FU4">
-                                                    <rect key="frame" x="8" y="8" width="358" height="62"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3tD-ZV-sIN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="62" id="0Ek-zp-U7X"/>
+                                                        <constraint firstAttribute="width" constant="80" id="zjj-Ff-zPg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMf-2K-FU4">
+                                                    <rect key="frame" x="88" y="8" width="504" height="64"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="64" id="0Ek-zp-U7X"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="nMf-2K-FU4" firstAttribute="top" secondItem="O2o-tY-qoE" secondAttribute="topMargin" id="0rs-rs-SOM"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3tD-ZV-sIN" secondAttribute="bottom" constant="-8.5" id="G70-ex-RVe"/>
+                                                <constraint firstItem="nMf-2K-FU4" firstAttribute="leading" secondItem="3tD-ZV-sIN" secondAttribute="trailing" constant="8" id="KzB-hv-WVY"/>
+                                                <constraint firstItem="3tD-ZV-sIN" firstAttribute="top" secondItem="O2o-tY-qoE" secondAttribute="topMargin" constant="-8" id="NjG-ZF-fLZ"/>
                                                 <constraint firstItem="nMf-2K-FU4" firstAttribute="leading" secondItem="O2o-tY-qoE" secondAttribute="leadingMargin" id="Z4o-qb-n1K"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="nMf-2K-FU4" secondAttribute="trailing" constant="226" id="r1N-zK-vbo"/>
+                                                <constraint firstItem="3tD-ZV-sIN" firstAttribute="leading" secondItem="O2o-tY-qoE" secondAttribute="leadingMargin" constant="-8" id="pYM-i0-7Lu"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nMf-2K-FU4" secondAttribute="trailing" id="r1N-zK-vbo"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Z4o-qb-n1K"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="thumbnailImageView" destination="3tD-ZV-sIN" id="BPe-dl-PZF"/>
                                             <outlet property="titleLabel" destination="nMf-2K-FU4" id="PGu-G4-VVX"/>
+                                            <segue destination="4yi-je-jI0" kind="show" identifier="YouTubeSearchSegue" id="1OJ-B7-pEp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -673,7 +690,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1832" y="-547"/>
+            <point key="canvasLocation" x="-1533" y="-404"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yxq-cS-Mu4">
@@ -1044,4 +1061,7 @@
         <image name="rewind-icon" width="41" height="35"/>
         <image name="user-icon" width="37" height="37"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1OJ-B7-pEp"/>
+    </inferredMetricsTieBreakers>
 </document>
