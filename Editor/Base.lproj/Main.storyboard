@@ -475,7 +475,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="7aX-hG-Gqb" kind="presentation" id="Jld-HO-rAQ"/>
+                                            <segue destination="qMM-t6-lpY" kind="presentation" id="Jld-HO-rAQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -597,7 +597,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ov8-RW-5kD">
-                                <rect key="frame" x="0.0" y="56" width="600" height="544"/>
+                                <rect key="frame" x="0.0" y="36" width="600" height="564"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCellId" rowHeight="80" id="nUe-Ig-m9N" customClass="SearchResultCell" customModule="Editor" customModuleProvider="target">
@@ -666,7 +666,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ov8-RW-5kD" firstAttribute="top" secondItem="pIl-is-89J" secondAttribute="bottom" constant="36" id="CIE-Oc-d06"/>
+                            <constraint firstItem="Ov8-RW-5kD" firstAttribute="top" secondItem="pIl-is-89J" secondAttribute="bottom" constant="16" id="CIE-Oc-d06"/>
                             <constraint firstItem="hkb-5a-ikg" firstAttribute="top" secondItem="Ov8-RW-5kD" secondAttribute="bottom" id="TEZ-m6-kHa"/>
                             <constraint firstItem="TUw-w4-gha" firstAttribute="leading" secondItem="iDD-Nm-6Wh" secondAttribute="leadingMargin" constant="-16" id="XMC-eK-rJw"/>
                             <constraint firstItem="Ov8-RW-5kD" firstAttribute="leading" secondItem="iDD-Nm-6Wh" secondAttribute="leadingMargin" constant="-16" id="cL0-p7-uKF"/>
@@ -675,6 +675,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="TUw-w4-gha" secondAttribute="trailing" constant="-16" id="tRW-xJ-qxF"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="q8G-jb-hLn"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="SfX-Ev-DUc" id="q3E-MM-gRz"/>
                         <outlet property="tableView" destination="Ov8-RW-5kD" id="2Pr-Qh-8Gj"/>
@@ -690,7 +691,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1533" y="-404"/>
+            <point key="canvasLocation" x="-721" y="-404"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yxq-cS-Mu4">
@@ -1039,6 +1040,24 @@
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-698" y="-1268"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mnp-Or-U55">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qMM-t6-lpY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YdL-xG-fzy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7aX-hG-Gqb" kind="relationship" relationship="rootViewController" id="IcB-hR-qPr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xcl-PI-4RV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1533" y="-404"/>
         </scene>
     </scenes>
     <resources>

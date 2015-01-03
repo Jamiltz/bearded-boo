@@ -30,6 +30,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self // se we can monitor text changes + others
         
+        definesPresentationContext = true
     }
 
     override func didReceiveMemoryWarning() {
