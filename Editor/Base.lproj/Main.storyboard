@@ -655,7 +655,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Search" id="BHQ-ZM-Nga">
-                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="8il-cN-Jmt">
+                                        <barButtonItem key="rightBarButtonItem" title="Back" style="done" id="8il-cN-Jmt">
                                             <connections>
                                                 <action selector="doneButton" destination="7aX-hG-Gqb" id="wiM-1j-rec"/>
                                             </connections>
@@ -1011,8 +1011,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="gkD-5n-uPa"/>
                                 <exclude reference="UjE-vT-6Me"/>
+                                <exclude reference="gkD-5n-uPa"/>
                             </mask>
                         </variation>
                     </view>

@@ -61,8 +61,8 @@ class Video: CBLModel {
                     }
                     return false
                 }).first!
-                return [title, values.count - 1]
-            }, version: "7")
+                return [title, values.count]
+            }, version: "8")
         }
         return view
     }

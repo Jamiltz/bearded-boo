@@ -260,6 +260,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         if segue.identifier == "EditPicksSegue" {
             let vc = segue.destinationViewController as EditPicksViewController
             vc.video_id = (sender as MyPicksCell).video_id
+            if let indexPath = tableView.indexPathForSelectedRow() {
+                let video = videos[indexPath.row]
+                vc.video_id = video.video_id
+                vc.video_title = video.title
+            }
         }
     }
     
