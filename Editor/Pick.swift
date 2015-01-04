@@ -7,9 +7,10 @@ class Pick: CBLModel {
     @NSManaged var end_at: Double
     @NSManaged var caption: String?
     @NSManaged var highlight: Bool
+    @NSManaged var video_title: String
     
     
-    init(video_id: String, start_at: Double?, end_at: Double, caption: String) {
+    init(video_id: String, start_at: Double?, end_at: Double, caption: String, video_title: String) {
         super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
         
         setValue("pick", ofProperty: "type")
@@ -21,39 +22,11 @@ class Pick: CBLModel {
 
         self.end_at = end_at
         self.caption = caption
+        self.video_title = video_title
     }
     
     override init!(document: CBLDoc) {
         super.init(document: document)
-    }
-    
-    class func queryUserPicks() -> CBLQuery {
-        let view = CouchbaseManager.shared.currentDatabase.viewNamed("user_picks")
-        if view.mapBlock == nil {
-            view
-                .setMapBlock({ (doc, emit) -> Void in
-                    if let type = doc["type"] as? String {
-                        if type == "pick" {
-                            emit(doc["video_id"], nil)
-                        }
-                    }
-                }, reduceBlock: {(keys, values, rereduce) -> AnyObject! in
-                    var unique_keys: [String : Int] = [:]
-                    
-                    for key in keys as [String] {
-                        if let _ = unique_keys[key] {
-                            unique_keys[key]!++
-                        } else {
-                            unique_keys[key] = 1
-                        }
-                    }
-                    
-                    return unique_keys
-                }, version: "0")
-        }
-        let query = view.createQuery()
-        
-        return query
     }
     
     class func queryVideoPicks(video_id: String) -> CBLQuery {

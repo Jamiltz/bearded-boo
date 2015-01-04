@@ -49,7 +49,7 @@ class Video: CBLModel {
                         case "video":
                             emit(doc["video_id"], doc["title"])
                         case "pick":
-                            emit(doc["video_id"], nil)
+                            emit(doc["video_id"], doc["video_title"])
                         default:
                             break
                     }
@@ -62,7 +62,7 @@ class Video: CBLModel {
                     return false
                 }).first!
                 return [title, values.count - 1]
-            }, version: "2")
+            }, version: "7")
         }
         return view
     }

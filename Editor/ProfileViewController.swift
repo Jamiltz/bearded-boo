@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     
     var liveQuery: CBLLiveQuery!
     var picks: [Pick] = []
-    var videos: [Video] = []
+    var videos: [YouTubeVideo] = []
     
     var facebookUserId: String? {
         didSet {
@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
             if liveQuery.rows.allObjects.count > 0 {
                 for (index, row) in enumerate(liveQuery.rows.allObjects) {
                     let row = row as CBLQueryRow
-                    let video = Video(forDocument: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(row.key as String))
+                    let video = YouTubeVideo(video_id: row.key as String, title: row.value[0]! as String)
                     video.moments = row.value[1] as? Int
                     videos.insert(video, atIndex: 0)
                 }
@@ -114,13 +114,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let video = videos[indexPath.row]
-            if video.deleteDocument(nil) {
-                videos.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            }
-        }
+//        if editingStyle == .Delete {
+//            let video = videos[indexPath.row]
+//            if video.deleteDocument(nil) {
+//                videos.removeAtIndex(indexPath.row)
+//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//            }
+//        }
     }
     
     @IBAction func startDownload(sender: UIButton) {
@@ -139,7 +139,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         
     }
     
-    func createDownloadTask(url: NSURL, video: Video) {
+    func createDownloadTask(url: NSURL, video: YouTubeVideo) {
         let task = VideoDownloader.shared().session.downloadTaskWithURL(url)
         video.isDownloading = true
         video.downloadTask = task

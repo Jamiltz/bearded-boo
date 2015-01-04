@@ -20,6 +20,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet var editTopControls: UIView!
     
     var video_id: String = ""
+    var video_title: String = ""
     var playerVC: AVPlayerViewController!
     var alertView: UIAlertView!
     var captionAlertView: UIAlertView!
@@ -187,7 +188,8 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         let cmtime = playerVC.player.currentTime()
         let seconds = Double(CMTimeGetSeconds(cmtime))
         
-        let pick = Pick(video_id: video_id, start_at: nil, end_at: seconds, caption: "")
+        
+        let pick = Pick(video_id: video_id, start_at: nil, end_at: seconds, caption: "", video_title: video_title)
         if pick.save(nil) {
             println("saved pick")
         }
