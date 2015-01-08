@@ -13,5 +13,6 @@
 #import "NMRangeSlider.h"
 #import "LLACircularProgressView.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import "SBJson4.h"
 #import "JSONModelLib.h"
+#import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"

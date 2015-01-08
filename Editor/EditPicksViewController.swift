@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class EditPicksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate {
+class EditPicksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate, MGSwipeTableCellDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var slider: NMRangeSlider!
@@ -241,7 +241,22 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         
         cell.captionLabel.sizeToFit()
         
+        cell.delegate = self
+        cell.leftButtons = [MGSwipeButton(title: "Publish", backgroundColor: UIColor.blueColor())]
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor())]
+        
         return cell
+    }
+    
+    func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+        
+        if (direction == MGSwipeDirection.RightToLeft && index == 0) {
+            println("delete pick")
+        } else {
+            println("publish pick")
+        }
+        
+        return true
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -268,19 +283,19 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         playerVC.player.play()
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let pick = picks[indexPath.row]
-            if pick.deleteDocument(nil) {
-                picks.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            }
-        }
-    }
+//    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        return true
+//    }
+//    
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == .Delete {
+//            let pick = picks[indexPath.row]
+//            if pick.deleteDocument(nil) {
+//                picks.removeAtIndex(indexPath.row)
+//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//            }
+//        }
+//    }
     
     @IBAction func panGesture(sender: UIButton) {
         if isEditingMode {

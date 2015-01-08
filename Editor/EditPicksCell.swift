@@ -1,6 +1,6 @@
 import UIKit
 
-class EditPicksCell: UITableViewCell {
+class EditPicksCell: MGSwipeTableCell {
     
     @IBOutlet var highlightView: UIView!
     @IBOutlet var indexLabel: UILabel!

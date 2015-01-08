@@ -10,5 +10,7 @@ pod 'SDWebImage', '~> 3.7.1'
 pod 'NMRangeSlider', '~> 1.1.1'
 pod 'LLACircularProgressView', '~> 0.1.1'
 pod 'JSONModel'
+pod 'MGSwipeTableCell', '~> 1.3.5'
+
 end
 
