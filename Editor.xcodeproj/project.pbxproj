@@ -232,6 +232,16 @@
 			name = "Feed Page";
 			sourceTree = "<group>";
 		};
+		BEE054811A7624AC009C01F3 /* Login Page */ = {
+			isa = PBXGroup;
+			children = (
+				BEE3963F1A14DA0400BB779E /* LoginViewController.swift */,
+				BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */,
+				BEE3963C1A14DA0400BB779E /* FacebookManager.swift */,
+			);
+			name = "Login Page";
+			sourceTree = "<group>";
+		};
 		BEE46AE61A08178B000876A4 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,7 @@
 		BEE46AF11A08178B000876A4 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BEE054811A7624AC009C01F3 /* Login Page */,
 				BE1B25B31A4F024900B17CD4 /* YouTube */,
 				BE10BC3F1A3C66FC000CCCF7 /* Player */,
 				BECCD7181A3B5A550058A698 /* Feed Page */,
@@ -271,10 +282,7 @@
 				BEE396861A14DAE400BB779E /* LaunchScreen.xib */,
 				BEE396881A14DAE400BB779E /* Main.storyboard */,
 				BE70E7F41A1F5F05000A85BF /* Utilities.swift */,
-				BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */,
 				BE77D2521A18CC65006C3F50 /* StepsViewController.swift */,
-				BEE3963C1A14DA0400BB779E /* FacebookManager.swift */,
-				BEE3963F1A14DA0400BB779E /* LoginViewController.swift */,
 				BEE396431A14DA0400BB779E /* SnippetCell.swift */,
 				BEE396481A14DA0400BB779E /* ViewController.swift */,
 				BEE3963D1A14DA0400BB779E /* Images.xcassets */,
