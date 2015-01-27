@@ -153,11 +153,6 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         
-        let brief = Brief(video_id: video_id, updated_at: NSDate(), picks: selectedPicks, fb_id: profile.fb_id, name: profile.name, caption: title, length: Int(length))
-        if brief.save(nil) {
-            println("saved new brief")
-        }
-        
         // check if a brief already exists for this video_id
 //        if let brief = Brief.briefForVideoInDatabase(video_id) {
 //            brief.updated_at = NSDate()
@@ -254,6 +249,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
             println("delete pick")
         } else {
             println("publish pick")
+            
         }
         
         return true
