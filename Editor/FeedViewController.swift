@@ -22,10 +22,10 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         if (object as CBLLiveQuery) == liveQuery {
             for (index, row) in enumerate(liveQuery.rows.allObjects) {
                 if index >= briefs.count {
-                    briefs.append(Brief(forDocument: (row as CBLQueryRow).document))
+                    let brief = Brief(document: (row as CBLQueryRow).document)
+                    briefs.append(brief)
                 }
             }
-            
             collectionView.reloadData()
         }
     }
@@ -55,12 +55,16 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FeedCellIdentifier", forIndexPath: indexPath) as FeedCell
         
-        cell.video_id = briefs[indexPath.row].video_id
-        cell.facebookUserId = briefs[indexPath.row].fb_id
-        cell.nameLabel.text = briefs[indexPath.row].name
-        cell.videoLabel.text = briefs[indexPath.row].caption
+        let pick = briefs[indexPath.row].pick
+        let profile = briefs[indexPath.row].user
+        
+        cell.video_id = pick.video_id
+        cell.facebookUserId = profile.fb_id
+        cell.nameLabel.text = profile.name
+        cell.videoLabel.text = pick.caption
         cell.deleteButton.tag = indexPath.row
-        cell.timeLabel.text = "\(briefs[indexPath.row].length) seconds"
+        
+//        cell.timeLabel.text = "\(briefs[indexPath.row].length) seconds"
         
         return cell
     }
@@ -68,21 +72,21 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let brief = briefs[indexPath.row]
         
-        XCDYouTubeClient.defaultClient().getVideoWithIdentifier(brief.video_id, completionHandler: { (video, error) -> Void in
-            let mp4Url = video.streamURLs[18] as NSURL
-            self.playerVC.player = AVPlayer(URL: mp4Url)
-            
-            self.loadBrief(brief)
-        })
+//        XCDYouTubeClient.defaultClient().getVideoWithIdentifier(brief.video_id, completionHandler: { (video, error) -> Void in
+//            let mp4Url = video.streamURLs[18] as NSURL
+//            self.playerVC.player = AVPlayer(URL: mp4Url)
+//            
+//            self.loadBrief(brief)
+//        })
     }
     
     func loadBrief(brief: Brief) {
         
         var picks: [Pick] = []
-        for (index, id) in enumerate(brief.picks) {
-            let pick = Pick(forDocument: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(id as String))
-            picks.append(pick)
-        }
+//        for (index, id) in enumerate(brief.picks) {
+//            let pick = Pick(forDocument: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(id as String))
+//            picks.append(pick)
+//        }
         
         playerVC.loadContent(picks)
         

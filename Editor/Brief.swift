@@ -10,18 +10,21 @@ import UIKit
 
 class Brief: CBLModel {
     
-    @NSManaged var pick_id: String
-    @NSManaged var profile_id: String
-    @NSManaged var updated_at: NSDate
+    @NSManaged var pick_id: Pick
+    @NSManaged var user_id: Profile
+    var pick: Pick {
+        return Pick(document: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(document.propertyForKey("pick_id") as String))
+    }
+    var user: Profile {
+        return Profile(document: CouchbaseManager.shared.currentDatabase.existingDocumentWithID("p:" + (document.propertyForKey("user_id") as String)))
+    }
     
-    init(pick_id: String, profile_id: String, updated_at: NSDate) {
-        
+    init(pick: Pick, user: Profile) {
         super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
         
         setValue("brief", ofProperty: "type")
-        self.pick_id = pick_id
-        self.profile_id = profile_id
-        self.updated_at = updated_at
+        self.pick_id = pick
+        self.user_id = user
     }
     
     override init!(document: CBLDoc) {

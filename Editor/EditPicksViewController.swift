@@ -27,6 +27,10 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     var liveQuery: CBLLiveQuery!
     var picks: [Pick] = []
     
+    var profile: Profile {
+        return Profile(document: CouchbaseManager.shared.currentDatabase.documentWithID(CouchbaseManager.shared.currentUserId))
+    }
+    
     var oldLowerValue: Float = 0.0
     var oldUpperValue: Float = 0.0
     
@@ -70,10 +74,10 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
             playerVC.player = AVPlayer(URL: NSURL(fileURLWithPath: file.path)!)
         } else {
             // FATAL :: http call crashing app when offline
-            XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video_id, completionHandler: { (video, error) -> Void in
-                let mp4Url = video.streamURLs[18] as NSURL
-                self.playerVC.player = AVPlayer(URL: mp4Url)
-            })
+//            XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video_id, completionHandler: { (video, error) -> Void in
+//                let mp4Url = video.streamURLs[18] as NSURL
+//                self.playerVC.player = AVPlayer(URL: mp4Url)
+//            })
         }
         
         liveQuery = Pick.querySnippetsForVideo(video_id).asLiveQuery()
@@ -249,7 +253,12 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
             println("delete pick")
         } else {
             println("publish pick")
-            
+            let indexPath = tableView.indexPathForCell(cell)!
+            let pick = picks[indexPath.row]
+            let brief = Brief(pick: pick, user: profile)
+            if brief.save(nil) {
+                println("brief saved")
+            }
         }
         
         return true
