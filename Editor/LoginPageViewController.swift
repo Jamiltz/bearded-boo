@@ -21,8 +21,10 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
         if (shouldSkipLogin != nil) {
             CouchbaseManager.shared.currentDatabase = CouchbaseManager.shared.databaseForUser(shouldSkipLogin!)
             
+            let token = FBSession.activeSession().accessTokenData
+            CouchbaseManager.shared.startReplicationWithFacebookAccessToken(token.accessToken)
+            
             performSegueWithIdentifier("LoginSegue", sender: self)
-//        }
         } else {
             loginView.readPermissions = ["public_profile", "email"]
             loginView.delegate = self

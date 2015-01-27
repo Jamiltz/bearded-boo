@@ -1,6 +1,6 @@
 import Foundation
 
-let kSyncGatewayUrl = "http://178.62.81.153:4984/editor"
+let kSyncGatewayUrl = "http://127.0.0.1:4984/editor"
 
 class CouchbaseManager {
     class var shared: CouchbaseManager {

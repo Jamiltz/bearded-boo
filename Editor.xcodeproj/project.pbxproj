@@ -36,9 +36,7 @@
 		BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396321A14DA0400BB779E /* AppDelegate.swift */; };
 		BEE3964C1A14DA0400BB779E /* CouchbaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396391A14DA0400BB779E /* CouchbaseManager.swift */; };
 		BEE3964D1A14DA0400BB779E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963A1A14DA0400BB779E /* Document.swift */; };
-		BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963C1A14DA0400BB779E /* FacebookManager.swift */; };
 		BEE396501A14DA0400BB779E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE3963D1A14DA0400BB779E /* Images.xcassets */; };
-		BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3963F1A14DA0400BB779E /* LoginViewController.swift */; };
 		BEE396531A14DA0400BB779E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396401A14DA0400BB779E /* Profile.swift */; };
 		BEE396541A14DA0400BB779E /* Pick.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396411A14DA0400BB779E /* Pick.swift */; };
 		BEE396551A14DA0400BB779E /* SnippetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE396421A14DA0400BB779E /* SnippetButton.swift */; };
@@ -92,9 +90,7 @@
 		BEE396321A14DA0400BB779E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Editor/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		BEE396391A14DA0400BB779E /* CouchbaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchbaseManager.swift; path = Editor/CouchbaseManager.swift; sourceTree = SOURCE_ROOT; };
 		BEE3963A1A14DA0400BB779E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Editor/Document.swift; sourceTree = SOURCE_ROOT; };
-		BEE3963C1A14DA0400BB779E /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookManager.swift; path = Editor/FacebookManager.swift; sourceTree = SOURCE_ROOT; };
 		BEE3963D1A14DA0400BB779E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Editor/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		BEE3963F1A14DA0400BB779E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Editor/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		BEE396401A14DA0400BB779E /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Editor/Profile.swift; sourceTree = SOURCE_ROOT; };
 		BEE396411A14DA0400BB779E /* Pick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pick.swift; path = Editor/Pick.swift; sourceTree = SOURCE_ROOT; };
 		BEE396421A14DA0400BB779E /* SnippetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnippetButton.swift; path = Editor/SnippetButton.swift; sourceTree = SOURCE_ROOT; };
@@ -235,9 +231,7 @@
 		BEE054811A7624AC009C01F3 /* Login Page */ = {
 			isa = PBXGroup;
 			children = (
-				BEE3963F1A14DA0400BB779E /* LoginViewController.swift */,
 				BE70E7F21A1F5A17000A85BF /* LoginPageViewController.swift */,
-				BEE3963C1A14DA0400BB779E /* FacebookManager.swift */,
 			);
 			name = "Login Page";
 			sourceTree = "<group>";
@@ -489,7 +483,6 @@
 			files = (
 				BE9C96551A23315500F820BB /* EditPicksViewController.swift in Sources */,
 				BEE396491A14DA0400BB779E /* AppDelegate.swift in Sources */,
-				BEE396521A14DA0400BB779E /* LoginViewController.swift in Sources */,
 				BE4B2BD61A52AD16003DA49C /* YouTubeVideo.swift in Sources */,
 				BE10BC411A3C671E000CCCF7 /* PlayerViewController.swift in Sources */,
 				BE4B2BD41A52AAF9003DA49C /* SearchResultCell.swift in Sources */,
@@ -505,7 +498,6 @@
 				BE70E7F51A1F5F05000A85BF /* Utilities.swift in Sources */,
 				BEE396561A14DA0400BB779E /* SnippetCell.swift in Sources */,
 				BEE3965B1A14DA0400BB779E /* ViewController.swift in Sources */,
-				BEE3964F1A14DA0400BB779E /* FacebookManager.swift in Sources */,
 				BECCD7171A3B5A4E0058A698 /* FeedViewController.swift in Sources */,
 				BE23A2641A2F1B4500D3FBB5 /* String.swift in Sources */,
 				BE70E7F31A1F5A17000A85BF /* LoginPageViewController.swift in Sources */,
