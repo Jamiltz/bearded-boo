@@ -64,7 +64,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         liveQuery = Video.queryVideosAndPicksNumber().createQuery().asLiveQuery()
         liveQuery.groupLevel = 1
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
-
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         insertBlurView(backgroundMaskView, UIBlurEffectStyle.Dark)
     }
 

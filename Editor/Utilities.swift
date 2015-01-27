@@ -6,6 +6,7 @@ func insertBlurView (view: UIView, style: UIBlurEffectStyle) {
     var blurEffect = UIBlurEffect(style: style)
     var blurEffectView = UIVisualEffectView(effect: blurEffect)
     blurEffectView.frame = view.bounds
+    blurEffectView.layer.opacity = 0.5
     view.insertSubview(blurEffectView, atIndex: 0)
 }
 

@@ -28,7 +28,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nl1-Ug-cgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1387.5" y="-1248.5"/>
+            <point key="canvasLocation" x="-1309.5" y="-1233.5"/>
         </scene>
         <!--Profile-->
         <scene sceneID="tbv-lC-kKV">
@@ -284,12 +284,12 @@
                         <constraints>
                             <constraint firstItem="dEx-aJ-BgU" firstAttribute="top" secondItem="YEf-YC-7aD" secondAttribute="bottom" constant="-200" id="1dr-ga-UIV"/>
                             <constraint firstItem="YEf-YC-7aD" firstAttribute="bottom" secondItem="KHG-cx-ncD" secondAttribute="bottom" id="2ZV-N3-r2z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YEf-YC-7aD" secondAttribute="trailing" constant="-16" id="8db-M2-UWx"/>
+                            <constraint firstAttribute="trailing" secondItem="YEf-YC-7aD" secondAttribute="trailing" id="8db-M2-UWx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KHG-cx-ncD" secondAttribute="trailing" constant="-16" id="B00-Nd-193"/>
                             <constraint firstItem="YEf-YC-7aD" firstAttribute="top" secondItem="p7L-Q9-Mkp" secondAttribute="bottom" constant="-20" id="FFW-iq-VJh"/>
                             <constraint firstItem="dEx-aJ-BgU" firstAttribute="top" secondItem="YEf-YC-7aD" secondAttribute="bottom" id="FM5-Qj-aaF"/>
                             <constraint firstItem="KHG-cx-ncD" firstAttribute="leading" secondItem="reK-bT-Ff5" secondAttribute="leadingMargin" constant="-16" id="RUF-hC-hUg"/>
-                            <constraint firstItem="YEf-YC-7aD" firstAttribute="leading" secondItem="reK-bT-Ff5" secondAttribute="leadingMargin" constant="-16" id="SI6-jL-sYb"/>
+                            <constraint firstItem="YEf-YC-7aD" firstAttribute="leading" secondItem="reK-bT-Ff5" secondAttribute="leading" id="SI6-jL-sYb"/>
                             <constraint firstItem="KHG-cx-ncD" firstAttribute="top" secondItem="p7L-Q9-Mkp" secondAttribute="bottom" constant="-20" id="UH3-Mq-Sbe"/>
                             <constraint firstItem="dEx-aJ-BgU" firstAttribute="top" secondItem="KHG-cx-ncD" secondAttribute="bottom" id="tkT-Bd-y19"/>
                         </constraints>
@@ -323,7 +323,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-profile" translatesAutoresizingMaskIntoConstraints="NO" id="R9S-RS-a2V">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-profile" translatesAutoresizingMaskIntoConstraints="NO" id="R9S-RS-a2V">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="n1C-Fu-77d"/>
@@ -479,7 +479,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.059999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="rP5-Co-Mhi" firstAttribute="top" secondItem="5G1-xq-4s3" secondAttribute="bottom" constant="16" id="5hV-lX-my3"/>
                                     <constraint firstAttribute="centerX" secondItem="XlA-JV-pi4" secondAttribute="centerX" id="80a-s0-CCE"/>
@@ -547,12 +547,13 @@
                             <constraint firstItem="n2o-9y-67k" firstAttribute="top" secondItem="5Z6-KY-uO8" secondAttribute="bottom" constant="-20" id="9i2-c2-aOy"/>
                             <constraint firstItem="SL7-34-7dt" firstAttribute="height" secondItem="R9S-RS-a2V" secondAttribute="height" id="Cgk-ca-1fI"/>
                             <constraint firstItem="5zH-y8-fDg" firstAttribute="top" secondItem="n2o-9y-67k" secondAttribute="bottom" id="EZ3-bt-2C9"/>
+                            <constraint firstAttribute="trailing" secondItem="SL7-34-7dt" secondAttribute="trailing" id="Fyc-PV-vgh"/>
                             <constraint firstItem="TdW-0P-Tyh" firstAttribute="top" secondItem="R9S-RS-a2V" secondAttribute="bottom" id="GlJ-nG-XGb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uVx-79-6LP" secondAttribute="trailing" constant="-7" id="Q2T-PH-zJ9"/>
                             <constraint firstItem="n2o-9y-67k" firstAttribute="leading" secondItem="sbR-h6-tEi" secondAttribute="leadingMargin" constant="-16" id="Sg8-2U-R0R"/>
                             <constraint firstItem="TdW-0P-Tyh" firstAttribute="leading" secondItem="sbR-h6-tEi" secondAttribute="leadingMargin" constant="-16" id="T5z-83-YmG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TdW-0P-Tyh" secondAttribute="trailing" constant="-16" id="Tt5-ko-KW9"/>
-                            <constraint firstItem="SL7-34-7dt" firstAttribute="leading" secondItem="sbR-h6-tEi" secondAttribute="leadingMargin" constant="-16" id="X7g-rF-rR4"/>
+                            <constraint firstItem="SL7-34-7dt" firstAttribute="leading" secondItem="sbR-h6-tEi" secondAttribute="leading" id="X7g-rF-rR4"/>
                             <constraint firstItem="uVx-79-6LP" firstAttribute="top" secondItem="5Z6-KY-uO8" secondAttribute="bottom" constant="45" id="YbV-iG-BYY"/>
                             <constraint firstItem="SL7-34-7dt" firstAttribute="width" secondItem="R9S-RS-a2V" secondAttribute="width" id="clK-hP-v09"/>
                             <constraint firstItem="5zH-y8-fDg" firstAttribute="top" secondItem="TdW-0P-Tyh" secondAttribute="bottom" id="f3R-p6-wwb"/>
@@ -565,6 +566,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="clK-hP-v09"/>
                                 <exclude reference="jIR-r2-yZ9"/>
                             </mask>
                         </variation>
@@ -1081,6 +1083,6 @@
         <image name="user-icon" width="37" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1OJ-B7-pEp"/>
+        <segue reference="vZQ-k5-38J"/>
     </inferredMetricsTieBreakers>
 </document>

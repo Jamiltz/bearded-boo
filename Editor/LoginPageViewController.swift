@@ -29,9 +29,10 @@ class LoginPageViewController: UIViewController, FBLoginViewDelegate {
             loginView.readPermissions = ["public_profile", "email"]
             loginView.delegate = self
         }
+    }
     
-        
-        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         insertBlurView(backgroundMaskView, UIBlurEffectStyle.Dark)
     }
     
