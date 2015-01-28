@@ -74,10 +74,10 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
             playerVC.player = AVPlayer(URL: NSURL(fileURLWithPath: file.path)!)
         } else {
             // FATAL :: http call crashing app when offline
-//            XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video_id, completionHandler: { (video, error) -> Void in
-//                let mp4Url = video.streamURLs[18] as NSURL
-//                self.playerVC.player = AVPlayer(URL: mp4Url)
-//            })
+            XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video_id, completionHandler: { (video, error) -> Void in
+                let mp4Url = video.streamURLs[18] as NSURL
+                self.playerVC.player = AVPlayer(URL: mp4Url)
+            })
         }
         
         liveQuery = Pick.querySnippetsForVideo(video_id).asLiveQuery()
@@ -137,41 +137,6 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         alertView.show()
     }
     
-    func publishSelectedPicks(title: String) {
-        
-        let selectedPicks = picks.filter { (pick) -> Bool in
-            if pick.highlight == true {
-                return true
-            }
-            return false
-        }
-        
-        let profile = Profile.profileInDatabase(CouchbaseManager.shared.currentUserId!)!
-        
-        var length: Double = 0.0
-        for (index, pick) in enumerate(selectedPicks) {
-            if pick.start_at == 0.0 {
-                length += 12.0
-            } else {
-                length += (pick.end_at - pick.start_at)
-            }
-        }
-        
-        // check if a brief already exists for this video_id
-//        if let brief = Brief.briefForVideoInDatabase(video_id) {
-//            brief.updated_at = NSDate()
-//            brief.status = "publishing"
-//            if brief.save(nil) {
-//                println("updated brief")
-//            }
-//        } else {
-//            let brief = Brief(video_id: video_id, updated_at: NSDate(), status: "publishing", link: "")
-//            if brief.save(nil) {
-//                println("saved new brief")
-//            }
-//        }
-    }
-    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -187,8 +152,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         let cmtime = playerVC.player.currentTime()
         let seconds = Double(CMTimeGetSeconds(cmtime))
         
-        
-        let pick = Pick(video_id: video_id, start_at: nil, end_at: seconds, caption: "", video_title: video_title)
+        let pick = Pick(video_id: video_id, start_at: nil, end_at: seconds, caption: "", video_title: video_title, user_id: CouchbaseManager.shared.currentUserId!)
         if pick.save(nil) {
             println("saved pick")
         }
@@ -251,6 +215,12 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         
         if (direction == MGSwipeDirection.RightToLeft && index == 0) {
             println("delete pick")
+            let indexPath = tableView.indexPathForCell(cell)!
+            let pick = picks[indexPath.row]
+            if pick.deleteDocument(nil) {
+                picks.removeAtIndex(indexPath.row)
+                tableView.reloadData()
+            }
         } else {
             println("publish pick")
             let indexPath = tableView.indexPathForCell(cell)!
