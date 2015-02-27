@@ -28,7 +28,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     var picks: [Pick] = []
     
     var profile: Profile {
-        return Profile(document: CouchbaseManager.shared.currentDatabase.documentWithID(CouchbaseManager.shared.currentUserId))
+        return Profile(document: CouchbaseManager.shared.currentDatabase.documentWithID(CouchbaseManager.shared.currentUserId!))
     }
     
     var oldLowerValue: Float = 0.0
@@ -38,11 +38,11 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     var isEditingMode: Bool = false
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if (object as CBLLiveQuery) == liveQuery {
+        if (object as! CBLLiveQuery) == liveQuery {
             picks.removeAll(keepCapacity: false)
             
             for (index, row) in enumerate(liveQuery.rows.allObjects) {
-                picks.append(Pick(forDocument: (row as CBLQueryRow).document))
+                picks.append(Pick(forDocument: (row as! CBLQueryRow).document))
             }
             
             picks.sort({ (a, b) -> Bool in
@@ -66,7 +66,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        playerVC = childViewControllers.first! as AVPlayerViewController
+        playerVC = childViewControllers.first! as! AVPlayerViewController
         
         let file = VideoDownloader.shared().videoIsOnDisk(video_id)
         
@@ -75,7 +75,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             // FATAL :: http call crashing app when offline
             XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video_id, completionHandler: { (video, error) -> Void in
-                let mp4Url = video.streamURLs[18] as NSURL
+                let mp4Url = video.streamURLs[18] as! NSURL
                 self.playerVC.player = AVPlayer(URL: mp4Url)
             })
         }
@@ -186,7 +186,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EditPicksCellIdentifier", forIndexPath: indexPath) as EditPicksCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("EditPicksCellIdentifier", forIndexPath: indexPath) as! EditPicksCell
         let pick = picks[indexPath.row]
         
         if pick.start_at == 0.0 {

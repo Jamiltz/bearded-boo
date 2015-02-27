@@ -19,10 +19,10 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     var briefs: [Brief] = []
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if (object as CBLLiveQuery) == liveQuery {
+        if (object as! CBLLiveQuery) == liveQuery {
             for (index, row) in enumerate(liveQuery.rows.allObjects) {
                 if index >= briefs.count {
-                    let brief = Brief(document: (row as CBLQueryRow).document)
+                    let brief = Brief(document: (row as! CBLQueryRow).document)
                     briefs.append(brief)
                 }
             }
@@ -37,7 +37,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        playerVC = childViewControllers.first! as PlayerViewController
+        playerVC = childViewControllers.first! as! PlayerViewController
         
         liveQuery = Brief.queryBriefs().createQuery().asLiveQuery()
         liveQuery.addObserver(self, forKeyPath: "rows", options: .allZeros, context: nil)
@@ -53,7 +53,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FeedCellIdentifier", forIndexPath: indexPath) as FeedCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FeedCellIdentifier", forIndexPath: indexPath) as! FeedCell
         
         let pick = briefs[indexPath.row].pick
         let profile = briefs[indexPath.row].user

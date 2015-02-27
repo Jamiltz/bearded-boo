@@ -42,7 +42,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
         let searchString = searchController.searchBar.text
 
-        if countElements(searchString) > 0 {
+        if count(searchString) > 0 {
             
             let escapedString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
             
@@ -65,7 +65,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                                 }
                                 
                                 if let snippet = item["snippet"] as? [String : AnyObject] {
-                                    title = snippet["title"] as String
+                                    title = snippet["title"] as! String
                                     
                                     let video = YouTubeVideo(video_id: video_id, title: title)
                                     self.videos.append(video)
@@ -86,7 +86,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultCellId", forIndexPath: indexPath) as SearchResultCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultCellId", forIndexPath: indexPath) as! SearchResultCell
         
         cell.titleLabel.text = videos[indexPath.row].title
         cell.video_id = videos[indexPath.row].video_id
@@ -100,7 +100,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "YouTubeSearchSegue" {
-            let vc = segue.destinationViewController as EditPicksViewController
+            let vc = segue.destinationViewController as! EditPicksViewController
             if let indexPath = tableView.indexPathForSelectedRow() {
                 let youtubeVideo = videos[indexPath.row]
                 vc.video_id = youtubeVideo.video_id

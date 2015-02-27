@@ -35,7 +35,7 @@ class SnippetButton: UIButton {
             
             anim.duration = 0.2
             layer.addAnimation(anim, forKey: "cornerRadius")
-            layer.cornerRadius = anim.toValue as CGFloat
+            layer.cornerRadius = anim.toValue as! CGFloat
         }
     }
     

@@ -16,7 +16,7 @@ class CouchbaseManager {
     var currentUserId: String? {
         get {
             let defaults = NSUserDefaults.standardUserDefaults()
-            return defaults.objectForKey("user_id") as String?
+            return defaults.objectForKey("user_id") as! String?
         }
         set {
             let defaults = NSUserDefaults.standardUserDefaults()
@@ -29,8 +29,8 @@ class CouchbaseManager {
     
     func loginWithFacebookUserInfo(result: AnyObject, token: FBAccessTokenData) {
         
-        let userId = result["email"] as String
-        let name = result["name"] as String
+        let userId = result["email"] as! String
+        let name = result["name"] as! String
         
         let database = databaseForUser(userId)
         currentDatabase = database
@@ -45,7 +45,7 @@ class CouchbaseManager {
             println("profile")
         } else {
             println("no profile")
-            profile = Profile(name: name, user_id: userId, fb_id: result["id"] as String)
+            profile = Profile(name: name, user_id: userId, fb_id: result["id"] as! String)
             if profile!.save(nil) {
                 println("profile saved")
             }

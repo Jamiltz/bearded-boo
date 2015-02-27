@@ -33,14 +33,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if (object as CBLLiveQuery) == liveQuery {
+        if (object as! CBLLiveQuery) == liveQuery {
             
             videos.removeAll(keepCapacity: false)
 
             if liveQuery.rows.allObjects.count > 0 {
                 for (index, row) in enumerate(liveQuery.rows.allObjects) {
-                    let row = row as CBLQueryRow
-                    let video = YouTubeVideo(video_id: row.key as String, title: row.value[0]! as String)
+                    let row = row as! CBLQueryRow
+                    let video = YouTubeVideo(video_id: row.key as! String, title: row.value[0]! as! String)
                     video.moments = row.value[1] as? Int
                     videos.insert(video, atIndex: 0)
                 }
@@ -88,7 +88,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyPicksCellIdentifier", forIndexPath: indexPath) as MyPicksCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyPicksCellIdentifier", forIndexPath: indexPath) as! MyPicksCell
         let video = videos[indexPath.row]
         
         cell.titleLabel.text = videos[indexPath.row].title
@@ -129,9 +129,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     @IBAction func startDownload(sender: UIButton) {
         
         let aVideo = videos[sender.tag]
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag, inSection: 0)) as MyPicksCell? {
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag, inSection: 0)) as! MyPicksCell? {
             XCDYouTubeClient.defaultClient().getVideoWithIdentifier(aVideo.video_id, completionHandler: { (video, error) -> Void in
-                let mp4Url = (video as XCDYouTubeVideo).streamURLs[18] as NSURL
+                let mp4Url = (video as XCDYouTubeVideo).streamURLs[18] as! NSURL
                 let url = NSURL(string: "\(mp4Url.absoluteString!)&\(aVideo.video_id)")!
                 
                 self.createDownloadTask(url, video: aVideo)
@@ -156,7 +156,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     
     func updateProgress(notification: NSNotification) {
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            let video_id = notification.userInfo!["video_id"]! as String
+            let video_id = notification.userInfo!["video_id"]! as! String
             
             var found: Int?
             for (index, video) in enumerate(self.videos) {
@@ -165,8 +165,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
                 }
             }
             
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: found!, inSection: 0)) as MyPicksCell? {
-                cell.circularProgressView.setProgress(Float(notification.userInfo!["progress"]! as Double), animated: true)
+            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: found!, inSection: 0)) as! MyPicksCell? {
+                cell.circularProgressView.setProgress(Float(notification.userInfo!["progress"]! as! Double), animated: true)
             }
         }
     }
@@ -178,7 +178,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         
         for (index, video) in enumerate(self.videos) {
             if let taskIdentifier = video.taskIdentifier {
-                if taskIdentifier == notification.userInfo!["taskIdentifier"] as Int {
+                if taskIdentifier == notification.userInfo!["taskIdentifier"] as! Int {
                     println("found")
                     video.downloadTask = nil
                     video.isDownloading = false
@@ -194,7 +194,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func stopDownload(sender: UIButton) {
         
-        let cell = sender.superview!.superview! as MyPicksCell
+        let cell = sender.superview!.superview! as! MyPicksCell
         if let indexPath = tableView.indexPathForCell(cell) {
             let aVideo = videos[indexPath.row]
             aVideo.downloadTask!.cancel()
@@ -261,8 +261,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EditPicksSegue" {
-            let vc = segue.destinationViewController as EditPicksViewController
-            vc.video_id = (sender as MyPicksCell).video_id
+            let vc = segue.destinationViewController as! EditPicksViewController
+            vc.video_id = (sender as! MyPicksCell).video_id
             if let indexPath = tableView.indexPathForSelectedRow() {
                 let video = videos[indexPath.row]
                 vc.video_id = video.video_id

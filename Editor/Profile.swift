@@ -7,7 +7,7 @@ class Profile: CBLModel {
     @NSManaged var fb_id: String
     @NSManaged var device_token: String?
     
-    let moments: Int?
+    var moments: Int?
     
     init(name: String, user_id: String, fb_id: String) {
         

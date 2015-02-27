@@ -26,22 +26,22 @@ class VideoDownloader: NSObject, NSURLSessionDownloadDelegate {
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-        let userInfo = ["progress": progress, "video_id": videoIdFromRequestURL(downloadTask.originalRequest.URL)]
+        let userInfo = ["progress": progress, "video_id": videoIdFromRequestURL(downloadTask.originalRequest.URL!)]
         
-        NSNotificationCenter.defaultCenter().postNotificationName("DownloadProgress", object: downloadTask, userInfo: userInfo)
+        NSNotificationCenter.defaultCenter().postNotificationName("DownloadProgress", object: downloadTask, userInfo: userInfo as! [NSObject : AnyObject])
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
 
-        let filePath = self.buildDownloadPath(downloadTask.originalRequest.URL)
+        let filePath = self.buildDownloadPath(downloadTask.originalRequest.URL!)
         NSFileManager.defaultManager().copyItemAtPath(location.path!, toPath: filePath, error: nil)
         let userInfo = ["filePath": filePath, "taskIdentifier": downloadTask.taskIdentifier]
-        NSNotificationCenter.defaultCenter().postNotificationName("DownloadCompletion", object: downloadTask, userInfo: userInfo)
+        NSNotificationCenter.defaultCenter().postNotificationName("DownloadCompletion", object: downloadTask, userInfo: userInfo as! [NSObject : AnyObject])
         
     }
     
     func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appDelegate.backgroundSessionCompletionHandler != nil {
             appDelegate.backgroundSessionCompletionHandler!()
             appDelegate.backgroundSessionCompletionHandler = nil
@@ -55,8 +55,8 @@ class VideoDownloader: NSObject, NSURLSessionDownloadDelegate {
         NSFileManager.defaultManager().createDirectoryAtPath(docsPath, withIntermediateDirectories: false, attributes: nil, error: nil)
         
         let stringURL = url.absoluteString!
-        let count = countElements(stringURL)
-        let video_id = stringURL[advance(stringURL.startIndex, count - 11)...advance(stringURL.startIndex, count - 1)]
+        let length = count(stringURL)
+        let video_id = stringURL[advance(stringURL.startIndex, length - 11)...advance(stringURL.startIndex, length - 1)]
         
         let newFileName = video_id
         
@@ -72,8 +72,8 @@ class VideoDownloader: NSObject, NSURLSessionDownloadDelegate {
     
     func videoIdFromRequestURL(url: NSURL) -> String {
         let stringURL = url.absoluteString!
-        let count = countElements(stringURL)
-        let video_id = stringURL[advance(stringURL.startIndex, count - 11)...advance(stringURL.startIndex, count - 1)]
+        let length = count(stringURL)
+        let video_id = stringURL[advance(stringURL.startIndex, length - 11)...advance(stringURL.startIndex, length - 1)]
         return video_id
     }
     

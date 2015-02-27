@@ -13,10 +13,10 @@ class Brief: CBLModel {
     @NSManaged var pick_id: Pick
     @NSManaged var user_id: Profile
     var pick: Pick {
-        return Pick(document: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(document.propertyForKey("pick_id") as String))
+        return Pick(document: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(document.propertyForKey("pick_id") as! String))
     }
     var user: Profile {
-        return Profile(document: CouchbaseManager.shared.currentDatabase.existingDocumentWithID("p:" + (document.propertyForKey("user_id") as String)))
+        return Profile(document: CouchbaseManager.shared.currentDatabase.existingDocumentWithID("p:" + (document.propertyForKey("user_id") as! String)))
     }
     
     init(pick: Pick, user: Profile) {
