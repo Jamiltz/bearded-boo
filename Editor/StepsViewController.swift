@@ -29,10 +29,10 @@ class StepsViewController: UIViewController, UITableViewDataSource {
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (object as! CBLLiveQuery) == liveQuery {
-            picks = liveQuery.rows.allObjects
+            picks = liveQuery.rows!.allObjects
                 .map({(row) -> Pick in
                     let doc = (row as! CBLQueryRow).document
-                    return Pick(document: doc)
+                    return Pick(document: doc!)
                 })
             tableView.reloadData()
         }
@@ -52,7 +52,7 @@ class StepsViewController: UIViewController, UITableViewDataSource {
         
         let attachment: CBLAttachment? = picks[indexPath.item].attachmentNamed("image")
         if let unwrapped = attachment {
-            cell.imageView!.image = UIImage(data: unwrapped.content)
+            cell.imageView!.image = UIImage(data: unwrapped.content!)
             cell.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
         }
         

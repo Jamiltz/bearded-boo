@@ -11,7 +11,7 @@ class Profile: CBLModel {
     
     init(name: String, user_id: String, fb_id: String) {
         
-        super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID("p:\(user_id)"))
+        super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID("p:\(user_id)")!, orDatabase: nil)
         
         setValue("profile", forKey: "type")
         self.name = name
@@ -20,15 +20,15 @@ class Profile: CBLModel {
         
     }
     
-    override init!(document: CBLDoc) {
-        super.init(document: document)
+    init(document: CBLDocument) {
+        super.init(document: document, orDatabase: nil)
     }
     
     class func profileInDatabase(userId: String) -> Profile? {
         let profileDocId = "p:\(userId)"
         let doc = CouchbaseManager.shared.currentDatabase.existingDocumentWithID(profileDocId)
         if doc != nil {
-            return Profile(forDocument: doc)
+            return Profile(document: doc!)
         } else {
             return nil
         }

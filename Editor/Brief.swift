@@ -13,29 +13,29 @@ class Brief: CBLModel {
     @NSManaged var pick_id: Pick
     @NSManaged var user_id: Profile
     var pick: Pick {
-        return Pick(document: CouchbaseManager.shared.currentDatabase.existingDocumentWithID(document.propertyForKey("pick_id") as! String))
+        return Pick(document: CouchbaseManager.shared.currentDatabase.createDocument())
     }
     var user: Profile {
-        return Profile(document: CouchbaseManager.shared.currentDatabase.existingDocumentWithID("p:" + (document.propertyForKey("user_id") as! String)))
+        return Profile(document: CouchbaseManager.shared.currentDatabase.createDocument())
     }
     
     init(pick: Pick, user: Profile) {
-        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
+        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument(), orDatabase: nil)
         
         setValue("brief", ofProperty: "type")
         self.pick_id = pick
         self.user_id = user
     }
     
-    override init!(document: CBLDoc) {
-        super.init(document: document)
+    init(document: CBLDocument) {
+        super.init(document: document, orDatabase: nil)
     }
     
     class func briefForVideoInDatabase(video_id: String) -> Brief? {
         let briefDocId = "b:\(video_id)"
         let doc = CouchbaseManager.shared.currentDatabase.existingDocumentWithID(briefDocId)
         if doc != nil {
-            return Brief(forDocument: doc)
+            return Brief(document: doc!)
         } else {
             return nil
         }
@@ -47,7 +47,7 @@ class Brief: CBLModel {
             view.setMapBlock({ (doc, emit) -> Void in
                 if let type = doc["type"] as? String {
                     if type == "brief" {
-                        emit(doc["_id"], doc)
+                        emit(doc["_id"]!, doc)
                     }
                 }
             }, version: "1")

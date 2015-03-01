@@ -59,13 +59,13 @@ class CouchbaseManager {
         
         if pull == nil { // check its nil
             let syncURL = NSURL(string: kSyncGatewayUrl)
-            pull = CouchbaseManager.shared.currentDatabase.createPullReplication(syncURL)
+            pull = CouchbaseManager.shared.currentDatabase.createPullReplication(syncURL!)
             pull.continuous = true
             if (!kSyncGatewayWebSocketSupport) {
                 pull.customProperties = ["websocket": false];
             }
             
-            push = CouchbaseManager.shared.currentDatabase.createPushReplication(syncURL)
+            push = CouchbaseManager.shared.currentDatabase.createPushReplication(syncURL!)
             push.continuous = true
         }
         
@@ -112,7 +112,7 @@ class CouchbaseManager {
         if (error != nil) {
             println("cannot create database because \(error)")
         }
-        return database
+        return database!
     }
     
 }

@@ -20,9 +20,9 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (object as! CBLLiveQuery) == liveQuery {
-            for (index, row) in enumerate(liveQuery.rows.allObjects) {
+            for (index, row) in enumerate(liveQuery.rows!.allObjects) {
                 if index >= briefs.count {
-                    let brief = Brief(document: (row as! CBLQueryRow).document)
+                    let brief = Brief(document: (row as! CBLQueryRow).document!)
                     briefs.append(brief)
                 }
             }

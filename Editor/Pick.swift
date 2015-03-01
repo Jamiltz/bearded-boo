@@ -11,7 +11,7 @@ class Pick: CBLModel {
     @NSManaged var user_id: String
     
     init(video_id: String, start_at: Double?, end_at: Double, caption: String, video_title: String, user_id: String) {
-        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
+        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument(), orDatabase: nil)
         
         setValue("pick", ofProperty: "type")
         self.video_id = video_id
@@ -26,8 +26,8 @@ class Pick: CBLModel {
         self.user_id = user_id
     }
     
-    override init!(document: CBLDoc) {
-        super.init(document: document)
+    init(document: CBLDocument) {
+        super.init(document: document, orDatabase: nil)
     }
     
     class func queryVideoPicks(video_id: String) -> CBLQuery {
@@ -37,7 +37,7 @@ class Pick: CBLModel {
                 .setMapBlock({ (doc, emit) -> Void in
                     if let type = doc["type"] as? String {
                         if type == "pick" {
-                            emit(doc["video_id"], doc)
+                            emit(doc["video_id"]!, doc)
                         }
                     }
                 }, version: "1")
@@ -56,7 +56,7 @@ class Pick: CBLModel {
                 .setMapBlock({ (doc, emit) -> Void in
                     if let type = doc["type"] as? String {
                         if type == "pick" {
-                            emit(doc["video_id"], doc)
+                            emit(doc["video_id"]!, doc)
                         }
                     }
                 }, version: "5")
@@ -75,7 +75,7 @@ class Pick: CBLModel {
                 .setMapBlock({ (doc, emit) -> Void in
                     if let type = doc["type"] as? String {
                         if type == "pick" {
-                            emit(doc["video_id"], doc)
+                            emit(doc["video_id"]!, doc)
                         }
                     }
                 }, version: "1")

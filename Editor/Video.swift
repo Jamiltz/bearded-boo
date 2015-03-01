@@ -14,7 +14,7 @@ class Video: CBLModel {
     
     init(title: String, video_id: String) {
         
-        super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID(video_id))
+        super.init(document: CouchbaseManager.shared.currentDatabase.documentWithID(video_id)!, orDatabase: nil)
         
         setValue("video", ofProperty: "type")
         self.created_at = NSDate()
@@ -22,8 +22,8 @@ class Video: CBLModel {
         self.video_id = video_id
     }
 
-    override init!(document: CBLDoc) {
-        super.init(document: document)
+    init(document: CBLDoc) {
+        super.init(document: document, orDatabase: nil)
     }
     
     class func queryVideos() -> CBLView {
@@ -32,7 +32,7 @@ class Video: CBLModel {
             view.setMapBlock({ (doc, emit) -> Void in
                 if let type = doc["type"] as? String {
                     if type == "video" {
-                        emit(doc["_id"], doc)
+                        emit(doc["_id"]!, doc)
                     }
                 }
             }, version: "1")
@@ -46,21 +46,21 @@ class Video: CBLModel {
             view.setMapBlock({ (doc, emit) -> Void in
                 if let type = doc["type"] as? String {
                     switch type {
-                        case "video":
-                            emit(doc["video_id"], doc["title"])
-                        case "pick":
-                            emit(doc["video_id"], doc["video_title"])
-                        default:
-                            break
+                    case "video":
+                        emit(doc["video_id"]!, doc["title"])
+                    case "pick":
+                        emit(doc["video_id"]!, doc["video_title"])
+                    default:
+                        break
                     }
                 }
-            }, reduceBlock: { (keys, values, rereduce) -> AnyObject! in
-                let title = values.filter({ (element) -> Bool in
+            }, reduceBlock: { (keys, values, rereduce) -> AnyObject in
+                let title: String = values.filter({ (element) -> Bool in
                     if let str = element as? String {
                         return true
                     }
                     return false
-                }).first!
+                }).first! as! String
                 return [title, values.count]
             }, version: "8")
         }

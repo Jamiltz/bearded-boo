@@ -15,15 +15,15 @@ class Notification: CBLModel {
     
     init(device_token: String, user_name: String) {
         
-        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument())
+        super.init(document: CouchbaseManager.shared.currentDatabase.createDocument(), orDatabase: nil)
         
         setValue("notification", ofProperty: "type")
         self.device_token = device_token
         self.user_name = user_name
     }
     
-    override init!(document: CBLDoc) {
-        super.init(document: document)
+    init(document: CBLDocument) {
+        super.init(document: document, orDatabase: nil)
     }
    
 }

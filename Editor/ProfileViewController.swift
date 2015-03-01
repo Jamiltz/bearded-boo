@@ -37,11 +37,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
             
             videos.removeAll(keepCapacity: false)
 
-            if liveQuery.rows.allObjects.count > 0 {
-                for (index, row) in enumerate(liveQuery.rows.allObjects) {
+            if liveQuery.rows!.allObjects.count > 0 {
+                for (index, row) in enumerate(liveQuery.rows!.allObjects) {
                     let row = row as! CBLQueryRow
-                    let video = YouTubeVideo(video_id: row.key as! String, title: row.value[0]! as! String)
-                    video.moments = row.value[1] as? Int
+//                    println(row.value as? Array)
+                    let video = YouTubeVideo(video_id: row.key as! String, title: (row.value! as! Array<AnyObject>)[0] as! String)
+                    video.moments = (row.value as! Array<AnyObject>)[1] as! Int
                     videos.insert(video, atIndex: 0)
                 }
                 tableView.reloadData()

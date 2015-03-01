@@ -28,7 +28,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
     var picks: [Pick] = []
     
     var profile: Profile {
-        return Profile(document: CouchbaseManager.shared.currentDatabase.documentWithID(CouchbaseManager.shared.currentUserId!))
+        return Profile(document: CouchbaseManager.shared.currentDatabase.documentWithID(CouchbaseManager.shared.currentUserId!)!)
     }
     
     var oldLowerValue: Float = 0.0
@@ -41,8 +41,8 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         if (object as! CBLLiveQuery) == liveQuery {
             picks.removeAll(keepCapacity: false)
             
-            for (index, row) in enumerate(liveQuery.rows.allObjects) {
-                picks.append(Pick(forDocument: (row as! CBLQueryRow).document))
+            for (index, row) in enumerate(liveQuery.rows!.allObjects) {
+                picks.append(Pick(document: (row as! CBLQueryRow).document!))
             }
             
             picks.sort({ (a, b) -> Bool in
@@ -75,8 +75,8 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             // FATAL :: http call crashing app when offline
             XCDYouTubeClient.defaultClient().getVideoWithIdentifier(video_id, completionHandler: { (video, error) -> Void in
-                let mp4Url = video.streamURLs[18] as! NSURL
-                self.playerVC.player = AVPlayer(URL: mp4Url)
+                let mp4Url = video.streamURLs[18] as? NSURL
+                self.playerVC.player = AVPlayer(URL: mp4Url!)
             })
         }
         
@@ -321,7 +321,9 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
             let pick = picks[indexPaths[0].item]
             pick.start_at = Double(slider.lowerValue)
             pick.end_at = Double(slider.upperValue)
-            if pick.save(nil) {
+            var error: NSError?
+            if pick.save(&error) {
+                println(error)
                 println("updated pick")
             }
         }
@@ -401,7 +403,7 @@ class EditPicksViewController: UIViewController, UITableViewDataSource, UITableV
             slider.minimumValue = Float(pick.start_at - 3)
         }
         
-        var delta: Int64 = 0 * Int64(NSEC_PER_SEC)
+        var delta: Int64 = 1 * Int64(NSEC_PER_SEC)
         var time = dispatch_time(DISPATCH_TIME_NOW, delta)
         
         dispatch_after(time, dispatch_get_main_queue(), {

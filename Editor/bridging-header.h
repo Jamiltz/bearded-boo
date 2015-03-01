@@ -16,3 +16,8 @@
 #import "JSONModelLib.h"
 #import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
+
+@interface CBLModel()
+- (instancetype) initWithDocument: (nullable CBLDocument*)document
+                       orDatabase: (nullable CBLDatabase*)database NS_DESIGNATED_INITIALIZER;
+@end
